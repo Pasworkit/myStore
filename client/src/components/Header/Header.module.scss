@@ -1,0 +1,141 @@
+.containerMobile {
+  padding: 21px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+    @media (min-width: 480px){
+      display: none;
+    }
+}
+
+.burgerMenuBtn {
+  padding: 0;
+  margin: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+.menuSpanBurger {
+  display: block;
+  width: 33px;
+  height: 3px;
+  border-radius: 5px;
+  background: #456f49;
+  margin-bottom: 6px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.menuMobileContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px;
+  width: 100%;
+  background: #456f49;
+
+  @media (min-width: 480px){
+    display: none;
+  }
+}
+
+.closeBtnMenu {
+  display: block;
+
+  height: 1.5px;
+  background: #fff;
+  border-radius: 10px;
+
+  &:first-child {
+    transform: rotate(45deg);
+    margin-bottom: -1px;
+    width: 22px;
+  }
+
+  &:last-child {
+    transform: rotate(-45deg);
+
+    width: 22px;
+  }
+}
+
+.btnWrapper {
+  margin: 33px 10px 32px 0;
+  text-align: right;
+}
+
+.listNavigationWrapper {
+  margin-bottom: 30px;
+
+  &::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    margin-top: 30px;
+  }
+}
+
+.listNavigationFilterWrapper {
+  margin-bottom: 240px;
+}
+
+.basketWrapper {
+  margin-left: 5px;
+}
+
+.basketLink {
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+
+.basketLinkText {
+  margin: 13px 0 0 0;
+  padding: 0;
+}
+
+.phoneWrapper {
+  margin: 30px 0 90px 5px;
+
+}
+
+.phoneNumber {
+  display: flex;
+  align-items: center;
+
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+
+.phoneNumberSpan {
+  margin-left: 13px;
+}
+
+.container {
+  @media (max-width: 480px){
+    display: none;
+  }
+
+  @media (min-width: 480px) and (max-width: 1024px){
+    padding: 30px 30px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.imgWrapper {
+  // margin-right: 60px;
+}

@@ -1,8 +1,7 @@
-import React from 'react';
 import { ReactComponent as ShopingBascet } from '../../img/icon/bascet.svg';
 
-function HeaderBascet() {
+function HeaderBascetIcon() {
   return <ShopingBascet />;
 }
 
-export default HeaderBascet;
+export default HeaderBascetIcon;
