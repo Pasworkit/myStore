@@ -1,0 +1,33 @@
+@use '../../styles/abstracts/variables';
+.title{
+    font-size: 32px;
+    line-height: 130%;
+    color: #202B21;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    margin-bottom: 120px;
+}
+.wrapperList{
+    background: #B6D5B9;
+    width: 100%;
+}
+
+
+
+.people-talk__item-wrapper{
+
+    margin-bottom: 37px;
+    @media (min-width: variables.$tablet-bp) {
+
+        margin-bottom: 68px;
+    }
+    @media (min-width: variables.$tablet-bp) {
+
+        margin-bottom: 118px;
+    }
+}
