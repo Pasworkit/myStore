@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
 
+import useOnClickOutside from '../../hooks/onClickOutside';
+
 import logoHeaderMb from '../../img/logo/logo-header-mb.png';
 import logoHeader from '../../img/logo/logo-header.png';
 import NavigationHeader from '../Navigation/NavigationHeader';
@@ -15,13 +17,20 @@ import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const nodeRef = useRef(null);
+  // const nodeMenuRef = useRef(null);
 
   const hendleIsOpenMenu = () => {
     setIsOpenMenu((currentIsOpen) => !currentIsOpen);
   };
 
+  useOnClickOutside(nodeRef, () => {
+    if (isOpenMenu) {
+      hendleIsOpenMenu();
+    }
+  });
+
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.containerMobile}>
         <div>
           <NavLink to="/">
@@ -80,13 +89,23 @@ function Header() {
       )}
 
       <div className={styles.container}>
-        <div className={styles.imgWrapper}>
+        <NavLink to="/">
           <img src={logoHeader} alt="icon" />
-        </div>
+        </NavLink>
 
         <div>
-          <div><NavigationHeader /></div>
-          <div><NavigationHeaderFilter /></div>
+          <div className={styles.createLine}>
+            <div className={styles.navigationHeaderDesctopWrapper}>
+              <NavigationHeader />
+              <a className={styles.phoneNumber} href="tel:+ 375 (29) 918-28-88">
+                <span className={styles.phoneNumberSpan}>+ 375 (29) 918-28-88</span>
+              </a>
+              <NavLink className={styles.basketDescLink} to="/Basket"><HeaderBascetIcon /></NavLink>
+            </div>
+          </div>
+          <div className={styles.navigationHeaderFilterDesctopWrapper}>
+            <NavigationHeaderFilter />
+          </div>
         </div>
       </div>
 

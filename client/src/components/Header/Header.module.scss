@@ -1,12 +1,29 @@
+.header {
+  @media (min-width: 480px) {
+    min-width: 375px;
+  }
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    min-width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
 .containerMobile {
+  min-width: 375px;
   padding: 21px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-    @media (min-width: 480px){
-      display: none;
-    }
+  @media (min-width: 480px) {
+    display: none;
+  }
 }
 
 .burgerMenuBtn {
@@ -35,11 +52,12 @@
   position: absolute;
   top: 0;
   left: 0;
+  min-width: 375px;
   padding: 15px;
   width: 100%;
   background: #456f49;
 
-  @media (min-width: 480px){
+  @media (min-width: 480px) {
     display: none;
   }
 }
@@ -91,6 +109,7 @@
 }
 
 .basketLink {
+  display: inline-block;
   text-decoration: none;
   font-family: "Montserrat";
   font-weight: 400;
@@ -105,7 +124,6 @@
 
 .phoneWrapper {
   margin: 30px 0 90px 5px;
-
 }
 
 .phoneNumber {
@@ -116,19 +134,54 @@
   font-weight: 400;
   font-size: 16px;
   color: #fff;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 14px;
+    color: #202b21;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: 263px;
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 16px;
+    color: #202b21;
+  }
 }
 
 .phoneNumberSpan {
   margin-left: 13px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-left: 13px;
+  }
+}
+
+.basketDescLink {
+  @media (min-width: 1024px) {
+    margin-left: 93px;
+  }
 }
 
 .container {
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
     display: none;
   }
 
-  @media (min-width: 480px) and (max-width: 1024px){
+  @media (min-width: 480px) and (max-width: 1024px) {
+    min-width: 768px;
     padding: 30px 30px 0;
+    margin: 0 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 30px auto;
 
     display: flex;
     justify-content: space-between;
@@ -136,6 +189,54 @@
   }
 }
 
-.imgWrapper {
-  // margin-right: 60px;
+.createLine {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-bottom: 20px;
+    &::after {
+      content: "";
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: #ededed;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 25px;
+    &::after {
+      content: "";
+      margin-top: 25px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: #ededed;
+    }
+  }
+}
+
+.navigationHeaderDesctopWrapper {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.navigationHeaderFilterDesctopWrapper {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 0 15px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 20px;
+  }
 }

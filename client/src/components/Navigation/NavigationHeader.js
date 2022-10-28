@@ -10,7 +10,7 @@ function NavigationHeader() {
           <NavLink className={styles.itemNavigationLink} to="/">Home Page</NavLink>
         </li>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLink} to="/cart">Shop</NavLink>
+          <NavLink className={styles.itemNavigationLink} to="/shop">Shop</NavLink>
         </li>
       </ul>
     </nav>
