@@ -7,7 +7,7 @@ import styles from './Product.module.scss';
 
 function Product() {
   const products = useSelector((state) => state.productsAll.products);
-  const indOfP = 1;
+  const indOfP = 0;
   const theProduct = products[indOfP];
   // eslint-disable-next-line no-console
   console.log(theProduct);
