@@ -1,21 +1,28 @@
 .case {
+  font-family: "Montserrat", serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2px;
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #cccccc;
-  margin: 12px 0 0 0;
+  margin: 12px auto;
   max-height: max-content;
   width: 100%;
 }
 .productImg {
-  max-width: 200px;
-  max-height: 200px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0;
+  margin: 24px auto;
+  border-radius: 5%;
+}
+.productInfoWrapper {
   padding: 8px;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 .name {
   margin: 4px auto;
@@ -26,8 +33,6 @@
   font-size: 18px;
 }
 .productImgWrapper {
-  height: 200px;
-  border-radius: 4px;
   position:relative;
 }
 .priceWrapper {
@@ -37,4 +42,11 @@
 }
 .star {
   cursor: pointer;
+}
+@media screen and (min-width:768px)
+{
+  .case
+  {
+    grid-template-columns: 2fr 3fr;
+  }
 }

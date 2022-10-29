@@ -29,49 +29,51 @@ function Product() {
           <div className={styles.productImgWrapper}>
             <img src={imgUrl} alt={productName} className={styles.productImg} />
           </div>
-          <h2 className={styles.name}>{productName}</h2>
-          <div className={styles.priceWrapper}>
-            <h4 className={styles.price}>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <span>Price: </span>
-              $
-              {currentPrice}
-            </h4>
-            {/* eslint-disable-next-line react/button-has-type */}
+          <div className={styles.productInfoWrapper}>
+            <h2 className={styles.name}>{productName}</h2>
+            <p>
+              <span>Code: </span>
+              {itemNo}
+            </p>
+            <p>
+              <span>Category: </span>
+              {category}
+            </p>
+            <p>
+              <span>Description: </span>
+              {description}
+            </p>
+            <p>
+              <span>Light: </span>
+              {light}
+            </p>
+            <p>
+              <span>Watering: </span>
+              {watering}
+            </p>
+            <p>
+              <span>Humidity: </span>
+              {humidity}
+            </p>
+            <p>
+              <span>Pet & Baby safe: </span>
+              {petBabySafe}
+            </p>
+            <p>
+              <span>Easy Care: </span>
+              {easyCare}
+            </p>
+            <div className={styles.priceWrapper}>
+              <h4 className={styles.price}>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                <span>Price: </span>
+                $
+                {currentPrice}
+              </h4>
+              {/* eslint-disable-next-line react/button-has-type */}
+            </div>
+            <button type="button">Add to cart</button>
           </div>
-          <p>
-            <span>Code: </span>
-            {itemNo}
-          </p>
-          <p>
-            <span>Category: </span>
-            {category}
-          </p>
-          <p>
-            <span>Description: </span>
-            {description}
-          </p>
-          <p>
-            <span>Light: </span>
-            {light}
-          </p>
-          <p>
-            <span>Watering: </span>
-            {watering}
-          </p>
-          <p>
-            <span>Humidity: </span>
-            {humidity}
-          </p>
-          <p>
-            <span>Pet & Baby safe: </span>
-            {petBabySafe}
-          </p>
-          <p>
-            <span>Easy Care: </span>
-            {easyCare}
-          </p>
-          <button type="button">Add to cart</button>
         </div>
       </section>
       <div>
