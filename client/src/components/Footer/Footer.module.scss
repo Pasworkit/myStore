@@ -1,0 +1,310 @@
+@use "../../styles/abstracts/_variables";
+
+.footer {
+  margin: 0 auto;
+  padding: 15px 23px 15px 15px;
+  min-width: 375px;
+  background: variables.$footer-bg-color;
+}
+
+.logoFooterMobilePosition {
+  margin: 35px 0 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logoFooterWrapperMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 481px) {
+    display: none;
+  }
+}
+
+.logoFooterImgMobileText {
+  margin-top: 3px;
+}
+
+.logoFooterWrapperDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.logoFooterImgDescText {
+  margin-top: 10px;
+}
+
+.footerWrapperBlokeInfo {
+  margin: 40px 0 0 0;
+  padding-right: 33px;
+  width: 375px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footerMenuText {
+  margin-bottom: 20px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 130%;
+  color: variables.$color-light;
+  text-transform: uppercase;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerCategoriesWrapper {
+  padding-right: 30px;
+}
+
+.footerCategoriesText {
+  margin-bottom: 20px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 130%;
+  color: variables.$color-light;
+  text-transform: uppercase;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerWrapperBlokeContacts {
+  margin-top: 40px;
+}
+
+.footerWrapperBlokeContactsPosition {
+  margin-top: 20px;
+  padding-right: 33px;
+  min-width: 375px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerContacts {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  text-transform: uppercase;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsAddress {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 2;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsCity {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsStreet {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.7;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailText {
+  margin-top: 5px;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.7;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailLink {
+  margin: 0;
+  padding: 0;
+  margin: 6px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailPhone {
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailPhoneLink {
+  margin: 6px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerSocialWrapper {
+  margin-top: 43px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerSocialtext {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerSocialWrapperLinks {
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerSocialIconFacebook {
+  margin-top: 3px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.footerSocialIconInstagram {
+  margin: 3px 0 0 20px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.footerTextCopyWrapper {
+  margin-top: 40px;
+}
+
+.footerTextCopy {
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}

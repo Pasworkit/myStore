@@ -17,7 +17,6 @@ import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const nodeRef = useRef(null);
-  // const nodeMenuRef = useRef(null);
 
   const hendleIsOpenMenu = () => {
     setIsOpenMenu((currentIsOpen) => !currentIsOpen);

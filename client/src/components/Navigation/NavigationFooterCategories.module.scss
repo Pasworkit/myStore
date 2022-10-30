@@ -1,0 +1,39 @@
+@use '../../styles/abstracts/_variables';
+
+.listNavigationFooterCategories {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.itemNavigationFooterCategories {
+  margin-bottom: 11px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.itemNavigationFooterCategoriesLink {
+  text-decoration: none;
+  font-family: variables.$fontFamilyMontserrat;;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: variables.$color-light;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
