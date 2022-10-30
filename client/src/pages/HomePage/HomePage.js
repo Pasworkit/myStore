@@ -1,15 +1,15 @@
-// import SectionDelivery from '../../components/SectionDelivery/SectionDelivery';
-// import SectionFeedback from '../../components/SectionFeedback/SectionFeedback';
-// import SectionBest from '../../components/SectionBest/SectionBest';
-// import SectionCarousel from '../../components/SectionCarousel/SectionCarousel';
+import SectionDelivery from '../../components/SectionDelivery/SectionDelivery';
+import SectionFeedback from '../../components/SectionFeedback/SectionFeedback';
+import SectionBest from '../../components/SectionBest/SectionBest';
+import SectionCarousel from '../../components/SectionCarousel/SectionCarousel';
 
 function HomePage() {
   return (
     <div>
-      {/* <SectionCarousel />
+      <SectionCarousel />
       <SectionBest />
       <SectionDelivery />
-      <SectionFeedback /> */}
+      <SectionFeedback />
     </div>
   );
 }

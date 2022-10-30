@@ -1,4 +1,4 @@
-@use '../../styles/abstracts/_variables';
+@use "../../styles/abstracts/_variables";
 
 .listNavigationFooter {
   margin: 0;
@@ -14,12 +14,22 @@
 
 .itemNavigationFooter {
   margin-bottom: 11px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
   @media (min-width: 480px) and (max-width: 1024px) {
-    
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   @media (min-width: 1024px) {
-    
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -36,6 +46,7 @@
   }
 
   @media (min-width: 1024px) {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.6;
   }
 }

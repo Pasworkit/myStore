@@ -70,7 +70,7 @@ function Header() {
             </div>
 
             <div className={styles.basketWrapper}>
-              <NavLink className={styles.basketLink} to="/Basket">
+              <NavLink className={styles.basketLink} to="/cart">
                 <HeaderBascetIcon />
                 <p className={styles.basketLinkText}>Basket</p>
               </NavLink>
@@ -99,7 +99,7 @@ function Header() {
               <a className={styles.phoneNumber} href="tel:+ 375 (29) 918-28-88">
                 <span className={styles.phoneNumberSpan}>+ 375 (29) 918-28-88</span>
               </a>
-              <NavLink className={styles.basketDescLink} to="/Basket"><HeaderBascetIcon /></NavLink>
+              <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
             </div>
           </div>
           <div className={styles.navigationHeaderFilterDesctopWrapper}>
