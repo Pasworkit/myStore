@@ -15,7 +15,7 @@ function Product() {
   console.log(theProduct);
   const {
     // eslint-disable-next-line max-len
-    productName, currentPrice, imgUrl, itemNo, description, category, light, watering, humidity, petBabySafe, easyCare,
+    productName, currentPrice, imgUrl, itemNo, description, category, light, watering, humidity, petBabySafe, easyCare, inStock,
     // eslint-disable-next-line max-len
   } = theProduct; /* theProduct should be instead of products here */
 
@@ -25,14 +25,14 @@ function Product() {
         <div>
           <BreadCrumbs />
         </div>
+        <h1 className={styles.name}>{productName}</h1>
         <div className={styles.case}>
           <div className={styles.productImgWrapper}>
             <img src={imgUrl} alt={productName} className={styles.productImg} />
           </div>
           <div className={styles.productInfoWrapper}>
-            <h2 className={styles.name}>{productName}</h2>
             <p>
-              <span>Code: </span>
+              <span>ItemNo: </span>
               {itemNo}
             </p>
             <p>
@@ -70,6 +70,10 @@ function Product() {
                 $
                 {currentPrice}
               </h4>
+              <p>
+                <span>In stock: </span>
+                {inStock}
+              </p>
               {/* eslint-disable-next-line react/button-has-type */}
             </div>
             <button type="button">Add to cart</button>

@@ -13,7 +13,8 @@
     "watering": "Light watering. She’s drought tolerant, so good for forgetful waterers, but try to water her when the top two inches of soil feel dry.",
     "humidity": "Humidity. She loves a moist environment, so will be very happy in a bathroom or with regular misting.",
     "petBabySafe": "No. Toxic if ingested",
-    "easyCare": "Yes. Almost unkillable"
+    "easyCare": "Yes. Almost unkillable",
+    "inStock": 8
   },
   {
     "id": 2,
@@ -29,6 +30,7 @@
     "watering": "Light watering. She’s pretty tough and will usually bounce back from a missed watering. Water her when the top inch of soil feels dry.",
     "humidity": "Humidity. She loves humidity. If your bathroom gets lots of light, pop her in there. Or mist her every few days to keep her happy.",
     "petBabySafe": "No. Toxic to cats and dogs",
-    "easyCare": "Yes."
+    "easyCare": "Yes.",
+    "inStock": 6
   }
 ]
