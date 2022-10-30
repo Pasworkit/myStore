@@ -1,8 +1,8 @@
-function BasketPage() {
+function CartPage() {
   return (
     <div>
       IT IS Basket PAGE
     </div>
   );
 }
-export default BasketPage;
+export default CartPage;

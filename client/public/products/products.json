@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "productName": "Marble Queen pothos",
+    "currentPrice": 18.99,
+    "previousPrice": 31.99,
+    "height": "30-40 cm",
+    "imgUrl": "./products/img/139485.jpg",
+    "itemNo": 139485,
+    "category": "Hanging",
+    "description": "Pothos are a family of beautiful vines that are popularly known as devil’s ivy. This is for two reasons, neither of them sinister. First, in the wild they thrive in dark places. Second, they’re almost impossible to kill. They’ll take a lot of neglect. Not that we’re suggesting you neglect them. While it will easily tolerate dry, shady conditions, it will be happiest if you water it whenever the top two inches of soil feel dry, put it somewhere bright, but out of direct sun, and give it a feed with liquid fertiliser once a month in spring and summer.",
+    "light": "Most light conditions. She’ll be happy in anything from shade to bright light (but not direct sun). Her color may darken in low light.",
+    "watering": "Light watering. She’s drought tolerant, so good for forgetful waterers, but try to water her when the top two inches of soil feel dry.",
+    "humidity": "Humidity. She loves a moist environment, so will be very happy in a bathroom or with regular misting.",
+    "petBabySafe": "No. Toxic if ingested",
+    "easyCare": "Yes. Almost unkillable",
+    "inStock": 8
+  },
+  {
+    "id": 2,
+    "productName": "Peace Lily white sails",
+    "currentPrice": 10.99,
+    "previousPrice": 25.99,
+    "height": "40-100 cm",
+    "imgUrl": "./products/img/496631.jpg",
+    "itemNo": 496631,
+    "category": "Flowering",
+    "description": "As you may have guessed from its love of steamy conditions, the peace lily is native to tropical rainforests, specifically those of South and Central America. As exotic as it looks, its light and water needs are modest. It will cope in quite low light, though prefers indirect light, and as long as its humidity needs are met it's generally happy and should flower throughout spring. It will appreciate a feed with liquid fertiliser once per month in spring and summer. As well as being an elegant beauty, this plant is a hardworking air-purifyer.",
+    "light": "Most light conditions. She’s easy when it comes to light, managing in most conditions, though she’ll flower more in a brighter spot.",
+    "watering": "Light watering. She’s pretty tough and will usually bounce back from a missed watering. Water her when the top inch of soil feels dry.",
+    "humidity": "Humidity. She loves humidity. If your bathroom gets lots of light, pop her in there. Or mist her every few days to keep her happy.",
+    "petBabySafe": "No. Toxic to cats and dogs",
+    "easyCare": "Yes.",
+    "inStock": 6
+  }
+]
