@@ -17,7 +17,6 @@ import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const nodeRef = useRef(null);
-  // const nodeMenuRef = useRef(null);
 
   const hendleIsOpenMenu = () => {
     setIsOpenMenu((currentIsOpen) => !currentIsOpen);
@@ -71,7 +70,7 @@ function Header() {
             </div>
 
             <div className={styles.basketWrapper}>
-              <NavLink className={styles.basketLink} to="/Basket">
+              <NavLink className={styles.basketLink} to="/cart">
                 <HeaderBascetIcon />
                 <p className={styles.basketLinkText}>Basket</p>
               </NavLink>

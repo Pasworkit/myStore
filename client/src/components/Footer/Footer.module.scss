@@ -1,0 +1,517 @@
+@use "../../styles/abstracts/_variables";
+
+.footer {
+  min-width: 375px;
+  margin: 0 auto;
+  padding: 15px 0 15px 0;
+
+  background: variables.$footer-bg-color;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 30px;
+    min-width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0;
+  }
+}
+
+.footerContainerDesc {
+  padding: 0 23px 0 15px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 0;
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto 44px;
+    display: flex;
+  }
+}
+
+.logoFooterMobilePosition {
+  margin: 35px 0 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logoFooterWrapperMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 481px) {
+    display: none;
+  }
+}
+
+.logoFooterImgMobileText {
+  margin-top: 3px;
+}
+
+.logoFooterDescPosition {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin: 25px 0 0;
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: 50px;
+  }
+}
+
+.logoFooterWrapperDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.logoFooterImgDescText {
+  margin-top: 10px;
+}
+
+.footerMenuWrapper {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-right: 60px;
+  }
+  @media (min-width: 1024px) {
+    margin-right: 50px;
+  }
+}
+
+.footerWrapperBlokeInfo {
+  margin: 40px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 100px;
+    flex-wrap: nowrap;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0 0 0 70px;
+    padding-top: 50px;
+  }
+}
+
+.footerMenuText {
+  margin-bottom: 20px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 130%;
+  color: variables.$color-light;
+  text-transform: uppercase;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+.footerCategoriesWrapper {
+  padding-right: 30px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 0;
+    margin-right: 60px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-right: 50px;
+    padding: 0;
+    font-size: 18px;
+  }
+}
+
+.footerCategoriesText {
+  margin-bottom: 20px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 130%;
+  color: variables.$color-light;
+  text-transform: uppercase;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+.footerWrapperBlokeContacts {
+  margin-top: 40px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0;
+  }
+}
+
+.footerContactsPosition {
+  margin-right: 30px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-right: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0;
+  }
+}
+
+.footerWrapperBlokeContactsPosition {
+  margin-top: 20px;
+  display: flex;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: column;
+    margin: 0;
+  }
+}
+
+.footerContacts {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  text-transform: uppercase;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+}
+
+.footerContactsAddress {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 2;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsCity {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+    display: none;
+  }
+}
+
+.footerContactsCitySpan {
+  display: none;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 16px;
+  }
+}
+
+.footerContactsStreet {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.7;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.footerMailAndTelPositionDesc {
+  @media (min-width: 480px) and (max-width: 1024px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.footerContactsEmailText {
+  margin-top: 5px;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.7;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailLink {
+  margin: 0;
+  padding: 0;
+  margin: 6px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerContactsEmailPhone {
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+.footerContactsEmailPhoneLink {
+  margin: 6px 0 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+.footerSocialWrapper {
+  min-width: 375px;
+  margin-top: 43px;
+  padding: 0 23px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-left: 230px;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.footerSocialtext {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 500;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.footerSocialWrapperLinks {
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin: 0 0 0 30px;
+  }
+}
+
+.footerSocialIconFacebook {
+  margin-top: 3px;
+}
+
+.footerSocialIconInstagram {
+  margin: 3px 0 0 20px;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin: 3px 0 0 30px;
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.footerTextCopyWrapper {
+  margin-top: 40px;
+  padding: 0 23px 0 15px;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-top: 60px;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+}
+
+.footerTextCopy {
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: variables.$fontSizeValue;
+  line-height: 1.6;
+  color: variables.$color-light;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0;
+    padding-bottom: 50px;
+  }
+}
+
+.footerSocialWrapperDesc {
+  display: none;
+  @media (min-width: 480px) and (max-width: 1024px) {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    display: block;
+    margin-right: 60px;
+  }
+}
+
+.footerSocialtextDesc {
+  @media (min-width: 1024px) {
+    display: block;
+    font-family: variables.$fontFamilyMontserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: variables.$color-light;
+  }
+}
+
+.footerSocialWrapperLinksDesc {
+  @media (min-width: 1024px) {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.footerSocialIconFacebookDesc {
+  @media (min-width: 1024px) {
+    margin-left: 10px;
+  }
+}
+
+.footerSocialIconInstagramDesc {
+  @media (min-width: 1024px) {
+    margin-left: 20px;
+  }
+}
