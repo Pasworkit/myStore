@@ -1,0 +1,13 @@
+.buttonsMain {
+  font-size: 16px;
+  margin-top: 12px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  text-shadow: 0 1px 0 #b6e6f9;
+  &:hover{
+    cursor: pointer;
+    filter: drop-shadow(4px 4px 4px #777777) contrast(125%);
+  }
+}

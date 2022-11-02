@@ -15,7 +15,7 @@
 }
 .productImgWrapper {
   padding: 0;
-  margin: 0 0 0 15px;
+  margin: 0 15px 0 15px;
 }
 .productInfoWrapper {
   padding: 0;
@@ -41,10 +41,73 @@
   justify-content: space-between;
   align-items: center;
 }
-.price {
-  font-size: 18px;
+.infoTitleText{
+  font-weight: 500;
 }
-@media screen and (min-width:768px)
+.careHintsTitle{
+  display: inline-block;
+  margin: 0 0 8px 36px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.careHintsText{
+  border-bottom: 1px solid #E7F1E8;
+  padding-bottom: 8px;
+}
+.careHintsGlyph{
+  color: #456F49;
+  transform: scale(1.6);
+}
+.price {
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 700;
+}
+.quantityBlock{
+  display: flex;
+  gap: 2px;
+  align-items: baseline;
+}
+.quantitySet{
+  border: none;
+  display: flex;
+  gap: 2px;
+  align-items: flex-start;
+}
+.quantitySet span{
+  padding: 6px 18px;
+  cursor: pointer;
+}
+.minus, .plus {
+  border: none;
+  color: #456F49;
+  transform: scale(1.2);
+}
+.num{
+  border: 1px solid #9AA89B;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.accordionSign {
+  color: #456F49;
+  font-size: 36px;
+  transform: rotate(90deg)
+}
+.accordion {
+  width: 100%;
+  border-bottom: 1px solid #E7F1E8;
+}
+.accordionHeader {
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px 8px 0;
+  border: none;
+}
+@media screen and (min-width:769px)
 {
   .case
   {
@@ -57,7 +120,7 @@
     margin: 0 30px;
   }
 }
-@media screen and (min-width:1024px)
+@media screen and (min-width:1025px)
 {
   .productImgWrapper, .name {
     margin: 0 0 0 100px;
