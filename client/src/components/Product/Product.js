@@ -27,6 +27,27 @@ function Product() {
     // eslint-disable-next-line max-len
     id, productName, currentPrice, imgUrl, itemNo, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
   } = theProduct;
+
+  const [quantityCount, setQuantityCount] = useState(1);
+  const incrementProductQuantity = () => {
+    setQuantityCount((prevState) => {
+      if (prevState < inStock) {
+        return prevState + 1;
+      }
+      // eslint-disable-next-line no-alert
+      alert(`You can't buy more products than there is in stock: ${inStock}`);
+      return prevState;
+    });
+  };
+  const decrementProductQuantity = () => {
+    setQuantityCount((prevState) => {
+      if (prevState > 1) {
+        return prevState - 1;
+      }
+      return prevState;
+    });
+  };
+
   return (
     <>
       <section>
@@ -109,11 +130,11 @@ function Product() {
             <div className={styles.quantityBlock}>
               <p className={styles.infoTitleText}>Quantity:</p>
               <p className={styles.quantitySet}>
-                <span>
+                <span role="button" tabIndex={0} onClick={decrementProductQuantity} onKeyDown={decrementProductQuantity}>
                   <RemoveIcon className={styles.minus} />
                 </span>
-                <span className={styles.num}>{1}</span>
-                <span>
+                <span className={styles.num}>{quantityCount}</span>
+                <span role="button" tabIndex={0} onClick={incrementProductQuantity} onKeyDown={incrementProductQuantity}>
                   <AddIcon className={styles.plus} />
                 </span>
               </p>

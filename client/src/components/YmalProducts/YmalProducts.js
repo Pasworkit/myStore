@@ -11,8 +11,6 @@ import ButtonBuy from '../ButtonBuy/ButtonBuy';
 function YmalProducts(props) {
   // eslint-disable-next-line react/prop-types
   const { products } = props;
-  // eslint-disable-next-line no-console
-  console.log(products);
   return (
     <div>
       <div className={styles.ymalHeading}>
