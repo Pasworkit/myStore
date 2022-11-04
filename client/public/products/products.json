@@ -70,5 +70,23 @@
     "petBabySafe": "Yes.",
     "easyCare": "Somewhat.",
     "inStock": 4
+  },
+  {
+    "id": 5,
+    "productName": "Pineapple plant",
+    "currentPrice": 25.00,
+    "previousPrice": 25.00,
+    "height": "40-50 cm",
+    "imgUrl": "./products/img/658972.jpg",
+    "itemNo": 658972,
+    "category": "Flowering",
+    "botanicName": "Ananas Champaca",
+    "description": "Originally grown in the southern states of America and South America. This pineapple grows on top of the plant’s sword-like leaves, first appearing as tubular purple flowers in summer before turning into small fruits. As spectacular as they look, you wouldn’t want to eat these pineapples, as the fruit can sometimes be toxic. Despite their showy appearance, pineapple plants are easy to look after. They’re not fussed about humidity and don’t need pruning, they just like a decent amount of sunlight and regular watering. This is especially true when they’re flowering or producing fruit - that’s thirsty work.",
+    "light": "Bright light. They like plenty of bright light to give them the energy they need to grow their impressive flowers and fruit.",
+    "watering": "Regular watering. They enjoy regular watering, especially if they’re in a sunny spot. Check the soil before you next water, it should dry out between waterings to avoid root rot.",
+    "humidity": "Room level of humidity, apart from winter when Pineapple Plant can use more",
+    "petBabySafe": "Yes. Non-toxic",
+    "easyCare": "Yes.",
+    "inStock": 3
   }
 ]

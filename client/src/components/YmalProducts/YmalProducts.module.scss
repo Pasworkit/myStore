@@ -1,115 +1,24 @@
-.ymalHeading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 15px 0 0 15px;
+.ymalContainer{
+  margin: 30px auto 80px auto;
 }
 .ymalTitle {
+  margin-left: 15px;
+  margin-bottom: 20px;
   text-align: left;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
 }
-.ymalCase {
-  font-family: "Montserrat", serif;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 24px;
-  justify-content: start;
-  justify-items: start;
-  align-items: start;
-  padding: 0;
-  margin: 0 15px 0 15px;
-  max-height: max-content;
-}
-.ymalProductBox{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 100px;
-}
-.ymalProductImgWrapper {
-  padding: 0;
-  background: none;
-}
-.ymalProductInfoWrapper {
-  padding: 0;
-}
-.ymalInfoTitleText{
-  font-weight: 500;
-}
-.yamalProductImg {
-  width: 100%;
-  max-width: 282px;
-  padding: 0;
-  margin: 0;
-  border-radius: 5%;
-}
-.ymalArrowLeft, .ymalArrowRight{
-  color: #456F49;
-  margin: 0 20px;
-  cursor: pointer;
-  transform: scale(1.2);
-}
-.ymalPriceWrapper{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ededed;
-}
-.ymalPrice{
-  font-size: 22px;
-  font-weight: 600;
-}
-.ymalQuantityWrapper{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.ymalQuantityBlock{
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.ymalQuantitySet{
-  border: none;
-  display: flex;
-  align-items: flex-start;
-}
-.ymalQuantitySet span{
-  padding: 4px 12px;
-  cursor: pointer;
-}
-.ymalMinus, .ymalPlus {
-  border: none;
-  color: #456F49;
-  transform: scale(1.2);
-}
-.ymalNum{
-  border: 1px solid #9AA89B;
-  font-size: 18px;
-  border-radius: 5px;
-}
 @media screen and (min-width:769px)
 {
-  .ymalCase
-  {
-    grid-template-columns: repeat(3, 1fr);
-    margin: 0 30px 0 30px;
-  }
-  .ymalHeading {
-    margin: 0 30px 0 30px;
+  .ymalTitle {
+    margin-left: 30px;
   }
 }
 @media screen and (min-width:1025px)
 {
-  .ymalCase
-  {
-    grid-template-columns: repeat(4, 1fr);
-    margin: 0 100px 0 100px;
-  }
-  .ymalHeading {
-    margin: 0 100px 0 100px;
+  .ymalTitle {
+    margin-left: 100px;
   }
 }
