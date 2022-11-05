@@ -8,24 +8,23 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { useParams } from 'react-router-dom';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 
 function Product() {
+  const { itemNo } = useParams();
   const [show, setShow] = useState(false);
   const handleOpenAccordion = () => {
     setShow(!show); // Toggle accordion
   };
   const products = useSelector((state) => state.productsAll.products);
-  let indOfP;
-  // eslint-disable-next-line no-unused-expressions
-  products.length > 1 ? indOfP = 1 : indOfP = 0;
-  const theProduct = products[indOfP];
+  const [theProduct] = products.filter((product) => product.itemNo === Number(itemNo));
   const {
     // eslint-disable-next-line max-len
-    id, productName, currentPrice, imgUrl, itemNo, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
+    id, productName, currentPrice, imgUrl, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
   } = theProduct;
 
   const [quantityCount, setQuantityCount] = useState(1);
