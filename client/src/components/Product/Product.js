@@ -9,10 +9,10 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
-import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
+import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 
 function Product() {
   const { itemNo } = useParams();
@@ -49,7 +49,7 @@ function Product() {
   return (
     <section className={styles.productPageContainer}>
       <div>
-        <BreadCrumbs />
+        <Breadcrumbs currenProductCategory={category} currenProductPage={productName} midLinkName="shop" />
       </div>
       <h1 className={styles.name}>{productName}</h1>
       <div className={styles.case}>

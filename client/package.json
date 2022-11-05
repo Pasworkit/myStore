@@ -29,6 +29,7 @@
     "sass": "^1.55.0",
     "sass-reset": "^1.0.4",
     "slick-carousel": "^1.8.1",
+    "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
