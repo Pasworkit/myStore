@@ -1,20 +1,19 @@
-import { NavLink } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import { useSelector } from 'react-redux';
 import SectionDelivery from '../../components/SectionDelivery/SectionDelivery';
 import SectionFeedback from '../../components/SectionFeedback/SectionFeedback';
 import SectionBest from '../../components/SectionBest/SectionBest';
 import SectionCarousel from '../../components/SectionCarousel/SectionCarousel';
+import YmalProducts from '../../components/YmalProducts/YmalProducts';
 
 function HomePage() {
+  const products = useSelector((state) => state.productsAll.products);
   return (
     <div>
       <SectionCarousel />
       <div>
-        <h3 style={{
-          fontSize: '24px', textDecoration: 'underline', color: 'blue', margin: '24px',
-        }}
-        >
-          <NavLink to="/496631">Product-Link-Example</NavLink>
-        </h3>
+        <YmalProducts products={products} />
       </div>
       <SectionBest />
       <SectionDelivery />
