@@ -11,7 +11,7 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/cart" element={<CartPage />} />
-      <Route path="/:itemNo" element={<ProductPage />} />
+      <Route path="/:productLinkName" element={<ProductPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

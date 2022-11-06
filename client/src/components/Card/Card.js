@@ -38,7 +38,10 @@ function Card({
   };
   return (
     <div key={itemNo} className={styles.cardProductBox}>
-      <Link to={`/${itemNo}`}>
+      <Link to={`/${productName.trim().toLowerCase().split('&').join('and')
+        .split(' ')
+        .join('-')}`}
+      >
         <div className={styles.cardProductImgWrapper}>
           <img src={imgUrl} className={styles.cardProductImg} alt={productName} />
         </div>

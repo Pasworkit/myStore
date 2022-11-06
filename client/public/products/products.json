@@ -15,7 +15,10 @@
     "humidity": "Humidity. She loves a moist environment, so will be very happy in a bathroom or with regular misting.",
     "petBabySafe": "No. Toxic if ingested",
     "easyCare": "Yes. Almost unkillable",
-    "inStock": 8
+    "inStock": 8,
+    "popularBool": true,
+    "easyCareBool": true,
+    "petBabySafeBool": false
   },
   {
     "id": 2,
@@ -33,7 +36,10 @@
     "humidity": "Humidity. She loves humidity. If your bathroom gets lots of light, pop her in there. Or mist her every few days to keep her happy.",
     "petBabySafe": "No. Toxic to cats and dogs",
     "easyCare": "Yes.",
-    "inStock": 6
+    "inStock": 6,
+    "popularBool": true,
+    "easyCareBool": true,
+    "petBabySafeBool": false
   },
   {
     "id": 3,
@@ -51,7 +57,10 @@
     "humidity": "He loves moist air. He’ll enjoy living in a steamy bathroom, or give him a good mist a couple of times a week.",
     "petBabySafe": "No. Mildly toxic if ingested",
     "easyCare": "Yes.",
-    "inStock": 4
+    "inStock": 4,
+    "popularBool": true,
+    "easyCareBool": true,
+    "petBabySafeBool": false
   },
   {
     "id": 4,
@@ -61,7 +70,7 @@
     "height": "5-50 cm",
     "imgUrl": "./products/img/245781.jpg",
     "itemNo": 245781,
-    "category": "Ferns",
+    "category": "Ferns & Palms",
     "botanicName": "Nephrolepis Exaltata",
     "description": "You’ll find Boston Ferns in the wild in humid, shady areas, like swamps and forests, in South and Central America, the West Indies and Africa. They love anywhere wet, hot and not too bright. When looking after one at home, the rule is to never let a Boston fern dry out. Make sure to keep the soil moist and humidity level high. Although it's very tempting, try to resist touching their fronds as they really don't like it and it might turn them brown. To encourage lots of healthy growth, give it a feed with liquid fertiliser once per month in spring and summer.",
     "light": "Most light conditions. Like a lot of ferns, she’s used to living in partial shade, so she’s ideal for a room with lower light.",
@@ -69,7 +78,10 @@
     "humidity": "She really really loves humidity. Mist her a couple of times a week or let her live in the bathroom, basking happily in steam.",
     "petBabySafe": "Yes.",
     "easyCare": "Somewhat.",
-    "inStock": 4
+    "inStock": 4,
+    "popularBool": true,
+    "easyCareBool": false,
+    "petBabySafeBool": true
   },
   {
     "id": 5,
@@ -87,6 +99,9 @@
     "humidity": "Room level of humidity, apart from winter when Pineapple Plant can use more",
     "petBabySafe": "Yes. Non-toxic",
     "easyCare": "Yes.",
-    "inStock": 3
+    "inStock": 3,
+    "popularBool": false,
+    "easyCareBool": true,
+    "petBabySafeBool": true
   }
 ]

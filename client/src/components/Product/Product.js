@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import WavesOutlinedIcon from '@mui/icons-material/WavesOutlined';
@@ -9,23 +9,29 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
-import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
+import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 
 function Product() {
-  const { itemNo } = useParams();
+  const { productLinkName } = useParams();
   const [show, setShow] = useState(false);
   const handleOpenAccordion = () => {
     setShow(!show); // Toggle accordion
   };
   const products = useSelector((state) => state.productsAll.products);
-  const [theProduct] = products.filter((product) => product.itemNo === Number(itemNo));
+  const [theProduct] = products.filter((product) => product.productName.trim().toLowerCase().split('&').join('and')
+    .split(' ')
+    .join('-') === productLinkName);
   const {
     // eslint-disable-next-line max-len
-    id, productName, currentPrice, imgUrl, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
+    id, itemNo, productName, currentPrice, imgUrl, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
   } = theProduct;
+
+  useEffect(() => {
+    document.title = productName;
+  });
 
   const [quantityCount, setQuantityCount] = useState(1);
   const incrementProductQuantity = () => {
@@ -49,7 +55,7 @@ function Product() {
   return (
     <section className={styles.productPageContainer}>
       <div>
-        <BreadCrumbs />
+        <Breadcrumbs currenProductCategory={category} currenProductPage={productName} midLinkName="shop" />
       </div>
       <h1 className={styles.name}>{productName}</h1>
       <div className={styles.case}>
