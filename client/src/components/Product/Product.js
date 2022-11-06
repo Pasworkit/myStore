@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import WavesOutlinedIcon from '@mui/icons-material/WavesOutlined';
@@ -29,9 +28,12 @@ function Product() {
     id, itemNo, productName, currentPrice, imgUrl, description, category, botanicName, light, watering, humidity, petBabySafe, easyCare, inStock,
   } = theProduct;
 
+  //  eslint-disable-next-line max-len
+  const documentMetaDesc = `${botanicName} known as ${productName}: ${description.slice(0, 97)}...`;
   useEffect(() => {
     document.title = productName;
-  });
+    document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
+  }, [productName, documentMetaDesc]);
 
   const [quantityCount, setQuantityCount] = useState(1);
   const incrementProductQuantity = () => {
@@ -55,7 +57,8 @@ function Product() {
   return (
     <section className={styles.productPageContainer}>
       <div>
-        <Breadcrumbs currenProductCategory={category} currenProductPage={productName} midLinkName="shop" />
+        {/* eslint-disable-next-line max-len */}
+        <Breadcrumbs currenProductCategory={category} currenProductPage={productName} midLinkName={category} />
       </div>
       <h1 className={styles.name}>{productName}</h1>
       <div className={styles.case}>

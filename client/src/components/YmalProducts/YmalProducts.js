@@ -1,7 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-named-as-default
 import Card from '../Card/Card';
 import styles from './YmalProducts.module.scss';
 import CardsSlider from '../Slider/Slider';

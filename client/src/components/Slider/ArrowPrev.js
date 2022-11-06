@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 
