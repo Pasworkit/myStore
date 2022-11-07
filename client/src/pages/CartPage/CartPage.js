@@ -1,8 +1,8 @@
 function CartPage() {
   return (
-    <section>
-      <h1>Корзина</h1>
-    </section>
+    <div>
+      IT IS Basket PAGE
+    </div>
   );
 }
 export default CartPage;

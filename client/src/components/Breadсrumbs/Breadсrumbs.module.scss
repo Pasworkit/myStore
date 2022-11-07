@@ -1,0 +1,33 @@
+.breadCrumbs{
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+.midLink{
+  font-size: 16px;
+  font-weight: 400;
+  color: #9AA89B;
+}
+.endLink{
+  font-size: 16px;
+  font-weight: 500;
+  color: #2A592E;
+}
+.divider{
+  margin: 0 8px;
+}
+@media screen and (min-width:769px)
+{
+  .breadCrumbs
+  {
+    margin: 0 30px 50px 30px;
+  }
+}
+@media screen and (min-width:1025px)
+{
+  .breadCrumbs
+  {
+    margin: 0 100px 50px 100px;
+  }
+}
