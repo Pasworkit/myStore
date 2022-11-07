@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import CartPage from './pages/CartPage/CartPage';
-import BasketPage from './pages/BasketPage/BasketPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';

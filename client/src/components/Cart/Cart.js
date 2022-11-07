@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
 
-function Cart({ products }) {
+function Cart({ products }, handleDelete) {
   const amountProducts = 3;
   const totalСost = 3500;
 
@@ -13,7 +13,7 @@ function Cart({ products }) {
         <div className={styles.cart__containerItem}>
           <ul>
             {products.map((product) => (
-              <CartItem key={product.id} product={product} />
+              <CartItem key={product.id} product={product} handleDelete={handleDelete} />
             ))}
           </ul>
         </div>
