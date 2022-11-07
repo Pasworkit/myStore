@@ -1,6 +1,11 @@
-.wrapper {
+
+
+.thumbsCenter {
+  :global(.carousel ul) {
+    text-align: center;
+  }
 }
 
-.title {
-  color: #2a592e;
-}
+  :global(.carousel.carousel-slider .control-arrow){
+    background: #B6D5B9;
+  }
