@@ -1,58 +1,83 @@
-import {
-  List, ListItem, ListItemText,
-} from '@mui/material';
-import SecDelivery from '../../img/SecDelivery.svg';
+import { Box, Card, CardMedia } from '@mui/material';
+import { useEffect, useState } from 'react';
 import Delivery from '../../img/Delivery.svg';
 import Payment from '../../img/Payment.svg';
 import styles from './SectionDelivery.module.scss';
+import PlantMob from '../../img/SectionDelivery/plant_mob.png';
+import PlantTab from '../../img/SectionDelivery/plant_tab.png';
+
+// import PlantWeb from '../../img/SectionDelivery/plant_web.png';
 
 function SectionDelivery() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const imageUrl = windowWidth >= 1024 ? PlantTab : PlantMob;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
   return (
     <div className={styles.wrapper}>
-      <div className={styles.wrapperList}>
-        <h2 className={styles.title}>
-          Shipping and payment
-        </h2>
 
-        <List>
-          <img src={Delivery} alt="Delivery" />
-          <ListItem>
-            <ListItemText
-              primary="1. Доставка курьером (по городу) 100$"
-              secondary="На следующий день после оформления заказа"
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="2. Самовывоз - 0$"
-              secondary="Пункт выдачи товаров: г. Днепр, ул. Калиновая 61, подъезд 1, офис 6"
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="3. Новая почта - 50$"
-              secondary="Доставка 3-5 рабочих дней"
-            />
-          </ListItem>
-        </List>
+      <Box className={styles.wrapper_list}>
+        <div className={styles.wrapper_list__content}>
+          <h2 className={styles.title}>
+            Shipping and payment
+          </h2>
 
-        <List>
-          <img src={Payment} alt="Payment" />
-          <ListItem>
-            <ListItemText primary="1. Наличный расчет при получении;" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="2. Безналичный расчет при получении;" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="3. Оплата банковской картой в интернет-магазине;" />
-          </ListItem>
-        </List>
-      </div>
+          <div>
+            <img className={styles.icon} src={Delivery} alt="Delivery" />
+            <ul className={styles.list_delivery}>
 
-      <div>
-        <img src={SecDelivery} alt="plants" />
-      </div>
+              <li>
+                1. Delivery by courier (in the city) 10$;
+                <p>(The next day after placing an order)</p>
+              </li>
+
+              <li>
+                2. Pickup - 0$;
+                <p>
+                  (Point of issue of goods: Dnipro, Yavornitsky Avenue 61)
+                </p>
+              </li>
+
+              <li>
+                3. Nova Poshta - 50$;
+                <p>(Delivery 3-5 working days)</p>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <img className={styles.icon} src={Payment} alt="Payment" />
+
+            <ul className={styles.list_payment}>
+              <li>1. Cash upon receipt of the order;</li>
+              <li>2. Cashless payment upon receipt of the order;</li>
+              <li>3. Payment by credit card in the online store;</li>
+            </ul>
+          </div>
+        </div>
+
+      </Box>
+
+      <Card>
+        <CardMedia
+          className={styles.img}
+          component="img"
+          height="762"
+          alt="plants indoor"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+        />
+      </Card>
+
     </div>
   );
 }

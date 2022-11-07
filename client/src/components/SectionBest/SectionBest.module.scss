@@ -1,10 +1,33 @@
+@use '../../styles/abstracts/variables';
 .wrapper{
-  min-height: 300px;
+
 }
 
 .title{
-  font-size: 32px;
+  margin-top: 70px;
+  font-size: 23px;
   line-height: 130%;
   color: #202B21;
+  @media (min-width: variables.$tablet-bp) {
+    font-size: 32px;
+    margin-top: 120px;
+    margin-bottom: 50px;
+  }
+}
+.card{
+  margin-bottom: 124px;
+}
+.ul{
+  display: flex;
+  justify-content: center;
+  & li{
+    background: #456BD9;
+    border: 1px solid #0F1C3F;
+    border-radius: 50%;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+    height: 10px;
+    width: 10px;
+  }
 
 }
+
