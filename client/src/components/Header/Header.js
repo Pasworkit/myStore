@@ -13,6 +13,7 @@ import './Transition/TransitionHeaderMenu.css';
 import NavigationHeaderFilter from '../Navigation/NavigationHeaderFilter';
 import HeaderBascetIcon from '../HeaderBascetIcon/HeaderBascetIcon';
 import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
+import HeaderFavoritesIcon from '../HeaderFavoritesIcon/HeaderFavoritesIcon';
 
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -38,10 +39,10 @@ function Header() {
         </div>
 
         <div className={styles.burgerMenu}>
-          <button type="button" className={styles.burgerMenuBtn} onClick={hendleIsOpenMenu}>
-            <span className={styles.menuSpanBurger} />
-            <span className={styles.menuSpanBurger} />
-            <span className={styles.menuSpanBurger} />
+          <button data-open-burger-btn="open-burger-btn" type="button" className={styles.burgerMenuBtn} onClick={hendleIsOpenMenu}>
+            <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
+            <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
+            <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
           </button>
         </div>
       </div>
@@ -72,12 +73,16 @@ function Header() {
             <div className={styles.basketWrapper}>
               <NavLink className={styles.basketLink} to="/cart">
                 <HeaderBascetIcon />
-                <p className={styles.basketLinkText}>Basket</p>
+                <p data-basket-text="basket-text" className={styles.basketLinkText}>Basket</p>
+              </NavLink>
+              <NavLink className={styles.FavoritesLink} to="/favorites">
+                <HeaderFavoritesIcon />
+                <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorit</p>
               </NavLink>
             </div>
 
             <div className={styles.phoneWrapper}>
-              <a className={styles.phoneNumber} href="tel:+ 375 (29) 918-28-88">
+              <a className={styles.phoneNumber} data-phone-number="phone-number" href="tel:+ 375 (29) 918-28-88">
                 <HeaderPhoneIcon />
                 <span className={styles.phoneNumberSpan}>+ 375 (29) 918-28-88</span>
               </a>
@@ -99,7 +104,10 @@ function Header() {
               <a className={styles.phoneNumber} href="tel:+ 375 (29) 918-28-88">
                 <span className={styles.phoneNumberSpan}>+ 375 (29) 918-28-88</span>
               </a>
-              <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
+              <div className={styles.wrapperHeaderIconDesc}>
+                <NavLink className={styles.favoritesDescLink} to="/favorites"><HeaderFavoritesIcon /></NavLink>
+                <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
+              </div>
             </div>
           </div>
           <div className={styles.navigationHeaderFilterDesctopWrapper}>

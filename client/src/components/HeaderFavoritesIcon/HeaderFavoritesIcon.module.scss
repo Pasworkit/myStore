@@ -1,0 +1,10 @@
+.favoritesIcon {
+    fill: #fff;
+    @media (min-width: 480px) and (max-width: 1024px) {
+      fill: #000;
+    }
+  
+    @media (min-width: 1024px) {
+      fill: #000;
+    }
+  }
