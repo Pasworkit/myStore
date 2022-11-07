@@ -1,33 +1,85 @@
 @use '../../styles/abstracts/variables';
-.title{
-    font-size: 32px;
+
+.wrapper {
+  @media (min-width: variables.$tablet-bp) {
+    display: grid;
+    grid-template-areas: "list img";
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wrapper_list {
+  grid-area: list;
+  background: #B6D5B9;
+}
+
+.wrapper_list__content {
+  padding-top: 50px;
+  padding-left: 15px;
+  padding-bottom: 40px;
+  @media (min-width: variables.$tablet-bp) {
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-bottom: 70px;
+  }
+  @media (min-width: variables.$desktop-bp) {
+    padding-left: 100px;
+  }
+
+}
+
+.title {
+  font-size: 32px;
+  line-height: 130%;
+  color: #202B21;
+  margin-bottom: 30px;
+  @media (min-width: variables.$tablet-bp) {
+    margin-bottom: 40px;
+  }
+
+}
+
+.list_delivery {
+  margin-bottom: 40px;
+  @media (min-width: variables.$tablet-bp) {
+    margin-bottom: 34px;
+  }
+
+  & li {
+    font-weight: 400;
+    font-size: 16px;
     line-height: 130%;
     color: #202B21;
-    margin-top: 80px;
+    margin-bottom: 8px;
+  }
+
+  & p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    font-style: italic;
+    color: #2C2C2C;
+    margin-bottom: 16px;
+  }
+}
+
+.list_payment {
+  & li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #202B21;
+    margin-bottom: 10px;
+  }
+}
+
+.icon {
+  margin-bottom: 30px;
+  @media (min-width: variables.$tablet-bp) {
     margin-bottom: 40px;
+  }
 }
 
-.wrapper{
-    display: flex;
-    width: 100%;
-    margin-bottom: 120px;
-}
-.wrapperList{
-    background: #B6D5B9;
-    width: 100%;
-}
-
-
-
-.people-talk__item-wrapper{
-
-    margin-bottom: 37px;
-    @media (min-width: variables.$tablet-bp) {
-
-        margin-bottom: 68px;
-    }
-    @media (min-width: variables.$tablet-bp) {
-
-        margin-bottom: 118px;
-    }
+.img {
+  grid-area: image;
 }

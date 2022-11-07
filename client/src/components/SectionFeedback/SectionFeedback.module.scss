@@ -1,15 +1,25 @@
-.title{
-    text-align: center;
+@use '../../styles/abstracts/variables';
+
+.title {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+  color: #202B21;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  @media (min-width: variables.$tablet-bp) {
     font-size: 32px;
-    line-height: 130%;
-    color: #202B21;
+    margin-top: 120px;
     margin-bottom: 50px;
+  }
+
 }
 
 
-.wrapper{
-display: flex;
-justify-content: space-around;
-align-items: center;
-    flex-direction: row;
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
 }
