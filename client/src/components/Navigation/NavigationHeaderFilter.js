@@ -6,16 +6,16 @@ function NavigationHeaderFilter() {
     <nav>
       <ul className={styles.listNavigation}>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLinkFilter} to="/shop">Hanging</NavLink>
+          <NavLink className={styles.itemNavigationLinkFilter} to="/hanging">Hanging</NavLink>
         </li>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLinkFilter} to="/shop">Flowering</NavLink>
+          <NavLink className={styles.itemNavigationLinkFilter} to="/flowering">Flowering</NavLink>
         </li>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLinkFilter} to="/shop">Ferns & Palms</NavLink>
+          <NavLink className={styles.itemNavigationLinkFilter} to="/ferns-and-palms">Ferns & Palms</NavLink>
         </li>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLinkFilter} to="/shop">Succulents & Cacti</NavLink>
+          <NavLink className={styles.itemNavigationLinkFilter} to="/succulents-and-cacti">Succulents & Cacti</NavLink>
         </li>
       </ul>
     </nav>

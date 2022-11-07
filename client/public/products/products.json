@@ -103,5 +103,26 @@
     "popularBool": false,
     "easyCareBool": true,
     "petBabySafeBool": true
+  },
+  {
+    "id": 6,
+    "productName": "Succulent plant",
+    "currentPrice": 8.00,
+    "previousPrice": 4.00,
+    "height": "5-20 cm",
+    "imgUrl": "./products/img/348765.jpg",
+    "itemNo": 348765,
+    "category": "Succulents & Cacti",
+    "botanicName": "Succulent",
+    "description": "'Succulent' is an umbrella term for a large group of plants that generally have thick, fleshy leaves that hold a lot of water (the name comes from the Latin for 'juice'). They're found all over the world, almost exclusively in very warm places that have periods of drought. Because they can store lots of water in their leaves, they don't need frequent watering. The warm habitat they come from means they enjoy lots of light. You'll also help them grow healthily by giving them a feed with liquid fertiliser once per month in spring and summer (make sure to use feed specifically formulated for succulents and cacti).",
+    "light": "Bright light. She'll be happiest in a well lit spot. Ideally not direct sun (it burns her), but lots of bright, indirect light.",
+    "watering": "Light watering. She only needs a small amount of water. Give her a drink when her soil's completely dry and let excess water drain off.",
+    "humidity": "Room level of humidity. She doesn't like to be anywhere too chilly, so keep her away from very cold rooms or drafts.",
+    "petBabySafe": "No. Toxic if ingested",
+    "easyCare": "Yes.",
+    "inStock": 3,
+    "popularBool": true,
+    "easyCareBool": true,
+    "petBabySafeBool": false
   }
 ]
