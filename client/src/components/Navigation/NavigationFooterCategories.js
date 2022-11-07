@@ -7,16 +7,16 @@ function NavigationFooterCategories() {
     <nav>
       <ul className={styles.listNavigationFooterCategories}>
         <li className={styles.itemNavigationFooterCategories}>
-          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/shop">Houseplants</NavLink>
+          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/hanging">Hanging</NavLink>
         </li>
         <li className={styles.itemNavigationFooterCategories}>
-          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/shop">Florariums</NavLink>
+          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/flowering">Flowering</NavLink>
         </li>
         <li className={styles.itemNavigationFooterCategories}>
-          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/shop">Dried flowers</NavLink>
+          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/ferns-and-palms">Ferns & Palms</NavLink>
         </li>
         <li className={styles.itemNavigationFooterCategories}>
-          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/shop">Planters and pots</NavLink>
+          <NavLink className={styles.itemNavigationFooterCategoriesLink} to="/succulents-and-cacti">Succulents & Cacti</NavLink>
         </li>
       </ul>
     </nav>

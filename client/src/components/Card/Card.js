@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
