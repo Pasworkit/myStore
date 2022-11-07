@@ -1,0 +1,46 @@
+.container {
+  height: 100vh;
+}
+
+.wrapper {
+  min-width: 375px;
+  padding: 0 15px;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    min-width: 768px;
+    padding: 0 30px;
+  }
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+.fevoritesHeading {
+  padding-top: 24px;
+  font-family: "Lora";
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 1.6;
+  color: #202b21;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    font-size: 36px;
+  }
+  @media (min-width: 1024px) {
+    font-size: 36px;
+  }
+}
+
+.favoritesList {
+  list-style: none;
+  padding: 35px 0;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    padding: 60px 0;
+  }
+  @media (min-width: 1024px) {
+    padding: 55px 0;
+  }
+}

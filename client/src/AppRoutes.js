@@ -5,6 +5,7 @@ import CartPage from './pages/CartPage/CartPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
       <Route path="/succulents-and-cacti" element={<CategoryPage />} />
       <Route path="/:productLinkName" element={<ProductPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
