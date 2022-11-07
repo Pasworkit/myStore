@@ -1,0 +1,11 @@
+.show-menu-appear {
+    opacity: 0;
+    transform: translateX(+100%);
+  }
+  
+  .show-menu-appear-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 300ms linear;
+  }
+  

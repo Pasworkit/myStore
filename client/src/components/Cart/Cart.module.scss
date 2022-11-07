@@ -1,0 +1,153 @@
+.cart__container {
+		margin-top: 15px;
+		padding: 0 15px;
+		margin: 0 auto;
+	  
+	  @media (min-width: 1024px) {
+		margin-top: 70px;
+		padding: 0 30px;
+	  }
+	
+	  @media (min-width: 1440px) {
+		padding: 0 100px;
+	  }
+}
+
+.cart__containerItems {
+	@media (min-width: 1024px) {
+		display: flex;
+	  }
+}
+
+.cart__containerItem {
+	@media (max-width: 1024px) {
+		min-width: 345px;
+	}
+
+	@media (min-width: 1024px) {
+		width: 60%;
+	}
+
+	@media (min-width: 1440px) {
+	}
+}
+
+.cart__title {
+	margin-bottom: 24px;
+	font-family: 'Lora';
+	font-size: 36px;
+	line-height: 130%;
+	color: #202B21;
+}
+
+.cart__titleOrder {
+	font-family: 'Lora';
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 130%;
+	color: #202B21;
+}
+.cart__textOrder {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 130%;
+	color: #2C2C2C;
+}
+
+.cart__amountProducts {
+	margin-left: 12px;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.cart__textOrderStar {
+	font-family: 'Montserrat';
+	font-style: italic;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 130%;
+	color: #2C2C2C;
+}
+
+.cart__buttonOrder {
+	width: 100%;
+	background-color: #456F49;
+	padding: 15px 0;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 130%;
+	color: #FFFFFF;
+	border-radius: 5px;
+	
+	@media (min-width: 1024px) {
+		width: 100%;
+	}
+
+	@media (min-width: 1440px) {
+		width: 50%;
+		height: 100%;;
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.cart__button {
+	width: 100%;
+	padding: 15px 0;
+	margin-bottom: 12px;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 130%;
+	color: #202B21;
+	border: 1px solid #6CAC72;
+	border-radius: 5px;
+
+	@media (min-width: 1024px) {
+		width: 100%;
+	}
+
+	@media (min-width: 1440px) {
+		margin-right: 10px;
+		width: 50%;
+	}
+
+	&:hover {
+		background: #E7F1E8;
+	}
+}
+
+.cart__containerOrder {
+	margin: 20px 0 0;
+
+	@media (min-width: 1024px) {
+		margin: 20px 0 0 78px;
+		width: 40%;
+	}
+}
+
+.cart__order{
+	margin-bottom: 12px;
+	padding: 10px 0 0 40px;
+	height: 200px;
+	background: #E7F1E8;
+	border-radius: 5px;
+}
+
+.cart__buttons {
+	@media (min-width: 1024px) {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	@media (min-width: 1440px) {
+		flex-direction: row;
+	}
+}

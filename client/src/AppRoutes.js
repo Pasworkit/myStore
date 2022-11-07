@@ -1,13 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import CartPage from './pages/CartPage/CartPage';
+import ShopPage from './pages/ShopPage/ShopPage';
+import BasketPage from './pages/BasketPage/BasketPage';
 import HomePage from './pages/HomePage/HomePage';
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/Basket" element={<BasketPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

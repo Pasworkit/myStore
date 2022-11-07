@@ -13,11 +13,15 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.5",
     "sass": "^1.55.0",
+    "sass-reset": "^1.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,7 +38,8 @@
       "react-app/jest"
     ],
     "rules": {
-      "no-unused-vars": "off"
+      "max-len": 0,
+      "react/jsx-one-expression-per-line": "off"
     }
   },
   "browserslist": {
