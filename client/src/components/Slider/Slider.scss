@@ -251,7 +251,7 @@ ul.slick-dots li.slick-active {
   &:hover .card__desc {
 	box-shadow: none;
   }
-  @media (max-width: 768px) and (min-width: $mobileSmall-max-width) {
+  @media (max-width: 768px) and (min-width: $container-min-width) {
 	margin-left: -134px
   }
   @media (max-width: 360px) {

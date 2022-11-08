@@ -1,3 +1,5 @@
+@import '../../styles/abstracts/config';
+
 .ymalContainer{
   margin: 30px auto 80px auto;
 }
@@ -10,13 +12,13 @@
   font-weight: 400;
   line-height: 100%;
 }
-@media screen and (min-width:769px)
+@media screen and (min-width: $tablet-min-width)
 {
   .ymalTitle {
     margin-left: 30px;
   }
 }
-@media screen and (min-width:1025px)
+@media screen and (min-width: $desktop-min-width)
 {
   .ymalTitle {
     margin-left: 100px;
