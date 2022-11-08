@@ -1,3 +1,6 @@
+@use '../../styles/abstracts/_breakpoints';
+@use "../../styles/abstracts/_variables";
+
 .favoritesProductItem {
   margin-bottom: 28px;
   &::after {
@@ -23,9 +26,9 @@
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     justify-content: normal;
   }
 }
@@ -34,11 +37,11 @@
   width: 52px;
   border-radius: 5px;
   margin-right: 10px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     width: 102px;
     margin-right: 50px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     width: 102px;
     margin-right: 20px;
   }
@@ -49,17 +52,17 @@
   align-items: flex-start;
   flex-wrap: wrap;
 
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 12px;
   line-height: 130%;
   color: #202b21;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: auto;
     font-size: 18px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-right: auto;
     font-size: 20px;
   }
@@ -67,17 +70,17 @@
 
 .favoritesProductPrice {
   margin: 0 15px;
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 600;
   font-size: 12px;
   line-height: 130%;
   color: #2c2c2c;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 18px;
     margin: 0 30px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 22px;
     margin-right: 180px;
   }
@@ -85,7 +88,7 @@
 
 .favoritesButtonAdd {
   min-width: 80px;
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 10px;
   line-height: 130%;
@@ -99,12 +102,12 @@
     filter: drop-shadow(4px 4px 4px #777777) contrast(125%);
   }
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     min-width: 150px;
     font-size: 16px;
     padding: 15px 20px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     min-width: 170px;
     font-size: 16px;
     padding: 15px 40px;
@@ -114,10 +117,10 @@
 .favoritesDelet {
   margin-left: 20px;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 40px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 60px;
   }
 }
@@ -130,11 +133,11 @@
   background: #a8aba7;
   transform: rotate(45deg);
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     width: 18px;
     margin-bottom: -1px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     width: 18px;
     margin-bottom: -1px;
   }
@@ -147,10 +150,10 @@
   background: #a8aba7;
   transform: rotate(-45deg);
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     width: 18px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     width: 18px;
   }
 }

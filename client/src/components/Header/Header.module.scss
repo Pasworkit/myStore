@@ -1,16 +1,19 @@
+@use "../../styles/abstracts/_breakpoints";
+@use "../../styles/abstracts/_variables";
+
 .header {
   @media (min-width: 480px) {
     min-width: 375px;
   }
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     min-width: 768px;
   }
 
-  @media (min-width: 1024px) {
-    max-width: 1200px;
+  @media (min-width: breakpoints.$desktop-min-width) {
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
   }
 }
 
@@ -21,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width: 480px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: none;
   }
 }
@@ -49,16 +52,23 @@
 }
 
 .menuMobileContainer {
+
+  @media (min-width: 100px) and (max-width: 375px) {
+    width: 100%;
+    border-radius: 5px;
+    right: -100px;
+  }
+
   position: absolute;
   top: 0;
-  left: 0;
-  min-width: 375px;
+  right: 0;
+  width: 375px;
   padding: 15px;
-  width: 100%;
   background: #456f49;
   z-index: 100;
+  border-radius: 5px;
 
-  @media (min-width: 480px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: none;
   }
 }
@@ -112,7 +122,7 @@
 .basketLink {
   display: inline-block;
   text-decoration: none;
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 16px;
   color: #fff;
@@ -122,7 +132,7 @@
   margin-left: 22px;
   display: inline-block;
   text-decoration: none;
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 16px;
   color: #fff;
@@ -141,21 +151,21 @@
   display: flex;
   align-items: center;
 
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 16px;
   color: #fff;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
-    font-family: "Montserrat";
+  @media (min-width: breakpoints.$tablet-min-width) {
+    font-family: variables.$fontFamilyMontserrat;
     font-weight: 500;
     font-size: 14px;
     color: #202b21;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 263px;
-    font-family: "Montserrat";
+    font-family: variables.$fontFamilyMontserrat;
     font-weight: 500;
     font-size: 16px;
     color: #202b21;
@@ -164,32 +174,32 @@
 
 .phoneNumberSpan {
   margin-left: 13px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
 }
 
 .basketDescLink {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 14px;
   }
 }
 
 .wrapperHeaderIconDesc {
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 60px;
   }
 }
 
 .container {
-  @media (max-width: 480px) {
+  @media (max-width: 769px) {
     display: none;
   }
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 30px 30px 0;
     margin: 0 0 40px;
     display: flex;
@@ -197,7 +207,7 @@
     align-items: center;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     max-width: 1200px;
     padding: 0 10px;
     margin: 30px auto;
@@ -209,7 +219,7 @@
 }
 
 .createLine {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-bottom: 20px;
     &::after {
       content: "";
@@ -221,7 +231,7 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 25px;
     &::after {
       content: "";
@@ -235,14 +245,14 @@
 }
 
 .navigationHeaderDesctopWrapper {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     padding: 0 15px;
     display: flex;
     justify-content: space-between;
@@ -251,11 +261,11 @@
 }
 
 .navigationHeaderFilterDesctopWrapper {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0 15px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     padding: 0 20px;
   }
 }

@@ -1,14 +1,15 @@
 @use "../../styles/abstracts/_variables";
+@use "../../styles/abstracts/_breakpoints";
 
 .listNavigationFooter {
   margin: 0;
   padding: 0;
   list-style: none;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
   }
 }
 
@@ -18,14 +19,14 @@
   &:last-child {
     margin-bottom: 0;
   }
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-bottom: 16px;
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 16px;
     &:last-child {
       margin-bottom: 0;
@@ -41,11 +42,11 @@
   line-height: 130%;
   color: variables.$color-light;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 16px;
     line-height: 1.6;
   }
