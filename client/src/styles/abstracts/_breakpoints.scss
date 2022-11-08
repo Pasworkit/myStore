@@ -1,22 +1,16 @@
-$tablet-max-width: 1200px;
-$mobile-max-width: 768px;
-$mobileSmall-max-width: 480px;
-
+$container-max-width: 1440px;
+$desktop-min-width: 1025px;
+$tablet-min-width: 769px;
+$container-min-width: 375px;
 
 @mixin tablet {
-  @media screen and (max-width: $tablet-max-width) {
+  @media screen and (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin mobile {
-  @media screen and (max-width: $mobile-max-width) {
-    @content;
-  }
-}
-
-@mixin mobile-small {
-  @media screen and (max-width: $mobileSmall-max-width) {
+@mixin desktop {
+  @media screen and (min-width: $desktop-min-width) {
     @content;
   }
 }

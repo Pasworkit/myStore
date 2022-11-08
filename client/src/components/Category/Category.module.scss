@@ -1,3 +1,5 @@
+@import '../../styles/abstracts/config';
+
 .categoryPageContainer{
   min-width: 320px;
   max-width: 1400px;
@@ -28,7 +30,7 @@
   font-weight: 400;
   line-height: 100%;
 }
-@media screen and (min-width:769px) {
+@media screen and (min-width: $tablet-min-width) {
   .categoryTitle {
     margin-left: 30px;
   }
@@ -37,8 +39,7 @@
     margin: 12px 30px;
   }
 }
-@media screen and (min-width:1025px)
-{
+@media screen and (min-width: $desktop-min-width) {
   .categoryTitle {
     margin-left: 100px;
   }
