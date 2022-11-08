@@ -70,6 +70,7 @@ function Product() {
             <span className={styles.infoTitleText}>ItemNo: </span>
             {itemNo}
           </p>
+          <br />
           <p className={styles.careHintsText}>
             <LightModeOutlinedIcon className={styles.careHintsGlyph} />
             <span className={styles.careHintsTitle}>Light: </span>

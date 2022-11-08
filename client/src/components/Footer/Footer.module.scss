@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/_variables";
+@use "../../styles/abstracts/_breakpoints";
 
 .footer {
   min-width: 375px;
@@ -7,25 +8,25 @@
 
   background: variables.$footer-bg-color;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 30px;
     min-width: 768px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     padding: 0;
   }
 }
 
 .footerContainerDesc {
   padding: 0 23px 0 15px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0;
     display: flex;
   }
 
-  @media (min-width: 1024px) {
-    max-width: 1200px;
+  @media (min-width: breakpoints.$desktop-min-width) {
+    max-width: 1240px;
     padding: 0 15px;
     margin: 0 auto 44px;
     display: flex;
@@ -44,7 +45,7 @@
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 481px) {
+  @media (min-width: 769px) {
     display: none;
   }
 }
@@ -54,11 +55,11 @@
 }
 
 .logoFooterDescPosition {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin: 25px 0 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     padding-top: 50px;
   }
 }
@@ -69,7 +70,7 @@
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 769px) {
     display: none;
   }
 }
@@ -79,10 +80,10 @@
 }
 
 .footerMenuWrapper {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: 60px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-right: 50px;
   }
 }
@@ -93,14 +94,14 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     width: 100%;
     margin-top: 20px;
     margin-left: 100px;
     flex-wrap: nowrap;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin: 0 0 0 70px;
     padding-top: 50px;
   }
@@ -115,12 +116,12 @@
   color: variables.$color-light;
   text-transform: uppercase;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
     margin-bottom: 25px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 25px;
     font-size: 18px;
     line-height: 1.6;
@@ -129,12 +130,12 @@
 
 .footerCategoriesWrapper {
   padding-right: 30px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0;
     margin-right: 60px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-right: 50px;
     padding: 0;
     font-size: 18px;
@@ -149,12 +150,12 @@
   line-height: 130%;
   color: variables.$color-light;
   text-transform: uppercase;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
     margin-bottom: 25px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 25px;
     font-size: 18px;
     line-height: 1.6;
@@ -163,22 +164,27 @@
 
 .footerWrapperBlokeContacts {
   margin-top: 40px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+
+  @media (min-width: 615px) and (max-width: 768px) {
     margin: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
+    margin: 0;
+  }
+
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin: 0;
   }
 }
 
 .footerContactsPosition {
   margin-right: 30px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin: 0;
   }
 }
@@ -187,14 +193,21 @@
   margin-top: 20px;
   display: flex;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: 615px) and (max-width: 768px) {
+    min-width: 0;
+    margin-top: 20;
+    padding: 0;
+    flex-direction: column;
+  }
+
+  @media (min-width: breakpoints.$tablet-min-width) {
     min-width: 0;
     margin: 0;
     padding: 0;
     flex-direction: column;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     flex-direction: column;
     margin: 0;
   }
@@ -209,12 +222,12 @@
   line-height: 1.6;
   color: variables.$color-light;
   text-transform: uppercase;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
     margin-bottom: 25px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 25px;
@@ -229,13 +242,13 @@
   font-size: variables.$fontSizeValue;
   line-height: 2;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.6;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
   }
 }
@@ -248,12 +261,12 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.6;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
     display: none;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
     display: none;
   }
@@ -261,13 +274,13 @@
 
 .footerContactsCitySpan {
   display: none;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: inline-block;
     margin: 0 10px 0 0;
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     display: inline-block;
     margin: 0 10px 0 0;
     font-size: 16px;
@@ -282,24 +295,24 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.7;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
     line-height: 1.6;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 16px;
     margin: 0;
   }
 }
 
 .footerMailAndTelPositionDesc {
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: flex;
     flex-direction: column-reverse;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
     display: flex;
     flex-direction: column-reverse;
@@ -314,11 +327,11 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.7;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
   }
 }
@@ -333,11 +346,11 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.6;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
   }
 }
@@ -350,11 +363,11 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.6;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 16px;
   }
 }
@@ -367,11 +380,11 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.6;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 16px;
   }
 }
@@ -384,14 +397,14 @@
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 230px;
     padding: 0;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     display: none;
   }
 }
@@ -405,11 +418,11 @@
   line-height: 1.6;
   text-transform: uppercase;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-size: 16px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-size: 18px;
   }
 }
@@ -420,7 +433,7 @@
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin: 0 0 0 30px;
   }
 }
@@ -431,11 +444,11 @@
 
 .footerSocialIconInstagram {
   margin: 3px 0 0 20px;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin: 3px 0 0 30px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
   }
 }
 
@@ -443,12 +456,12 @@
   margin-top: 40px;
   padding: 0 23px 0 15px;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-top: 60px;
     padding: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     max-width: 1200px;
     padding: 0 15px;
     margin: 0 auto;
@@ -461,11 +474,11 @@
   font-size: variables.$fontSizeValue;
   line-height: 1.6;
   color: variables.$color-light;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin: 0;
     padding-bottom: 50px;
   }
@@ -473,18 +486,18 @@
 
 .footerSocialWrapperDesc {
   display: none;
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: none;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     display: block;
     margin-right: 60px;
   }
 }
 
 .footerSocialtextDesc {
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     display: block;
     font-family: variables.$fontFamilyMontserrat;
     font-weight: 500;
@@ -496,7 +509,7 @@
 }
 
 .footerSocialWrapperLinksDesc {
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-top: 20px;
     display: flex;
     justify-content: flex-start;
@@ -505,13 +518,13 @@
 }
 
 .footerSocialIconFacebookDesc {
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 10px;
   }
 }
 
 .footerSocialIconInstagramDesc {
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 20px;
   }
 }
