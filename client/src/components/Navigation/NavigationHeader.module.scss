@@ -1,14 +1,17 @@
+@use "../../styles/abstracts/_breakpoints";
+@use "../../styles/abstracts/_variables";
+
 .listNavigation {
   margin: 0;
   padding: 0;
   list-style: none;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     display: flex;
     align-items: center;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     display: flex;
     align-items: center;
   }
@@ -21,7 +24,7 @@
     margin-bottom: 0;
   }
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: 30px;
     margin-bottom: 0;
     &:last-child {
@@ -29,7 +32,7 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 0;
     margin-right: 40px;
     &:last-child {
@@ -40,18 +43,18 @@
 
 .itemNavigationLink {
   text-decoration: none;
-  font-family: "Montserrat";
+  font-family: variables.$fontFamilyMontserrat;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
 
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: breakpoints.$tablet-min-width) {
     font-weight: 500;
     font-size: 14px;
     color: #202b21;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop-min-width) {
     font-weight: 500;
     font-size: 16px;
     color: #202b21;
