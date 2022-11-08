@@ -1,6 +1,6 @@
 export const products = [
   {
-    id: 1,
+    id: 21,
     productName: 'Marble Queen pothos',
     currentPrice: 18.99,
     previousPrice: 31.99,
@@ -18,7 +18,7 @@ export const products = [
     inStock: 8,
   },
   {
-    id: 2,
+    id: 22,
     productName: 'Peace Lily white sails',
     currentPrice: 10.99,
     previousPrice: 25.99,
@@ -36,7 +36,7 @@ export const products = [
     inStock: 6,
   },
   {
-    id: 3,
+    id: 23,
     productName: 'String of nickels',
     currentPrice: 19.99,
     previousPrice: 28.99,
@@ -54,7 +54,7 @@ export const products = [
     inStock: 4,
   },
   {
-    id: 4,
+    id: 24,
     productName: 'Boston Fern',
     currentPrice: 17.99,
     previousPrice: 22.99,
@@ -72,7 +72,7 @@ export const products = [
     inStock: 4,
   },
   {
-    id: 5,
+    id: 25,
     productName: 'Pineapple plant',
     currentPrice: 25.00,
     previousPrice: 25.00,

@@ -47,7 +47,7 @@ function SectionBest() {
       <h2 className={styles.title}>The best offers of the month</h2>
       <Slider {...settings}>
         {products.map((item) => (
-          <Card sx={{ maxWidth: 292 }} className={styles.card}>
+          <Card key={item.id} sx={{ maxWidth: 292 }} className={styles.card}>
             <CardActionArea>
               <CardMedia
                 component="img"
