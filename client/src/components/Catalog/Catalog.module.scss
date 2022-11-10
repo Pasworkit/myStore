@@ -1,0 +1,65 @@
+.container {
+  min-width: 375px;
+  margin-top: 24px;
+  padding: 0 15px;
+}
+
+.heading {
+  margin-top: 30px;
+  font-family: 'Lora';
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+
+  color: #202B21;
+}
+
+.wrapperMobileBtnFilter {
+  margin-top: 26px;
+  margin-left: 10px;
+  
+}
+
+.filtersHeadingMobileWrapper {
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filtersHeadingMobile {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 130%;
+  color: #2C2C2C;
+}
+
+.BtnFilterOpen {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 130%;
+  color: #2C2C2C;
+}
+
+.BtnFilterFirstLine{
+  display: block;
+  margin-bottom: -2px;
+  width: 27px;
+  height: 2px;
+  border-radius: 5px;
+  background: #2C2C2C;
+  transform: rotate(45deg);
+}
+
+.BtnFilterSecondLine{
+  display: block;
+  width: 27px;
+  height: 2px;
+  border-radius: 5px;
+  background: #2C2C2C;
+  transform: rotate(-45deg);
+}

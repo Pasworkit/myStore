@@ -1,8 +1,10 @@
+import Catalog from '../../components/Catalog/Catalog';
+
 function ShopPage() {
   return (
-    <div>
-      IT IS Shop PAGE
-    </div>
+    <main>
+      <Catalog />
+    </main>
   );
 }
 export default ShopPage;
