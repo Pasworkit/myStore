@@ -1,7 +1,12 @@
 .container {
   min-width: 375px;
-  margin-top: 24px;
+  margin: 25px 0;
   padding: 0 15px;
+}
+
+.wrapperProducts {
+  padding-top: 30px;
+  margin: 0 50px;
 }
 
 .heading {
@@ -21,7 +26,8 @@
 }
 
 .filtersHeadingMobileWrapper {
-  margin: 25px 0;
+  width: 257px;
+  margin: 25px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

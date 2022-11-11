@@ -1,0 +1,58 @@
+@use '../../styles/abstracts/_variables';
+
+.container{
+  width: 256px;
+  margin: 25px auto 0;
+}
+
+
+.containerFilterMenu{
+  width: 258px;
+  margin-bottom: 10px;
+  border: 1px solid #B6D5B9;
+  border-radius: 5px;
+}
+
+.EasyCareBtn {
+  width: 257px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  padding: 12px 23px;
+  color: #2C2C2C;
+  border-radius: 5px;
+  background: #B6D5B9;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CheckboxWrapper {
+  padding-left: 15px;
+}
+
+.priceContainer {
+  margin: 20px 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.priceWrapper {
+  padding: 5px 30px;
+  border: 1px solid #B6D5B9;
+  border-radius: 5px;
+}
+
+.priceBtnSubmit {
+  padding: 5px 10px;
+  border: 1px solid #B6D5B9;
+  border-radius: 5px;
+  color: #2C2C2C;
+  font-size: 14px;
+  background: #B6D5B9;
+  text-transform: uppercase;
+}
+
