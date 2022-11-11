@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
+import CartSlider from '../CartSlider/CartSlider';
 
-function Cart({ productsCart }) {
+function Cart({ productsCart, productsCartSlider }) {
   const amountProducts = 3;
   const totalPrice = 3500;
 
@@ -43,12 +44,17 @@ function Cart({ productsCart }) {
           </div>
         </div>
       </div>
+
+      <div className={styles.cart__containerSlider}>
+        <CartSlider productsSlider={productsCartSlider} />
+      </div>
     </section>
   );
 }
 
 Cart.propTypes = {
   productsCart: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  productsCartSlider: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
 };
 
 export default Cart;
