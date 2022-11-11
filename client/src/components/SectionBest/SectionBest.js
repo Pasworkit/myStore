@@ -5,42 +5,75 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import {
+  Button, CardActionArea, CardActions,
+} from '@mui/material';
 import styles from './SectionBest.module.scss';
 import { products } from '../../img/products';
 
 function SectionBest() {
-  const settings = {
-    dots: true,
-    dotsClass: styles.ul,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
+  const
+    settings = {
+      responsive: [
+        {
+          breakpoint: 630,
+          settings: {
+            arrows: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 1,
+            speed: 500,
+            rows: 3,
+            slidesPerRow: 1,
+          },
         },
-      },
-      {
-        breakpoint: 1023,
-        settings: {
-          dots: true,
-          infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          vertical: true,
-          verticalSwiping: true,
-          swipeToSlide: true,
+        {
+          breakpoint: 920,
+          settings: {
+            arrows: false,
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            variableHeight: false,
+          },
         },
-      },
-    ],
-  };
+        {
+          breakpoint: 1024,
+          settings: {
+            arrows: false,
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            variableHeight: true,
+          },
+        },
+        {
+          breakpoint: 2000,
+          settings: {
+            arrows: false,
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            speed: 400,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            variableHeight: true,
+          },
+        },
+      ],
+    };
 
   return (
     <div className={styles.wrapper}>
@@ -49,7 +82,7 @@ function SectionBest() {
         {products.map((item) => (
           <Card
             key={item.id}
-            sx={{ maxWidth: 292 }}
+            sx={{ maxWidth: 292, height: 292 }}
             className={styles.card}
           >
             <CardActionArea>
@@ -71,9 +104,7 @@ function SectionBest() {
               </Button>
             </CardActions>
           </Card>
-
         ))}
-
       </Slider>
     </div>
   );
