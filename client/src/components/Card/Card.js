@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
 
@@ -16,7 +18,11 @@ function Card({
     inStock,
   },
 }) {
+  const [isFavoriteStatus, setIsFavoriteStatus] = useState(false);
   const [quantityCardCount, setQuantityCardCount] = useState(1);
+  const toggleFavoriteStatus = () => {
+    setIsFavoriteStatus((prevState) => !prevState);
+  };
   const incrementCardQuantity = () => {
     setQuantityCardCount((prevState) => {
       if (prevState < inStock) {
@@ -37,6 +43,35 @@ function Card({
   };
   return (
     <div key={itemNo} className={styles.cardProductBox}>
+      <div role="button" tabIndex={0} onClick={() => toggleFavoriteStatus(id)} onKeyDown={() => toggleFavoriteStatus(id)}>
+        {isFavoriteStatus
+          ? (
+            <FavoriteIcon
+              role="button"
+              tabIndex={0}
+              className={styles.star}
+              onClick={() => {
+                /*  removeFromFavorites(id) */
+              }}
+              onKeyDown={() => {
+                /*  removeFromFavorites(id) */
+              }}
+            />
+          )
+          : (
+            <FavoriteBorderIcon
+              role="button"
+              tabIndex={0}
+              className={styles.star}
+              onClick={() => {
+                /*  addToFavorites(id) */
+              }}
+              onKeyDown={() => {
+                /*  addToFavorites(id) */
+              }}
+            />
+          )}
+      </div>
       <Link to={`/${productName.trim().toLowerCase().split('&').join('and')
         .split(' ')
         .join('-')}`}
