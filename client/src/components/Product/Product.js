@@ -8,6 +8,8 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
@@ -35,6 +37,10 @@ function Product() {
     document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
   }, [productName, documentMetaDesc]);
 
+  const [isFavoriteStatus, setIsFavoriteStatus] = useState(false);
+  const toggleFavoriteStatus = () => {
+    setIsFavoriteStatus((prevState) => !prevState);
+  };
   const [quantityCount, setQuantityCount] = useState(1);
   const incrementProductQuantity = () => {
     setQuantityCount((prevState) => {
@@ -66,10 +72,41 @@ function Product() {
           <img src={imgUrl} alt={productName} className={styles.productImg} />
         </div>
         <div className={styles.productInfoWrapper}>
-          <p>
-            <span className={styles.infoTitleText}>ItemNo: </span>
-            {itemNo}
-          </p>
+          <div className={styles.topLine}>
+            <p>
+              <span className={styles.infoTitleText}>ItemNo: </span>
+              {itemNo}
+            </p>
+            <div role="button" tabIndex={0} onClick={() => toggleFavoriteStatus(id)} onKeyDown={() => toggleFavoriteStatus(id)}>
+              {isFavoriteStatus
+                ? (
+                  <FavoriteIcon
+                    role="button"
+                    tabIndex={0}
+                    className={styles.star}
+                    onClick={() => {
+                      /*  removeFromFavorites(id) */
+                    }}
+                    onKeyDown={() => {
+                      /*  removeFromFavorites(id) */
+                    }}
+                  />
+                )
+                : (
+                  <FavoriteBorderIcon
+                    role="button"
+                    tabIndex={0}
+                    className={styles.star}
+                    onClick={() => {
+                      /*  addToFavorites(id) */
+                    }}
+                    onKeyDown={() => {
+                      /*  addToFavorites(id) */
+                    }}
+                  />
+                )}
+            </div>
+          </div>
           <br />
           <p className={styles.careHintsText}>
             <LightModeOutlinedIcon className={styles.careHintsGlyph} />
@@ -148,7 +185,7 @@ function Product() {
           </div>
           <ButtonBuy
             handleClick={() => {
-              //  setCurrentProduct(productInfo);
+              //  addToCart(id);
             }}
             backgroundColor="#456F49"
             padding="15px 102px"
