@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint ./client/src",
+    "lint:fix": "eslint ./client/src --fix --color"
   },
   "repository": {
     "type": "git",
@@ -34,11 +36,23 @@
   },
   "devDependencies": {
     "husky": "^8.0.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1"
   },
+
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix"
+    ]
+  },
+
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   }
 }
