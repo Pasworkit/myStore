@@ -3,7 +3,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 .slider__wrapper-card-photo {
-  max-width: 282px;
+  max-width: 280px;
 }
 
 .slider__wrapper {
@@ -17,10 +17,10 @@
   }
 }
 .slider__container {
-  max-width: 1220px;
+  max-width: ($container-max-width)-200px;
   margin: 0 auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .slick-dots {
@@ -169,7 +169,6 @@ ul.slick-dots li.slick-active {
 
 .arrow-left {
   position: absolute;
-  //top: 27%;
   top: 2%;
   left: 40%;
   width: 40px;
@@ -178,19 +177,14 @@ ul.slick-dots li.slick-active {
   background: #477547;
   transform: rotate(180deg);
   border-radius: 50%;
-  @media screen and (min-width:769px)
+  @media screen and (min-width: $tablet-min-width)
   {
     left: 30%;
-  }
-  @media screen and (min-width:1025px)
-  {
-    left: 3%;
   }
 }
 
 .arrow-right {
   position: absolute;
-  //top: 27%;
   top: 2%;
   right: 40%;
   width: 40px;
@@ -198,13 +192,9 @@ ul.slick-dots li.slick-active {
   padding-top: 9px;
   background: #477547;
   border-radius: 50%;
-  @media screen and (min-width:769px)
+  @media screen and (min-width: $tablet-min-width)
   {
     right: 30%;
-  }
-  @media screen and (min-width:1025px)
-  {
-    right: 2%;
   }
 }
 

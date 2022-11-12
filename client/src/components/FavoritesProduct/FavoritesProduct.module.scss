@@ -1,188 +1,12 @@
-@use '../../styles/abstracts/_breakpoints';
-@use "../../styles/abstracts/_variables";
 @import '../../styles/abstracts/config';
 
-.favoritesProductItem {
-  margin-bottom: 28px;
-  &::after {
-    content: "";
-    margin-top: 25px;
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #e7f1e8;
-  }
-
-  &:last-child::after {
-    display: none;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.favoritesProductItemWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    justify-content: normal;
-  }
-}
-
-.favoritesImg {
-  width: 52px;
-  border-radius: 5px;
-  margin-right: 10px;
-  @media (min-width: breakpoints.$tablet-min-width) {
-    width: 102px;
-    margin-right: 50px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    width: 102px;
-    margin-right: 20px;
-  }
-}
-
-.favoritesProductName {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  font-family: variables.$fontFamilyMontserrat;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 130%;
-  color: #202b21;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    margin-right: auto;
-    font-size: 18px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    margin-right: auto;
-    font-size: 20px;
-  }
-}
-
-.favoritesProductPrice {
-  margin: 0 15px;
-  font-family: variables.$fontFamilyMontserrat;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 130%;
-  color: #2c2c2c;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    font-size: 18px;
-    margin: 0 30px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    font-size: 22px;
-    margin-right: 180px;
-  }
-}
-
-.favoritesButtonAdd {
-  min-width: 80px;
-  font-family: variables.$fontFamilyMontserrat;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 130%;
-  color: #ffffff;
-  border-radius: 5px;
-  padding: 10px;
-  background: #456f49;
-
-  &:hover {
-    cursor: pointer;
-    filter: drop-shadow(4px 4px 4px #777777) contrast(125%);
-  }
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    min-width: 150px;
-    font-size: 16px;
-    padding: 15px 20px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    min-width: 170px;
-    font-size: 16px;
-    padding: 15px 40px;
-  }
-}
-
-.favoritesDelet {
-  margin-left: 20px;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    margin-left: 40px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    margin-left: 60px;
-  }
-}
-
-.favoritesDeletFirstLine {
-  display: block;
-  margin-bottom: -1px;
-  width: 16px;
-  height: 1px;
-  background: #a8aba7;
-  transform: rotate(45deg);
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    width: 18px;
-    margin-bottom: -1px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    width: 18px;
-    margin-bottom: -1px;
-  }
-}
-
-.favoritesDeletSecondLine {
-  display: block;
-  width: 16px;
-  height: 1px;
-  background: #a8aba7;
-  transform: rotate(-45deg);
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    width: 18px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    width: 18px;
-  }
-}
-//--------------
-
-.favoritesPageContainer{
-  min-width: 320px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-inline: 10px;
+.favoritesPageContainer {
+  @include mainContainer;
 }
 .favoritesItemsWrapper {
-  font-family: "Montserrat", sans-serif;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2px;
-  justify-content: start;
-  justify-items: start;
-  align-items: start;
-  padding: 0;
-  border-radius: 4px;
-  border: none;
-  margin: 12px 15px;
-  width: 100%;
-  max-height: max-content;
+  @include mainItemsWrapper;
 }
 .favoritesTitle {
-  margin-left: 15px;
   margin-bottom: 20px;
   text-align: left;
   font-size: 32px;
@@ -191,20 +15,18 @@
   line-height: 100%;
 }
 @media screen and (min-width: $tablet-min-width) {
-  .favoritesTitle {
-    margin-left: 30px;
+  .favoritesPageContainer {
+    padding-inline: 30px;
   }
   .favoritesItemsWrapper {
     grid-template-columns: repeat(3, 1fr);
-    margin: 12px 30px;
   }
 }
 @media screen and (min-width: $desktop-min-width) {
-  .categoryTitle {
-    margin-left: 100px;
+  .favoritesPageContainer {
+    padding-inline: 100px;
   }
   .favoritesItemsWrapper {
     grid-template-columns: repeat(4, 1fr);
-    margin: 12px 100px;
   }
 }
