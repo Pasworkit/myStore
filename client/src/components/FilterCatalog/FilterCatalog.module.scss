@@ -1,8 +1,28 @@
 @use '../../styles/abstracts/_variables';
+@use '../../styles/abstracts/breakpoints';
 
 .container{
   width: 256px;
-  margin: 25px auto 0;
+  margin-top: 25px;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: 225px;
+  }
+
+  @media (min-width: breakpoints.$tablet-min-width) and (max-width: 920px){
+    width: 256px;
+    margin-right: 20px;
+  }
+
+  @media (min-width: 920px) {
+    width: 256px;
+    margin-right: 55px;
+    
+  }
 }
 
 
@@ -11,6 +31,14 @@
   margin-bottom: 10px;
   border: 1px solid #B6D5B9;
   border-radius: 5px;
+    
+  @media (min-width: 768px) {
+    width: 225px;
+  }
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    width: 257px;
+  }
 }
 
 .EasyCareBtn {
@@ -27,6 +55,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 768px) {
+    width: 225px;
+  }
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    width: 257px;
+  }
 }
 
 .CheckboxWrapper {
@@ -35,15 +71,25 @@
 
 .priceContainer {
   margin: 20px 0 25px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
 .priceWrapper {
-  padding: 5px 30px;
+  width: 70px;
+  padding: 5px 0 5px 15px;
   border: 1px solid #B6D5B9;
   border-radius: 5px;
+}
+
+.lineFormPrice::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 1px;
+  background: #2C2C2C;
 }
 
 .priceBtnSubmit {

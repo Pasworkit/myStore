@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Field, Form, Formik } from 'formik';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
@@ -28,6 +29,19 @@ function FilterPrice() {
     setValuePrice(newValue);
   };
 
+  const handelSubmitPriceForm = (e) => {
+    // eslint-disable-next-line prefer-destructuring
+    e.minPrice = valuePrice[0];
+    // eslint-disable-next-line prefer-destructuring
+    e.maxPrice = valuePrice[1];
+    console.log(e);
+  };
+
+  const initialValues = {
+    minPrice: 0,
+    maxPrice: 0,
+  };
+
   return (
 
     <div className={styles.containerFilterMenu}>
@@ -37,11 +51,25 @@ function FilterPrice() {
       </button>
       {showcheckedPrice && (
         <>
-          <div className={styles.priceContainer}>
-            <p className={styles.priceWrapper}>{valuePrice[0]}</p>
-            <p>-</p>
-            <p className={styles.priceWrapper}>{valuePrice[1]}</p>
-            <button className={styles.priceBtnSubmit} type="submit">ok</button>
+          <div>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handelSubmitPriceForm}
+            >
+              <Form className={styles.priceContainer}>
+
+                <Field
+                  type="text"
+                  disabled
+                  value={valuePrice[0]}
+                  name="minPrice"
+                  className={styles.priceWrapper}
+                />
+                <p className={styles.lineFormPrice} />
+                <Field type="text" disabled value={valuePrice[1]} name="maxPrice" className={styles.priceWrapper} />
+                <button className={styles.priceBtnSubmit} type="submit">ok</button>
+              </Form>
+            </Formik>
           </div>
 
           <Box sx={{

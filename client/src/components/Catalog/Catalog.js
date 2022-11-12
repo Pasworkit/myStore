@@ -16,35 +16,47 @@ function Catalog() {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs currenProductPage="Catalog" currenProductCategory="Shop" midLinkName="shop" />
+      <Breadcrumbs currenProductPage="Categories" currenProductCategory="Catalog" midLinkName="catalog" />
 
-      <div>
-        <h2 className={styles.heading}>Shop page</h2>
-
-        <div className={styles.wrapperMobile}>
-          <div className={styles.wrapperMobileBtnFilter}>
-            <button onClick={handleClickShowFilter} className={styles.BtnFilterOpen} type="button">
-              Filters
-              <FilterIcon />
-            </button>
-          </div>
-          {showMobileFilter && (
-          <div>
-            <div className={styles.filtersHeadingMobileWrapper}>
-              <h2 className={styles.filtersHeadingMobile}>Filters</h2>
-              <button onClick={handleClickShowFilter} className={styles.BtnFilterClose} type="button">
-                <span className={styles.BtnFilterFirstLine} />
-                <span className={styles.BtnFilterSecondLine} />
-              </button>
-            </div>
-            <FilterCatalog />
-          </div>
-          )}
-
+      <div className={styles.containerDesc}>
+        <div className={styles.wrapperFilterDesc}>
+          <FilterCatalog />
         </div>
 
-        <div className={styles.wrapperProducts}>
-          {products.map((item) => <Card key={item.id} productCardData={item} />)}
+        <div>
+          <h2 className={styles.heading}>Catalog</h2>
+
+          <div className={styles.wrapperMobile}>
+            <div className={styles.wrapperMobileBtnFilter}>
+              <button onClick={handleClickShowFilter} className={styles.BtnFilterOpen} type="button">
+                Filters
+                <FilterIcon />
+              </button>
+            </div>
+            {showMobileFilter && (
+            <div className={styles.filtersContainerMobile}>
+              <div className={styles.filtersHeadingMobileWrapper}>
+                <h2 className={styles.filtersHeadingMobile}>Filters</h2>
+                <button onClick={handleClickShowFilter} className={styles.BtnFilterClose} type="button">
+                  <span className={styles.BtnFilterFirstLine} />
+                  <span className={styles.BtnFilterSecondLine} />
+                </button>
+              </div>
+              <FilterCatalog />
+            </div>
+            )}
+          </div>
+
+          <ul className={styles.wrapperProductsList}>
+            {products.map((item) => (
+              <li
+                key={item.id}
+                className={styles.wrapperProductsItem}
+              >
+                <Card productCardData={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
