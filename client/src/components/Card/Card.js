@@ -8,21 +8,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
 
-function Card({
-  productCardData: {
-    id,
-    itemNo,
-    productName,
-    currentPrice,
-    imgUrl,
-    inStock,
-  },
-}) {
-  const [isFavoriteStatus, setIsFavoriteStatus] = useState(false);
+function Card(props) {
+  const {
+    productCardData: {
+      id,
+      itemNo,
+      productName,
+      currentPrice,
+      imgUrl,
+      inStock,
+    }, toggleFavoriteStatus, /* addToCart, */
+  } = props;
   const [quantityCardCount, setQuantityCardCount] = useState(1);
-  const toggleFavoriteStatus = () => {
-    setIsFavoriteStatus((prevState) => !prevState);
-  };
   const incrementCardQuantity = () => {
     setQuantityCardCount((prevState) => {
       if (prevState < inStock) {
@@ -41,35 +38,37 @@ function Card({
       return prevState;
     });
   };
+  const [/* cartArr */, setCartArr] = useState(JSON.parse(localStorage.getItem('cartArr')) || []);
+  // eslint-disable-next-line no-shadow
+  const addToCart = (id) => {
+    let newCartArr = JSON.parse(localStorage.getItem('cartArr')) || [];
+    // newCartArr.push(id);
+    newCartArr = [...newCartArr, ...[...Array(quantityCardCount)].map(() => id)];
+    setCartArr(newCartArr);
+    localStorage.setItem('cartArr', JSON.stringify(newCartArr));
+    const productInCartCount = {};
+    // eslint-disable-next-line max-len
+    newCartArr.forEach((item) => { productInCartCount[item] = (productInCartCount[item] || 0) + 1; });
+    localStorage.setItem('cartObj', JSON.stringify(productInCartCount));
+  };
+
+  const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
+  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(id) !== -1 : false;
+
   return (
     <div key={itemNo} className={styles.cardProductBox}>
-      <div role="button" tabIndex={0} onClick={() => toggleFavoriteStatus(id)} onKeyDown={() => toggleFavoriteStatus(id)}>
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => toggleFavoriteStatus(id)}
+        onKeyDown={() => toggleFavoriteStatus(id)}
+      >
         {isFavoriteStatus
           ? (
-            <FavoriteIcon
-              role="button"
-              tabIndex={0}
-              className={styles.star}
-              onClick={() => {
-                /*  removeFromFavorites(id) */
-              }}
-              onKeyDown={() => {
-                /*  removeFromFavorites(id) */
-              }}
-            />
+            <FavoriteIcon className={styles.star} />
           )
           : (
-            <FavoriteBorderIcon
-              role="button"
-              tabIndex={0}
-              className={styles.star}
-              onClick={() => {
-                /*  addToFavorites(id) */
-              }}
-              onKeyDown={() => {
-                /*  addToFavorites(id) */
-              }}
-            />
+            <FavoriteBorderIcon className={styles.star} />
           )}
       </div>
       <Link to={`/${productName.trim().toLowerCase().split('&').join('and')
@@ -90,7 +89,7 @@ function Card({
         </span>
         <ButtonBuy
           handleClick={() => {
-            //  placeProductIntoCart(productCardData);
+            addToCart(id);
           }}
           backgroundColor="#456F49"
           padding="15px 30px"

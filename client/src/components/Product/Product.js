@@ -37,10 +37,20 @@ function Product() {
     document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
   }, [productName, documentMetaDesc]);
 
-  const [isFavoriteStatus, setIsFavoriteStatus] = useState(false);
+  const [favoriteArr, setFavoriteArr] = useState(JSON.parse(localStorage.getItem('favoriteArr')) || []);
+  const isFavoriteStatus = favoriteArr.indexOf(id) !== -1;
   const toggleFavoriteStatus = () => {
-    setIsFavoriteStatus((prevState) => !prevState);
+    const index = favoriteArr.indexOf(id);
+    const newFavoriteArr = [...favoriteArr];
+    if (index !== -1) {
+      newFavoriteArr.splice(index, 1);
+    } else {
+      newFavoriteArr.push(id);
+    }
+    setFavoriteArr(newFavoriteArr);
+    localStorage.setItem('favoriteArr', JSON.stringify(newFavoriteArr));
   };
+
   const [quantityCount, setQuantityCount] = useState(1);
   const incrementProductQuantity = () => {
     setQuantityCount((prevState) => {
@@ -60,6 +70,21 @@ function Product() {
       return prevState;
     });
   };
+
+  const [/* cartArr */, setCartArr] = useState(JSON.parse(localStorage.getItem('cartArr')) || []);
+  // eslint-disable-next-line no-shadow
+  const addToCart = (id) => {
+    let newCartArr = JSON.parse(localStorage.getItem('cartArr')) || [];
+    // newCartArr.push(id);
+    newCartArr = [...newCartArr, ...[...Array(quantityCount)].map(() => id)];
+    setCartArr(newCartArr);
+    localStorage.setItem('cartArr', JSON.stringify(newCartArr));
+    const productInCartCount = {};
+    // eslint-disable-next-line max-len
+    newCartArr.forEach((item) => { productInCartCount[item] = (productInCartCount[item] || 0) + 1; });
+    localStorage.setItem('cartObj', JSON.stringify(productInCartCount));
+  };
+
   return (
     <section className={styles.productPageContainer}>
       <div>
@@ -80,30 +105,10 @@ function Product() {
             <div role="button" tabIndex={0} onClick={() => toggleFavoriteStatus(id)} onKeyDown={() => toggleFavoriteStatus(id)}>
               {isFavoriteStatus
                 ? (
-                  <FavoriteIcon
-                    role="button"
-                    tabIndex={0}
-                    className={styles.star}
-                    onClick={() => {
-                      /*  removeFromFavorites(id) */
-                    }}
-                    onKeyDown={() => {
-                      /*  removeFromFavorites(id) */
-                    }}
-                  />
+                  <FavoriteIcon className={styles.star} />
                 )
                 : (
-                  <FavoriteBorderIcon
-                    role="button"
-                    tabIndex={0}
-                    className={styles.star}
-                    onClick={() => {
-                      /*  addToFavorites(id) */
-                    }}
-                    onKeyDown={() => {
-                      /*  addToFavorites(id) */
-                    }}
-                  />
+                  <FavoriteBorderIcon className={styles.star} />
                 )}
             </div>
           </div>
@@ -185,7 +190,7 @@ function Product() {
           </div>
           <ButtonBuy
             handleClick={() => {
-              //  addToCart(id);
+              addToCart(id);
             }}
             backgroundColor="#456F49"
             padding="15px 102px"
@@ -195,6 +200,7 @@ function Product() {
         </div>
       </div>
       <div>
+        {/* eslint-disable-next-line max-len */}
         <YmalProducts products={products} />
       </div>
     </section>
