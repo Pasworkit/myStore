@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ShopPage from './pages/ShopPage/ShopPage';
+import CatalogPage from './pages/CatalogPage/CatalogPage';
 import CartPage from './pages/CartPage/CartPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -11,7 +11,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/catalog" element={<CatalogPage />} />
       <Route path="/hanging" element={<CategoryPage />} />
       <Route path="/flowering" element={<CategoryPage />} />
       <Route path="/ferns-and-palms" element={<CategoryPage />} />

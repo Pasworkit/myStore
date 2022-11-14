@@ -10,7 +10,7 @@ function NavigationFooter() {
           <NavLink className={styles.itemNavigationFooterLink} to="/">Home Page</NavLink>
         </li>
         <li className={styles.itemNavigationFooter}>
-          <NavLink className={styles.itemNavigationFooterLink} to="/shop">Shop</NavLink>
+          <NavLink className={styles.itemNavigationFooterLink} to="/catalog">Catalog</NavLink>
         </li>
       </ul>
     </nav>
