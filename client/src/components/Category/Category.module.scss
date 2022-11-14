@@ -1,25 +1,10 @@
 @import '../../styles/abstracts/config';
 
-.categoryPageContainer{
-  min-width: 320px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-inline: 10px;
+.categoryPageContainer {
+  @include mainContainer;
 }
 .categoryItemsWrapper {
-  font-family: "Montserrat", sans-serif;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2px;
-  justify-content: start;
-  justify-items: start;
-  align-items: start;
-  padding: 0;
-  border-radius: 4px;
-  border: none;
-  margin: 12px 15px;
-  width: 100%;
-  max-height: max-content;
+  @include mainItemsWrapper;
 }
 .categoryTitle {
   margin-left: 15px;
@@ -31,20 +16,18 @@
   line-height: 100%;
 }
 @media screen and (min-width: $tablet-min-width) {
-  .categoryTitle {
-    margin-left: 30px;
+  .categoryPageContainer {
+    padding-inline: 30px;
   }
   .categoryItemsWrapper {
     grid-template-columns: repeat(3, 1fr);
-    margin: 12px 30px;
   }
 }
 @media screen and (min-width: $desktop-min-width) {
-  .categoryTitle {
-    margin-left: 100px;
+  .categoryPageContainer {
+    padding-inline: 100px;
   }
   .categoryItemsWrapper {
     grid-template-columns: repeat(4, 1fr);
-    margin: 12px 100px;
   }
 }

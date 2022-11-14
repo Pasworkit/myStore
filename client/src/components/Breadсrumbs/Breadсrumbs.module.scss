@@ -1,8 +1,10 @@
+@import '../../styles/abstracts/config';
+
 .breadCrumbs{
   font-family: "Montserrat", sans-serif;
   display: flex;
-  margin: 0 auto;
-  max-width: 1400px;
+  margin: 0 auto 50px;
+  max-width: $container-max-width;
 }
 .midLink{
   font-size: 16px;
@@ -16,18 +18,4 @@
 }
 .divider{
   margin: 0 8px;
-}
-@media screen and (min-width:769px)
-{
-  .breadCrumbs
-  {
-    margin: 0 30px 50px 30px;
-  }
-}
-@media screen and (min-width:1025px)
-{
-  .breadCrumbs
-  {
-    margin: 0 100px 50px 100px;
-  }
 }
