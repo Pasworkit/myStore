@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Catalog from '../../components/Catalog/Catalog';
-import { getAllProductsAC, paginationNumberAC } from '../../store/catalog/actionCreatorCatalog';
+import { getAllProductsAC, paginationProductsNumberAC } from '../../store/catalog/actionCreatorCatalog';
 
 function CatalogPage() {
-  // const catalogProducts = useSelector((state) => state.catalogProducts.catalogProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProductsAC());
     setTimeout(() => {
-      dispatch(paginationNumberAC());
+      dispatch(paginationProductsNumberAC());
     }, 300);
   }, []);
 

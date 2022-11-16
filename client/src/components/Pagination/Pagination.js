@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { paginationNumberAC, setCurrentPageAC } from '../../store/catalog/actionCreatorCatalog';
+import { paginationProductsNumberAC, setCurrentPageAC } from '../../store/catalog/actionCreatorCatalog';
 import styles from './Pagination.module.scss';
 
 function Pagination() {
@@ -16,7 +16,7 @@ function Pagination() {
 
   const handleClickPadination = (num) => {
     dispatch(setCurrentPageAC(num));
-    dispatch(paginationNumberAC());
+    dispatch(paginationProductsNumberAC());
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

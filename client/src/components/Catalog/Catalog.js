@@ -9,7 +9,7 @@ import Pagination from '../Pagination/Pagination';
 import PreviousIconC from './CatalogPaginationIcon/PreviousIcon/PreviousIcon';
 import NextIconC from './CatalogPaginationIcon/NextIcon/NextIcon';
 import {
-  getAllProductsAC, nextPageCatalogeAC, paginationNumberAC, previousPageCatalogeAC,
+  getAllProductsAC, nextPageCatalogeAC, paginationProductsNumberAC, previousPageCatalogeAC,
 } from '../../store/catalog/actionCreatorCatalog';
 
 function Catalog() {
@@ -27,7 +27,7 @@ function Catalog() {
   useEffect(() => {
     dispatch(getAllProductsAC());
     if (catalogProducts.length !== 0) {
-      dispatch(paginationNumberAC());
+      dispatch(paginationProductsNumberAC());
     }
   }, []);
 
@@ -40,7 +40,7 @@ function Catalog() {
           <FilterCatalog />
         </div>
 
-        <div className={currentProducts.length < 6 ? styles.wrapperWidth : ''}>
+        <div className={currentProducts.length < 4 ? styles.wrapperWidth : ''}>
           <h2 className={styles.heading}>Catalog</h2>
 
           <div className={styles.wrapperMobile}>
@@ -65,14 +65,17 @@ function Catalog() {
           </div>
 
           <ul className={styles.wrapperProductsList}>
-            {currentProducts.map((item) => (
-              <li
-                key={item.id}
-                className={styles.wrapperProductsItem}
-              >
-                <Card productCardData={item} />
-              </li>
-            ))}
+            {currentProducts.map((item) => {
+              const { _id: idItem } = item;
+              return (
+                <li
+                  key={idItem}
+                  className={styles.wrapperProductsItem}
+                >
+                  <Card productCardData={item} />
+                </li>
+              );
+            })}
           </ul>
           <div className={styles.wrapperPagination}>
             <button
@@ -82,7 +85,7 @@ function Catalog() {
                   return;
                 }
                 dispatch(previousPageCatalogeAC());
-                dispatch(paginationNumberAC());
+                dispatch(paginationProductsNumberAC());
                 window.scrollTo({
                   top: 0,
                   behavior: 'smooth',
@@ -99,7 +102,7 @@ function Catalog() {
                   return;
                 }
                 dispatch(nextPageCatalogeAC());
-                dispatch(paginationNumberAC());
+                dispatch(paginationProductsNumberAC());
                 window.scrollTo({
                   top: 0,
                   behavior: 'smooth',

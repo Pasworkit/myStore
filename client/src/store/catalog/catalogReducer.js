@@ -1,7 +1,12 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 import {
-  GET_ALL_PRODUCTS, PAGINATION_NUMBER, SET_CURREN_PAGE, NEXT_PAGE_CATALOG, PREVIOUS_PAGE_CATALOGE,
+  GET_ALL_PRODUCTS,
+  PAGINATION_NUMBER_PRODUCTS,
+  SET_CURREN_PAGE,
+  NEXT_PAGE_CATALOG,
+  PREVIOUS_PAGE_CATALOGE,
+  FILTER_CATEGORY_CATALOG,
 } from './actionsCatalog';
 
 const initialState = {
@@ -19,7 +24,7 @@ const catalogReducer = (state = initialState, action) => {
       });
     }
 
-    case PAGINATION_NUMBER: {
+    case PAGINATION_NUMBER_PRODUCTS: {
       return produce(state, (draftState) => {
         const lastProductIndex = draftState.currentPage * draftState.productsPurPage;
         const firstProductIndex = lastProductIndex - draftState.productsPurPage;
@@ -43,6 +48,12 @@ const catalogReducer = (state = initialState, action) => {
     case PREVIOUS_PAGE_CATALOGE: {
       return produce(state, (draftState) => {
         draftState.currentPage -= 1;
+      });
+    }
+
+    case FILTER_CATEGORY_CATALOG: {
+      return produce(state, (draftState) => {
+        draftState.catalogProducts = action.payload;
       });
     }
 
