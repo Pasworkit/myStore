@@ -2,32 +2,63 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
+import {
+  filterCategoryCatalogAC, paginationProductsNumberAC, setCurrentPageAC,
+} from '../../store/catalog/actionCreatorCatalog';
 
 function FilterCategory() {
-  const [checkedCategoryHanging, setCheckedCategoryHanging] = useState(false);
-  const [checkedCategoryFlowering, setCheckedCategoryFlowering] = useState(false);
-  const [checkedCategoryFernsPalms, setCheckedCategoryFernsPalms] = useState(false);
-  const [checkedCategorySucculentsCacti, setCheckedCategorySucculentsCacti] = useState(false);
+  const [checkedCategory, setCheckedCategory] = useState({
+    Hanging: false,
+    Flowering: false,
+    fernsPalms: false,
+    SucculentsCacti: false,
+  });
+  const [checkedCategoryName, setCheckedCategoryName] = useState({
+    Hanging: '',
+    Flowering: '',
+    fernsPalms: '',
+    SucculentsCacti: '',
+  });
+
   const [showcheckedCategory, setShowcheckedCategory] = useState(false);
 
-  const handleChangeCategoryHanging = (event) => {
-    setCheckedCategoryHanging(event.target.checked);
+  const dispatch = useDispatch();
+
+  const filterParamsCategory = () => {
+    // if (checked) {
+    dispatch(filterCategoryCatalogAC(checkedCategoryName));
+    setTimeout(() => {
+      dispatch(setCurrentPageAC(1));
+      dispatch(paginationProductsNumberAC());
+    }, 200);
+    // } else {
+    //   dispatch(getAllProductsAC());
+    //   setTimeout(() => {
+    //     dispatch(paginationProductsNumberAC());
+    //   }, 200);
+    // }
   };
 
-  const handleChangeCategoryFlowering = (event) => {
-    setCheckedCategoryFlowering(event.target.checked);
+  const handleChangeCategory = (event) => {
+    setCheckedCategory({
+      ...checkedCategory, [event.target.name]: event.target.checked,
+    });
+    setCheckedCategoryName({
+      ...checkedCategoryName, [event.target.name]: event.target.value,
+    });
+    filterParamsCategory();
   };
 
-  const handleChangeCategoryFernsPalms = (event) => {
-    setCheckedCategoryFernsPalms(event.target.checked);
-  };
-
-  const handleChangeCategorySucculentsCacti = (event) => {
-    setCheckedCategorySucculentsCacti(event.target.checked);
-  };
+  const {
+    Hanging,
+    Flowerin,
+    fernsPalms,
+    SucculentsCacti,
+  } = checkedCategory;
 
   return (
     <div className={styles.containerFilterMenu}>
@@ -41,8 +72,10 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedCategoryHanging}
-                onChange={handleChangeCategoryHanging}
+                checked={Hanging}
+                name="Hanging"
+                value="Hanging"
+                onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -51,9 +84,12 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedCategoryFlowering}
-                onChange={handleChangeCategoryFlowering}
+                checked={Flowerin}
+                name="Flowering"
+                value="Flowering"
+                onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
+
               />
 )}
             label="Flowering"
@@ -61,9 +97,11 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedCategoryFernsPalms}
-                onChange={handleChangeCategoryFernsPalms}
+                checked={fernsPalms}
+                name="fernsPalms"
+                onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
+
               />
 )}
             label="Ferns & Palms"
@@ -71,9 +109,11 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedCategorySucculentsCacti}
-                onChange={handleChangeCategorySucculentsCacti}
+                checked={SucculentsCacti}
+                name="SucculentsCacti"
+                onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
+
               />
 )}
             label="Succulents & Cacti"

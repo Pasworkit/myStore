@@ -1,0 +1,30 @@
+@use '../../styles/abstracts/_variables';
+@use '../../styles/abstracts/_breakpoints';
+
+.listPagination {
+  margin: 0 20px;
+  display: flex;
+}
+
+.itemActivePagination {
+  background: #B6D5B9;
+  border-radius: 50%;
+}
+
+.buttonNumber {
+  // width: 60px;
+  padding: 17px 26px;
+  font-family: variables.$fontFamilyMontserrat;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+
+  color: #2C2C2C;
+
+    @media(min-width: breakpoints.$tablet-min-width){
+      font-size: 20px;
+    }
+    @media(min-width: breakpoints.$desktop-min-width){
+      font-size: 20px;
+    }
+}
