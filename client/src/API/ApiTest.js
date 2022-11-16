@@ -5,8 +5,7 @@ function ApiTest() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const result = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
-        console.log(result);
+        await axios.get(`${process.env.REACT_APP_API_URL}/products`);
       } catch (error) {
         console.error(error);
       }
@@ -15,5 +14,11 @@ function ApiTest() {
     getProducts();
   }, []);
 }
+
+export const createCustomer = async (newUser) => axios.post(`${process.env.REACT_APP_API_URL}/customers`, newUser);
+
+export const loginCustomer = async (userData) => axios.post(`${process.env.REACT_APP_API_URL}/customers/login`, userData);
+
+export const createOrder = async (newOrder) => axios.post(`${process.env.REACT_APP_API_URL}/orders`, newOrder);
 
 export default ApiTest;
