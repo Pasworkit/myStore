@@ -1,18 +1,35 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import FilterCatalog from '../FilterCatalog/FilterCatalog';
 import FilterIcon from '../FilterIcon/FilterIcon';
 import Card from '../Card/Card';
 import styles from './Catalog.module.scss';
+import Pagination from '../Pagination/Pagination';
+import PreviousIconC from './CatalogPaginationIcon/PreviousIcon/PreviousIcon';
+import NextIconC from './CatalogPaginationIcon/NextIcon/NextIcon';
+import {
+  getAllProductsAC, nextPageCatalogeAC, paginationNumberAC, previousPageCatalogeAC,
+} from '../../store/catalog/actionCreatorCatalog';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
-  const products = useSelector((state) => state.productsAll.products);
+  const catalogProducts = useSelector((state) => state.catalogProducts.catalogProducts);
+  const currentProducts = useSelector((state) => state.catalogProducts.currentProducts);
+  const productsPurPage = useSelector((store) => store.catalogProducts.productsPurPage);
+  const currentPage = useSelector((state) => state.catalogProducts.currentPage);
+  const dispatch = useDispatch();
 
   const handleClickShowFilter = () => {
     setShowMobileFilter((prevStatus) => !prevStatus);
   };
+
+  useEffect(() => {
+    dispatch(getAllProductsAC());
+    if (catalogProducts.length !== 0) {
+      dispatch(paginationNumberAC());
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -23,7 +40,7 @@ function Catalog() {
           <FilterCatalog />
         </div>
 
-        <div>
+        <div className={currentProducts.length < 6 ? styles.wrapperWidth : ''}>
           <h2 className={styles.heading}>Catalog</h2>
 
           <div className={styles.wrapperMobile}>
@@ -48,7 +65,7 @@ function Catalog() {
           </div>
 
           <ul className={styles.wrapperProductsList}>
-            {products.map((item) => (
+            {currentProducts.map((item) => (
               <li
                 key={item.id}
                 className={styles.wrapperProductsItem}
@@ -57,6 +74,41 @@ function Catalog() {
               </li>
             ))}
           </ul>
+          <div className={styles.wrapperPagination}>
+            <button
+              type="button"
+              onClick={() => {
+                if (currentPage === 1) {
+                  return;
+                }
+                dispatch(previousPageCatalogeAC());
+                dispatch(paginationNumberAC());
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              <PreviousIconC />
+            </button>
+            <Pagination />
+            <button
+              type="button"
+              onClick={() => {
+                if (currentPage === Math.ceil(catalogProducts.length / productsPurPage)) {
+                  return;
+                }
+                dispatch(nextPageCatalogeAC());
+                dispatch(paginationNumberAC());
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              <NextIconC />
+            </button>
+          </div>
         </div>
       </div>
     </div>
