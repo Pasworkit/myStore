@@ -6,6 +6,9 @@ import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+import OrderPage from './pages/OrderPage/OrderPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function AppRoutes() {
   return (
@@ -19,6 +22,9 @@ function AppRoutes() {
       <Route path="/:productLinkName" element={<ProductPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
+      <Route path="/cart/order" element={<OrderPage />} />
+      <Route path="/sign-up" element={<SignUpPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

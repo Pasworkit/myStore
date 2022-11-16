@@ -14,6 +14,8 @@ import NavigationHeaderFilter from '../Navigation/NavigationHeaderFilter';
 import HeaderBascetIcon from '../HeaderBascetIcon/HeaderBascetIcon';
 import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
 import HeaderFavoritesIcon from '../HeaderFavoritesIcon/HeaderFavoritesIcon';
+import HeaderLogin from '../HeaderLogin/HeaderLogin';
+import HeaderRegister from '../HeaderRegister/HeaderRegister';
 
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -107,6 +109,9 @@ function Header() {
               <div className={styles.wrapperHeaderIconDesc}>
                 <NavLink className={styles.favoritesDescLink} to="/favorites"><HeaderFavoritesIcon /></NavLink>
                 <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
+                <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
+                <NavLink className={styles.basketDescLink} to="/sign-up"><HeaderRegister /></NavLink>
+
               </div>
             </div>
           </div>

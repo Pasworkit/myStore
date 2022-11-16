@@ -19,6 +19,7 @@
     "immer": "^9.0.16",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-responsive-carousel": "^3.2.23",
@@ -34,6 +35,7 @@
     "slick-carousel": "^1.8.1",
     "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4",
+    "yap": "^0.0.2",
     "yup": "^0.32.11"
   },
   "scripts": {
@@ -52,7 +54,6 @@
       "react/jsx-one-expression-per-line": "off"
     }
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
