@@ -13,11 +13,15 @@ function Card(props) {
     productCardData: {
       id,
       itemNo,
-      productName,
       currentPrice,
-      imgUrl,
+      imageUrls,
       inStock,
-    }, toggleFavoriteStatus, /* addToCart, */
+      myCustomParam: {
+        botanicName,
+      },
+    },
+
+    toggleFavoriteStatus, /* addToCart, */
   } = props;
   const [quantityCardCount, setQuantityCardCount] = useState(1);
   const incrementCardQuantity = () => {
@@ -71,15 +75,15 @@ function Card(props) {
             <FavoriteBorderIcon className={styles.star} />
           )}
       </div>
-      <Link to={`/${productName.trim().toLowerCase().split('&').join('and')
+      <Link to={`/${botanicName.trim().toLowerCase().split('&').join('and')
         .split(' ')
         .join('-')}`}
       >
         <div className={styles.cardProductImgWrapper}>
-          <img src={imgUrl} className={styles.cardProductImg} alt={productName} />
+          <img src={imageUrls} className={styles.cardProductImg} alt={botanicName} />
         </div>
         <div className={styles.cardProductInfoWrapper}>
-          <span className={styles.cardInfoTitleText}>{productName}</span>
+          <span className={styles.cardInfoTitleText}>{botanicName}</span>
         </div>
       </Link>
       <div className={styles.cardPriceWrapper}>
@@ -125,7 +129,7 @@ Card.propTypes = {
     productName: PropTypes.string.isRequired,
     currentPrice: PropTypes.number.isRequired,
     previousPrice: PropTypes.number,
-    imgUrl: PropTypes.string.isRequired,
+    imageUrls: PropTypes.string.isRequired,
     inStock: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   }),
 };
