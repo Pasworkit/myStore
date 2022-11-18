@@ -8,8 +8,8 @@ import styles from './Catalog.module.scss';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
-  const products = useSelector((state) => state.productsAll.products);
 
+  const products = useSelector((store) => store.productsAll.products);
   const handleClickShowFilter = () => {
     setShowMobileFilter((prevStatus) => !prevStatus);
   };
@@ -50,7 +50,7 @@ function Catalog() {
           <ul className={styles.wrapperProductsList}>
             {products.map((item) => (
               <li
-                key={item.id}
+                key={item._id}
                 className={styles.wrapperProductsItem}
               >
                 <Card productCardData={item} />

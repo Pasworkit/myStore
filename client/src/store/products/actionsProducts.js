@@ -1,2 +1,3 @@
-const GET_PRODUCTS = 'GET_PRODUCTS';
-export default GET_PRODUCTS;
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const TOGGLE_PRODUCT_IN_CART = 'TOGGLE_PRODUCT_IN_CART';
+// export const CLEAR_CART = 'CLEAR_CART';
