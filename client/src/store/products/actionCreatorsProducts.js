@@ -1,4 +1,6 @@
-import { GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART } from './actionsProducts';
+import {
+  GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART, INCREMENT_QUANTITY_PRODUCT_IN_CART, DECREMENT_QUANTITY_PRODUCT_IN_CART,
+} from './actionsProducts';
 import { getProductsFromBack } from '../../API/ApiTest';
 // import { GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART, CLEAR_CART } from './actionsProducts';
 
@@ -22,8 +24,7 @@ export const getProducts = () => async (dispatch) => {
     dispatch({ type: GET_PRODUCTS, payload: products });
   } else {
     const productsData = await getProductsFromBack();
-    console.log(productsData.data);
-    const products = productsData.data.map((product) => ({ ...product, isInCart: false }));
+    const products = productsData.data.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
     console.log(products);
     dispatch({ type: GET_PRODUCTS, payload: products });
   }
@@ -31,4 +32,6 @@ export const getProducts = () => async (dispatch) => {
 
 export const toggleProductInCart = (id) => ({ type: TOGGLE_PRODUCT_IN_CART, payload: id });
 
-// export const clearCart = () => ({ type: CLEAR_CART });
+export const incrementQuantityProductInCart = (id, quantityInCart, quantity) => ({ type: INCREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart, quantity } });
+
+export const decrementQuantityProductInCart = (id, quantityInCart) => ({ type: DECREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart } });
