@@ -1,71 +1,50 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch, useSelector } from 'react-redux';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
+import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
 
 function Card(props) {
   const {
     productCardData: {
-      id,
+      _id,
       itemNo,
       currentPrice,
       imageUrls,
-      inStock,
+      quantityInCart,
+      quantity,
       myCustomParam: {
         botanicName,
       },
     },
-
-    toggleFavoriteStatus, /* addToCart, */
+    toggleFavoriteStatus,
   } = props;
-  const [quantityCardCount, setQuantityCardCount] = useState(1);
-  const incrementCardQuantity = () => {
-    setQuantityCardCount((prevState) => {
-      if (prevState < inStock) {
-        return prevState + 1;
-      }
-      // eslint-disable-next-line no-alert
-      alert(`You can't buy more products than there is in stock: ${inStock}`);
-      return prevState;
-    });
-  };
-  const decrementCardQuantity = () => {
-    setQuantityCardCount((prevState) => {
-      if (prevState > 1) {
-        return prevState - 1;
-      }
-      return prevState;
-    });
-  };
-  const [/* cartArr */, setCartArr] = useState(JSON.parse(localStorage.getItem('cartArr')) || []);
-  // eslint-disable-next-line no-shadow
-  const addToCart = (id) => {
-    let newCartArr = JSON.parse(localStorage.getItem('cartArr')) || [];
-    // newCartArr.push(id);
-    newCartArr = [...newCartArr, ...[...Array(quantityCardCount)].map(() => id)];
-    setCartArr(newCartArr);
-    localStorage.setItem('cartArr', JSON.stringify(newCartArr));
-    const productInCartCount = {};
-    // eslint-disable-next-line max-len
-    newCartArr.forEach((item) => { productInCartCount[item] = (productInCartCount[item] || 0) + 1; });
-    localStorage.setItem('cartObj', JSON.stringify(productInCartCount));
-  };
+
+  const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
+  const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
+
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => dispatch(toggleProductInCart(_id));
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityInCart, quantity));
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityInCart, quantity));
 
   const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
-  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(id) !== -1 : false;
+  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(_id) !== -1 : false;
 
   return (
     <div key={itemNo} className={styles.cardProductBox}>
       <div
         role="button"
         tabIndex={0}
-        onClick={() => toggleFavoriteStatus(id)}
-        onKeyDown={() => toggleFavoriteStatus(id)}
+        onClick={() => toggleFavoriteStatus(_id)}
+        onKeyDown={() => toggleFavoriteStatus(_id)}
       >
         {isFavoriteStatus
           ? (
@@ -93,12 +72,12 @@ function Card(props) {
         </span>
         <ButtonBuy
           handleClick={() => {
-            addToCart(id);
+            addToCartHandler();
           }}
           backgroundColor="#456F49"
           padding="15px 30px"
-          text="Add to cart"
-          id={id}
+          text={isInCart ? 'Delete' : 'Add to cart'}
+          id={_id}
         />
       </div>
       <div className={styles.cardQuantityWrapper}>
@@ -115,7 +94,7 @@ function Card(props) {
         </div>
         <p>
           <span>In stock: </span>
-          {inStock}
+          {quantity}
         </p>
       </div>
     </div>
@@ -124,18 +103,13 @@ function Card(props) {
 
 Card.propTypes = {
   productCardData: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    itemNo: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    productName: PropTypes.string.isRequired,
-    currentPrice: PropTypes.number.isRequired,
-    previousPrice: PropTypes.number,
-    imageUrls: PropTypes.string.isRequired,
-    inStock: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  }),
-};
-
-Card.defaultProps = {
-  productCardData: {},
+    _id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    botanicName: PropTypes.string,
+    currentPrice: PropTypes.number,
+    imageUrls: PropTypes.arrayOf(PropTypes.string),
+    quantityInCart: PropTypes.number,
+    quantity: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  }).isRequired,
 };
 
 export default memo(Card);

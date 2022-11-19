@@ -4,12 +4,12 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import AppRoutes from '../../AppRoutes';
-import getProductsAC from '../../store/products/actionCreatorsProducts';
+import { getProducts } from '../../store/products/actionCreatorsProducts';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProductsAC());
+    dispatch(getProducts());
   }, []);
 
   return (
