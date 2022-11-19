@@ -47,7 +47,6 @@ const reducerProducts = (state = initialState, action) => {
           'productsInCart',
           JSON.stringify(draftState.productsInCart),
         );
-        console.log(state);
       });
     }
 
@@ -65,7 +64,6 @@ const reducerProducts = (state = initialState, action) => {
           'productsInCart',
           JSON.stringify(draftState.productsInCart),
         );
-        console.log(state);
       });
     }
 
@@ -84,7 +82,6 @@ const reducerProducts = (state = initialState, action) => {
           'productsInCart',
           JSON.stringify(draftState.productsInCart),
         );
-        console.log(state);
       });
     }
 

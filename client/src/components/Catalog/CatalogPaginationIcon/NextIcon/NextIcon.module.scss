@@ -1,0 +1,12 @@
+.position {
+  margin-left: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.prevPosition {
+  position: absolute;
+  top: 6px;
+  right: 1px;
+}
