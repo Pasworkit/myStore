@@ -9,7 +9,7 @@ import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityP
 function CartItem({
   product: {
     _id,
-    myCustomParam: { botanicName },
+    name,
     currentPrice,
     imageUrls,
   },
@@ -25,9 +25,9 @@ function CartItem({
 
   return (
     <li className={styles.item}>
-      <img className={styles.img} src={imageUrls} alt={botanicName} />
+      <img className={styles.img} src={imageUrls} alt={name} />
 
-      <span className={styles.title}>{botanicName}</span>
+      <span className={styles.title}>{name}</span>
 
       <div className={styles.counterWrapper}>
         <button type="button" className={styles.buttonCartItem} onClick={decrementCardQuantity}>
@@ -51,7 +51,7 @@ function CartItem({
 CartItem.propTypes = {
   product: PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    botanicName: PropTypes.string,
+    name: PropTypes.string,
     currentPrice: PropTypes.number,
     imageUrls: PropTypes.arrayOf(PropTypes.string),
     quantityInCart: PropTypes.number,

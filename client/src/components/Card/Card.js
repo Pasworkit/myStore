@@ -17,23 +17,22 @@ function Card(props) {
       itemNo,
       currentPrice,
       imageUrls,
-      quantityInCart,
       quantity,
-      myCustomParam: {
-        botanicName,
-      },
+      name,
     },
     toggleFavoriteStatus,
   } = props;
 
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
+  console.log(isInCart);
+  console.log(quantityCardCount);
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => dispatch(toggleProductInCart(_id));
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityInCart, quantity));
-  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityInCart, quantity));
+  const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart));
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantity));
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, quantity));
 
   const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
   const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(_id) !== -1 : false;
@@ -54,15 +53,15 @@ function Card(props) {
             <FavoriteBorderIcon className={styles.star} />
           )}
       </div>
-      <Link to={`/${botanicName.trim().toLowerCase().split('&').join('and')
+      <Link to={`/${name.trim().toLowerCase().split('&').join('and')
         .split(' ')
         .join('-')}`}
       >
         <div className={styles.cardProductImgWrapper}>
-          <img src={imageUrls} className={styles.cardProductImg} alt={botanicName} />
+          <img src={imageUrls} className={styles.cardProductImg} alt={name} />
         </div>
         <div className={styles.cardProductInfoWrapper}>
-          <span className={styles.cardInfoTitleText}>{botanicName}</span>
+          <span className={styles.cardInfoTitleText}>{name}</span>
         </div>
       </Link>
       <div className={styles.cardPriceWrapper}>
@@ -104,7 +103,7 @@ function Card(props) {
 Card.propTypes = {
   productCardData: PropTypes.shape({
     _id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    botanicName: PropTypes.string,
+    name: PropTypes.string,
     currentPrice: PropTypes.number,
     imageUrls: PropTypes.arrayOf(PropTypes.string),
     quantityInCart: PropTypes.number,
