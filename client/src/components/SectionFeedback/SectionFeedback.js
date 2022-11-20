@@ -1,77 +1,49 @@
 import {
-  Avatar, Card, CardContent, CardHeader, Typography,
+  Avatar, Card, CardContent, CardHeader,
 } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import styles from './SectionFeedback.module.scss';
+import { getCommentsAC } from '../../store/comments/actionCreatorComments';
 
 function SectionFeedback() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCommentsAC());
+  }, []);
+
+  const comments = useSelector((store) => store.commentsAll.data);
+
   return (
-    <div>
+    <>
       <h2 className={styles.title}>Reviews about Home Decor</h2>
-
       <div className={styles.wrapper}>
-        <div>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardHeader
-              avatar={(
-                <Avatar sx={{ backgroundColor: 'red' }} aria-label="recipe">
-                  R
-                </Avatar>
-            )}
-              title="FIO"
-              subheader="September 14, 2016"
-            />
-            <CardContent>
-              <div>
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        <div>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardHeader
-              avatar={(
-                <Avatar sx={{ backgroundColor: 'red' }} aria-label="recipe">
-                  R
-                </Avatar>
-            )}
-              title="FIO"
-              subheader="September 14, 2016"
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
-              </Typography>
-            </CardContent>
-          </Card>
-        </div>
-        <div>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardHeader
-              avatar={(
-                <Avatar sx={{ backgroundColor: 'red' }} aria-label="recipe">
-                  R
-                </Avatar>
-            )}
-              title="FIO"
-              subheader="September 14, 2016"
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
-              </Typography>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </div>
+        {comments && comments.map(({
+          _id, content, customer: {
+            firstName, lastName,
+            avatarUrl,
+          },
 
+        }) => (
+          <Card
+            sx={{ maxWidth: 345 }}
+            key={_id}
+          >
+            <CardHeader
+              avatar={(
+                <Avatar alt="avatar" src={avatarUrl} />
+                )}
+              title={`${firstName} ${lastName}`}
+            />
+
+            <CardContent>
+              {content}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 }
 
