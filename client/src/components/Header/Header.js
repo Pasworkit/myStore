@@ -93,7 +93,6 @@ function Header() {
                 <HeaderSignUpIconMob />
                 <p data-sign-up-text="sign-up-text" className={styles.basketLinkText}>Sign up</p>
               </NavLink>
-
             </div>
 
             <div className={styles.phoneWrapper}>
