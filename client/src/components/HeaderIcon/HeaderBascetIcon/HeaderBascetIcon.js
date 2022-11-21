@@ -1,4 +1,4 @@
-import { ReactComponent as ShopingBascet } from '../../img/icon/bascet.svg';
+import { ReactComponent as ShopingBascet } from '../../../img/icon/bascet.svg';
 import styles from './HeaderBascet.module.scss';
 
 function HeaderBascetIcon() {

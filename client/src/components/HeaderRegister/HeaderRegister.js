@@ -1,7 +1,7 @@
-import { Button } from '@mui/material';
+import HeaderSignUpIcon from '../HeaderIcon/HeaderSignUpIcon/HeaderSignUpIcon';
 
 function HeaderRegister() {
-  return <Button>Sign up</Button>;
+  return <HeaderSignUpIcon />;
 }
 
 export default HeaderRegister;

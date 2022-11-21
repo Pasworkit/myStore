@@ -1,4 +1,4 @@
-import { ReactComponent as PhoneIcon } from '../../img/icon/Phone.svg';
+import { ReactComponent as PhoneIcon } from '../../../img/icon/Phone.svg';
 
 function HeaderPhoneIcon() {
   return <PhoneIcon />;
