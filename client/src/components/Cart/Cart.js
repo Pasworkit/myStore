@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
 import CartSlider from '../CartSlider/CartSlider';
 
-function Cart({ productsCart, productsCartSlider }) {
+function Cart({ productsCartSlider }) {
+  const productsCart = useSelector((store) => store.productsAll.productsInCart);
+
   const amountProducts = 3;
   const totalPrice = 3500;
-
-  const handleDeleteCartItem = () => {
-  };
 
   return (
     <section className={styles.cart__container}>
@@ -17,7 +17,7 @@ function Cart({ productsCart, productsCartSlider }) {
         <div className={styles.cart__containerItem}>
           <ul>
             {productsCart.map((product) => (
-              <CartItem key={product.id} product={product} handleDelete={handleDeleteCartItem} />
+              <CartItem key={product._id} product={product} />
             ))}
           </ul>
         </div>
@@ -53,7 +53,6 @@ function Cart({ productsCart, productsCartSlider }) {
 }
 
 Cart.propTypes = {
-  productsCart: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
   productsCartSlider: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
 };
 

@@ -1,5 +1,29 @@
 @use '../../../styles/abstracts/_breakpoints';
 
+.cartButton {
+	position: relative;
+
+	&:hover {
+		background-color: #bfc0bf;
+	}
+
+	&::after {
+		content: attr(data-products-in-cart);
+		position: absolute;
+		bottom: -9px;
+		right: -17px;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		color: black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		background-color: #B6D5B9;
+	}
+}
+
 .basketIcon {
   fill: #fff;
   @media (min-width: breakpoints.$tablet-min-width) {
