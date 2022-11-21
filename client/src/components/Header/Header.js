@@ -11,11 +11,13 @@ import NavigationHeader from '../Navigation/NavigationHeader';
 import styles from './Header.module.scss';
 import './Transition/TransitionHeaderMenu.css';
 import NavigationHeaderFilter from '../Navigation/NavigationHeaderFilter';
-import HeaderBascetIcon from '../HeaderBascetIcon/HeaderBascetIcon';
-import HeaderPhoneIcon from '../HeaderPhoneIcon/HeaderPhoneIcon';
-import HeaderFavoritesIcon from '../HeaderFavoritesIcon/HeaderFavoritesIcon';
+import HeaderBascetIcon from '../HeaderIcon/HeaderBascetIcon/HeaderBascetIcon';
+import HeaderPhoneIcon from '../HeaderIcon/HeaderPhoneIcon/HeaderPhoneIcon';
+import HeaderFavoritesIcon from '../HeaderIcon/HeaderFavoritesIcon/HeaderFavoritesIcon';
 import HeaderLogin from '../HeaderLogin/HeaderLogin';
 import HeaderRegister from '../HeaderRegister/HeaderRegister';
+import LightTooltip from '../LightTooltip/LightTooltip';
+import HeaderSignUpIconMob from '../HeaderIcon/HeaderSignUpIconMob/HeaderSignUpIconMob';
 
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -81,6 +83,17 @@ function Header() {
                 <HeaderFavoritesIcon />
                 <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorit</p>
               </NavLink>
+
+              <NavLink className={styles.FavoritesLink} to="/login">
+                <HeaderLogin />
+                <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>
+              </NavLink>
+
+              <NavLink data-sign-up-link="sign-up-link" className={styles.FavoritesLink} to="/sign-up">
+                <HeaderSignUpIconMob />
+                <p data-sign-up-text="sign-up-text" className={styles.basketLinkText}>Sign up</p>
+              </NavLink>
+
             </div>
 
             <div className={styles.phoneWrapper}>
@@ -108,9 +121,15 @@ function Header() {
               </a>
               <div className={styles.wrapperHeaderIconDesc}>
                 <NavLink className={styles.favoritesDescLink} to="/favorites"><HeaderFavoritesIcon /></NavLink>
-                <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
-                <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
-                <NavLink className={styles.basketDescLink} to="/sign-up"><HeaderRegister /></NavLink>
+                <div className={styles.basketDescLinkLine}>
+                  <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
+                </div>
+                <LightTooltip title="Sign in">
+                  <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
+                </LightTooltip>
+                <LightTooltip title="Sign up">
+                  <NavLink className={styles.basketDescLink} to="/sign-up"><HeaderRegister /></NavLink>
+                </LightTooltip>
 
               </div>
             </div>
