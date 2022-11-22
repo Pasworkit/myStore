@@ -4,16 +4,15 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import styles from './SectionFeedback.module.scss';
-import { getCommentsAC } from '../../store/comments/actionCreatorComments';
+import { fetchComments } from '../../store/slices/commentsSlice';
 
 function SectionFeedback() {
   const dispatch = useDispatch();
+  const comments = useSelector((store) => store.comments.data);
 
   useEffect(() => {
-    dispatch(getCommentsAC());
+    dispatch(fetchComments());
   }, []);
-
-  const comments = useSelector((store) => store.commentsAll.data);
 
   return (
     <>

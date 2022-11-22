@@ -3,11 +3,14 @@ import {
   Button, Container, Grid, TextField,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { createCustomer } from '../../API/ApiTest';
 import styles from './SignUpPage.module.scss';
+import { regUser } from '../../store/slices/authSlice';
 
 function SignUpPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -19,8 +22,17 @@ function SignUpPage() {
       telephone: '',
     },
     onSubmit: async (values, { resetForm }) => {
-      const { status } = await createCustomer(values);
+      const { status, data } = await createCustomer(values);
       if (status === 200) {
+        dispatch(regUser({
+          id: data._id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          login: data.login,
+          email: data.email,
+          password: data.password,
+          telephone: data.telephone,
+        }));
         navigate('/');
         resetForm();
       } else {
