@@ -35,9 +35,7 @@ const reducerProducts = (state = initialState, action) => {
         const index = draftState.products.findIndex(
           ({ _id }) => _id === action.payload,
         );
-        // if (draftState.products[index].isInCart) {
-        //   const deleteProductData = deleteProductInCart(_id);
-        // }
+
         draftState.products[index].isInCart = !draftState.products[index].isInCart;
         if (!draftState.products[index].isInCart) {
           draftState.products[index].quantityInCart = 1;

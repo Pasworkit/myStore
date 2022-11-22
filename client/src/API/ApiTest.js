@@ -1,19 +1,4 @@
 import axios from 'axios';
-// import { useEffect } from 'react';
-
-// function ApiTest() {
-//   useEffect(() => {
-//     const getProducts = async () => {
-//       try {
-//         await axios.get(`${process.env.REACT_APP_API_URL}/products`);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-
-//     getProducts();
-//   }, []);
-// }
 
 export const getProductsFromBack = async () => axios.get(`${process.env.REACT_APP_API_URL}/products`);
 
@@ -23,8 +8,32 @@ export const loginCustomer = async (userData) => axios.post(`${process.env.REACT
 
 export const createOrder = async (newOrder) => axios.post(`${process.env.REACT_APP_API_URL}/orders`, newOrder);
 
-export const getCart = async () => axios.get(`${process.env.REACT_APP_API_URL}/cart`);
+export const apdatedCart = async (token, productsInCart) => axios.put(`${process.env.REACT_APP_API_URL}/cart`, {
+  products: productsInCart,
+}, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
 
-export const addProductInCart = async (id) => axios.put(`${process.env.REACT_APP_API_URL}/cart/${id}`);
+export const addProductInCart = async (id, token) => axios.put(`${process.env.REACT_APP_API_URL}/cart/${id}`, {}, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
 
-export const deleteProductInCart = async (id) => axios.delete(`${process.env.REACT_APP_API_URL}/cart/${id}`);
+export const getCart = async (token) => axios.get(`${process.env.REACT_APP_API_URL}/cart`, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
+
+export const deleteProductInCart = async (id, token) => axios.delete(`${process.env.REACT_APP_API_URL}/cart/${id}`, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});

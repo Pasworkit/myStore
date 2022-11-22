@@ -10,7 +10,6 @@ import styles from './LoginPage.module.scss';
 function LoginPage() {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(['token']);
-  console.log(cookies);
 
   const formik = useFormik({
     initialValues: {
@@ -24,6 +23,7 @@ function LoginPage() {
       if (status === 200) {
         setCookie('token', data.token.replace('Bearer ', ''));
         navigate('/');
+        console.log(cookies);
       } else {
         throw new Error('Invalid Credentials');
       }

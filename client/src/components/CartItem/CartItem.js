@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import styles from './CartItem.module.scss';
 import { ReactComponent as DeleteIcon } from '../../svg/icon-delete.svg';
 import { ReactComponent as MinusIcon } from '../../svg/icon-minus.svg';
@@ -16,12 +17,16 @@ function CartItem({
 }) {
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
   const quantityInStockCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantity);
+  const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => dispatch(toggleProductInCart(_id));
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantityInStockCardCount));
-  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, quantityInStockCardCount));
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies();
+  const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart, cookies.token));
+  // const addToCartHandler = () => dispatch(toggleProductInCart(_id));
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantityInStockCardCount, isInCart, cookies.token));
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   return (
     <li className={styles.item}>

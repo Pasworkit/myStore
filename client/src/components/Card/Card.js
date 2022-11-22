@@ -6,9 +6,11 @@ import AddIcon from '@mui/icons-material/Add';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
 import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
+import Preloader from '../Prelolader/Preloader';
 
 function Card(props) {
   const {
@@ -23,16 +25,28 @@ function Card(props) {
     toggleFavoriteStatus,
   } = props;
 
+  const isPreloaderOpen = useSelector(store => store.preloader.isOpen);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
-  console.log(isInCart);
-  console.log(quantityCardCount);
+  const productsInCartInStore = useSelector((store) => store.productsAll.productsInCart);
+  const productsInCart = [];
+
+  productsInCartInStore.forEach((item) => {
+    productsInCart.push({
+      product: item._id,
+      cartQuantity: item.quantityInCart,
+    });
+  });
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart));
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantity));
-  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, quantity));
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies();
+  const addToCartHandler = () => {
+    dispatch(toggleProductInCart(_id, isInCart, cookies.token, productsInCart));
+  };
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantity, isInCart, cookies.token));
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
   const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(_id) !== -1 : false;
@@ -70,6 +84,7 @@ function Card(props) {
           {currentPrice}
         </span>
         <ButtonBuy
+          isdisabled={isPreloaderOpen}
           handleClick={() => {
             addToCartHandler();
           }}
@@ -96,6 +111,9 @@ function Card(props) {
           {quantity}
         </p>
       </div>
+
+      <Preloader isOpen={isPreloaderOpen} />
+
     </div>
   );
 }
