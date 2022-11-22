@@ -180,6 +180,7 @@
 }
 
 .basketDescLink {
+
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
@@ -313,5 +314,17 @@
 
   @media (min-width: breakpoints.$desktop-min-width) {
     padding: 0 20px;
+  }
+}
+
+.logOut{
+  background: #E7F1E8;
+  border-radius: 30%;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    margin-left: 13px;
+  }
+  @media (min-width: breakpoints.$desktop-min-width) {
+    margin-left: 14px;
   }
 }

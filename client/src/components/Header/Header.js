@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
 import useOnClickOutside from '../../hooks/onClickOutside';
 
 import logoHeaderMb from '../../img/logo/logo-header-mb.png';
@@ -18,6 +19,7 @@ import HeaderLogin from '../HeaderLogin/HeaderLogin';
 import HeaderRegister from '../HeaderRegister/HeaderRegister';
 import LightTooltip from '../LightTooltip/LightTooltip';
 import HeaderSignUpIconMob from '../HeaderIcon/HeaderSignUpIconMob/HeaderSignUpIconMob';
+import { removeUser } from '../../store/slices/authSlice';
 
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -32,6 +34,10 @@ function Header() {
       hendleIsOpenMenu();
     }
   });
+
+  const token = useSelector((store) => store.auth.token);
+  const dispatch = useDispatch();
+  console.log(token);
 
   return (
     <header className={styles.header}>
@@ -123,9 +129,19 @@ function Header() {
                 <div className={styles.basketDescLinkLine}>
                   <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
                 </div>
+                {!token && (
                 <LightTooltip title="Sign in">
                   <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
                 </LightTooltip>
+                )}
+                {token && (
+                <LightTooltip title="Log out" onClick={() => dispatch(removeUser())}>
+                  <NavLink className={styles.logOut} to="/">
+                    <HeaderLogin />
+                  </NavLink>
+                </LightTooltip>
+                )}
+
                 <LightTooltip title="Sign up">
                   <NavLink className={styles.basketDescLink} to="/sign-up"><HeaderRegister /></NavLink>
                 </LightTooltip>

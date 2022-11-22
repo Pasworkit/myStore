@@ -1,8 +1,16 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './rootReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import reducerProducts from './products/reducerProducts';
+import catalogReducer from './catalog/catalogReducer';
+import commentsReducer from './slices/commentsSlice';
+import authReducer from './slices/authSlice';
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = configureStore({
+  reducer: {
+    productsAll: reducerProducts,
+    catalogProducts: catalogReducer,
+    comments: commentsReducer,
+    auth: authReducer,
+  },
+});
 
 export default store;
