@@ -4,6 +4,7 @@
   },
 "extends": ["airbnb"],
   "rules": {
+    "react/no-unused-prop-types": 0,
     "max-len": "off",
     "arrow-parens": "off",
     "no-underscore-dangle": 0,

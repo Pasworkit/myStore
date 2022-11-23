@@ -5,16 +5,17 @@ import styles from './ButtonBuy.module.scss';
 
 function ButtonBuy(props) {
   const {
-    padding, backgroundColor, handleClick, text,
+    isdisabled, padding, backgroundColor, handleClick, text,
   } = props;
   return (
-    <button type="button" className={styles.buttonsMain} style={{ backgroundColor, padding }} onClick={handleClick}>
+    <button type="button" disabled={isdisabled} className={styles.buttonsMain} style={{ backgroundColor, padding }} onClick={handleClick}>
       {text}
     </button>
   );
 }
 
 ButtonBuy.propTypes = {
+  isdisabled: PropTypes.bool,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   backgroundColor: PropTypes.string,
   padding: PropTypes.string,
@@ -22,6 +23,7 @@ ButtonBuy.propTypes = {
 };
 
 ButtonBuy.defaultProps = {
+  isdisabled: false,
   backgroundColor: '#456F49',
   padding: '15px 30px',
   handleClick: () => {},

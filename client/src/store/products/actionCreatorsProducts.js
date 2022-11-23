@@ -1,7 +1,9 @@
 import {
   GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART, INCREMENT_QUANTITY_PRODUCT_IN_CART, DECREMENT_QUANTITY_PRODUCT_IN_CART,
 } from './actionsProducts';
-import { getProductsFromBack } from '../../API/ApiTest';
+import {
+  getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart,
+} from '../../API/ApiTest';
 
 export const getProducts = () => async (dispatch) => {
   const productsInLocalStorage = localStorage.getItem('products');
@@ -16,8 +18,33 @@ export const getProducts = () => async (dispatch) => {
   }
 };
 
-export const toggleProductInCart = (id) => ({ type: TOGGLE_PRODUCT_IN_CART, payload: id });
+export const toggleProductInCart = (id, isInCart, token, productsInCart) => async (dispatch) => {
+  if (isInCart) {
+    const deleteProductCartData = await deleteProductInCart(id, token);
+    console.log(deleteProductCartData);
+  } else {
+    const addProductCartData = await addProductInCart(id, token);
+    console.log(addProductCartData);
+    if (addProductCartData.status === 200) {
+      const apdatedCartData = await apdatedCart(token, productsInCart);
+      console.log(apdatedCartData);
+    }
+  }
+  dispatch({ type: TOGGLE_PRODUCT_IN_CART, payload: id });
+};
 
-export const incrementQuantityProductInCart = (id, quantityInCart, quantity) => ({ type: INCREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart, quantity } });
+export const incrementQuantityProductInCart = (id, quantityInCart, quantity) => async (dispatch) => {
+  dispatch({ type: INCREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart, quantity } });
+  // if (isInCart && quantityInCart < quantity) {
+  // const apdatedCartData = await apdatedCart(id, token, quantityInCart + 1);
+  // console.log(apdatedCartData);
+  // }
+};
 
-export const decrementQuantityProductInCart = (id, quantityInCart) => ({ type: DECREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart } });
+export const decrementQuantityProductInCart = (id, quantityInCart) => async (dispatch) => {
+  dispatch({ type: DECREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart } });
+  // if (isInCart && quantityInCart > 1) {
+  //   const apdatedCartData = await apdatedCart(id, token, quantityInCart - 1);
+  //   console.log(apdatedCartData);
+  // }
+};
