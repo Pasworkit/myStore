@@ -1,5 +1,5 @@
 import produce from 'immer';
-// import { getCart, addProductInCart, deleteProductInCart } from '../../API/ApiTest';
+
 import {
   GET_PRODUCTS,
   TOGGLE_PRODUCT_IN_CART,

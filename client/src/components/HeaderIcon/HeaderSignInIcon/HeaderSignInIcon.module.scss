@@ -1,6 +1,6 @@
-@use '../../styles/abstracts/_breakpoints';
+@use '../../../styles/abstracts/_breakpoints';
 
-.favoritesIcon {
+.signInIcon {
     fill: #fff;
     @media (min-width: breakpoints.$tablet-min-width) {
       fill: #000;

@@ -10,7 +10,7 @@ import { useCookies } from 'react-cookie';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
 import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
-import Preloader from '../Prelolader/Preloader';
+// import Preloader from '../Prelolader/Preloader';
 
 function Card(props) {
   const {
@@ -25,7 +25,7 @@ function Card(props) {
     toggleFavoriteStatus,
   } = props;
 
-  const isPreloaderOpen = useSelector(store => store.preloader.isOpen);
+  // const isPreloaderOpen = useSelector(store => store.preloader.isOpen);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
   const productsInCartInStore = useSelector((store) => store.productsAll.productsInCart);
@@ -37,6 +37,8 @@ function Card(props) {
       cartQuantity: item.quantityInCart,
     });
   });
+
+  console.log(productsInCart);
 
   const dispatch = useDispatch();
 
@@ -84,7 +86,7 @@ function Card(props) {
           {currentPrice}
         </span>
         <ButtonBuy
-          isdisabled={isPreloaderOpen}
+          // isdisabled={isPreloaderOpen}
           handleClick={() => {
             addToCartHandler();
           }}
@@ -112,7 +114,7 @@ function Card(props) {
         </p>
       </div>
 
-      <Preloader isOpen={isPreloaderOpen} />
+      {/* <Preloader isOpen={isPreloaderOpen} /> */}
 
     </div>
   );

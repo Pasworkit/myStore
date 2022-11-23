@@ -15,7 +15,7 @@ function ButtonBuy(props) {
 }
 
 ButtonBuy.propTypes = {
-  isdisabled: PropTypes.bool.isRequired,
+  isdisabled: PropTypes.bool,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   backgroundColor: PropTypes.string,
   padding: PropTypes.string,
@@ -23,6 +23,7 @@ ButtonBuy.propTypes = {
 };
 
 ButtonBuy.defaultProps = {
+  isdisabled: false,
   backgroundColor: '#456F49',
   padding: '15px 30px',
   handleClick: () => {},

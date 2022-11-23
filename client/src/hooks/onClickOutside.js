@@ -7,7 +7,7 @@ const useOnClickOutside = (ref, handler) => {
         return;
       }
 
-      if (event.target.tagName === 'A' || event.target.dataset.basketText === 'basket-text' || event.target.dataset.bascetIcon === 'bascet-icon' || event.target.dataset.favoritesIcon === 'favorites-icon' || event.target.dataset.favoritesText === 'favorites-text') {
+      if (event.target.tagName === 'A' || event.target.dataset.basketText === 'basket-text' || event.target.dataset.bascetIcon === 'bascet-icon' || event.target.dataset.favoritesIcon === 'favorites-icon' || event.target.dataset.favoritesText === 'favorites-text' || event.target.dataset.signIn === 'sign-in' || event.target.dataset.signInIcon === 'sign-in-icon' || event.target.dataset.signUpText === 'sign-up-text' || event.target.dataset.signUpIcon === 'sign-up-icon') {
         document.removeEventListener('click', listener);
         handler(event);
       }

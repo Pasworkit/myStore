@@ -1,4 +1,4 @@
-import { ReactComponent as Favorites } from '../../img/icon/favoritesIcon.svg';
+import { ReactComponent as Favorites } from '../../../img/icon/favoritesIcon.svg';
 import styles from './HeaderFavoritesIcon.module.scss';
 
 function HeaderFavoritesIcon() {

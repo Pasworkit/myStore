@@ -24,6 +24,7 @@ export const toggleProductInCart = (id, isInCart, token, productsInCart) => asyn
     console.log(deleteProductCartData);
   } else {
     const addProductCartData = await addProductInCart(id, token);
+    console.log(addProductCartData);
     if (addProductCartData.status === 200) {
       const apdatedCartData = await apdatedCart(token, productsInCart);
       console.log(apdatedCartData);

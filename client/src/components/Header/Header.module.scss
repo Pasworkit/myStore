@@ -164,7 +164,7 @@
   }
 
   @media (min-width: breakpoints.$desktop-min-width) {
-    margin-left: 263px;
+    margin-left: 180px;
     font-family: variables.$fontFamilyMontserrat;
     font-weight: 500;
     font-size: 16px;
@@ -175,11 +175,12 @@
 .phoneNumberSpan {
   margin-left: 13px;
   @media (min-width: breakpoints.$tablet-min-width) {
-    margin-left: 13px;
+    margin-left: 50px;
   }
 }
 
 .basketDescLink {
+
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
@@ -189,10 +190,56 @@
 }
 
 .wrapperHeaderIconDesc {
+  position: relative;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    // margin-left: 13px;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+  }
+
   @media (min-width: breakpoints.$desktop-min-width) {
+    display: flex;
+    align-items: center;
     margin-left: 60px;
   }
 }
+
+.basketDescLinkLine {
+  @media (min-width: breakpoints.$tablet-min-width) {
+    margin-right: 10px;    
+
+      &::after {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 65px;
+        content: '';
+        width: 1px;
+        height: 20px;
+        background: #202b21;
+        border-radius: 5px;
+      }
+  }
+  @media (min-width: breakpoints.$desktop-min-width) {
+  margin-right: 10px;    
+
+      &::after {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 65px;
+        content: '';
+        width: 1px;
+        height: 20px;
+        background: #202b21;
+        border-radius: 5px;
+      }
+  }
+}
+
+
 
 .container {
   @media (max-width: 769px) {
@@ -267,5 +314,17 @@
 
   @media (min-width: breakpoints.$desktop-min-width) {
     padding: 0 20px;
+  }
+}
+
+.logOut{
+  background: #E7F1E8;
+  border-radius: 30%;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    margin-left: 13px;
+  }
+  @media (min-width: breakpoints.$desktop-min-width) {
+    margin-left: 14px;
   }
 }

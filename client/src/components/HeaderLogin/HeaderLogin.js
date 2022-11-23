@@ -1,7 +1,7 @@
-import { Button } from '@mui/material';
+import HeaderSignInIcon from '../HeaderIcon/HeaderSignInIcon/HeaderSignInIcon';
 
 function HeaderLogin() {
-  return <Button>Sign in</Button>;
+  return <HeaderSignInIcon />;
 }
 
 export default HeaderLogin;

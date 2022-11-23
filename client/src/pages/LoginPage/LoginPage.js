@@ -4,12 +4,16 @@ import {
 } from '@mui/material';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { loginCustomer } from '../../API/ApiTest';
 import styles from './LoginPage.module.scss';
+import { setUser } from '../../store/slices/authSlice';
 
 function LoginPage() {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(['token']);
+  console.log(cookies);
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -21,6 +25,9 @@ function LoginPage() {
         data, status,
       } = await loginCustomer(values);
       if (status === 200) {
+        dispatch(setUser({
+          token: data.token.replace('Bearer ', ''),
+        }));
         setCookie('token', data.token.replace('Bearer ', ''));
         navigate('/');
         console.log(cookies);
