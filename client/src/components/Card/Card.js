@@ -38,8 +38,6 @@ function Card(props) {
     });
   });
 
-  console.log(productsInCart);
-
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
