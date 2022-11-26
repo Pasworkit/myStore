@@ -1,4 +1,4 @@
-@use '../../styles/abstracts/_breakpoints';
+@use "../../styles/abstracts/_breakpoints";
 
 .container {
   min-width: breakpoints.$container-min-width;
@@ -18,9 +18,15 @@
   }
 }
 
-.wrapperWidth {
-  width: 100vh;
-}
+// .wrapperWidth {
+//   @media (min-width: breakpoints.$tablet-min-width) {
+//     width: 100vh;
+//   }
+
+//   @media (min-width: breakpoints.$desktop-min-width) {
+//     width: 100vh;
+//   }
+// }
 
 .containerDesc {
   @media (min-width: 768px) {
@@ -39,9 +45,9 @@
   width: 256px;
   margin: 25px auto;
 
-  @media (min-width: 590px){
-      margin-left: 30px;
-    }
+  @media (min-width: 590px) {
+    margin-left: 30px;
+  }
 }
 
 .wrapperMobile {
@@ -65,7 +71,7 @@
   padding-top: 30px;
   margin: 0 auto;
 
-  @media (min-width: 590px) and (max-width: 768px){
+  @media (min-width: 590px) and (max-width: 768px) {
     width: 480px;
     margin: 0 auto;
     display: flex;
@@ -90,13 +96,13 @@
   width: 263px;
   margin-bottom: 20px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &:last-child {
+    margin-bottom: 0;
+  }
 
-  @media (min-width: 590px) and (max-width: 890px){
+  @media (min-width: 590px) and (max-width: 890px) {
     width: 230px;
-    
+
     &:nth-last-child(2) {
       margin-bottom: 0;
     }
@@ -107,12 +113,13 @@
     max-width: 283px;
     margin-bottom: 20px;
     margin-right: 20px;
-    &:nth-child(2n){
+    &:nth-child(2n) {
       margin-right: 0;
     }
     &:nth-last-child(2) {
       margin-bottom: 0;
     }
+  }
 
     @media (min-width: breakpoints.$desktop-min-width) {
       margin-right: 0;
@@ -121,23 +128,24 @@
         margin-bottom: 0;
       }
     }
-  }
+ 
 }
 
 .heading {
   margin-top: 30px;
-  font-family: 'Lora';
+  font-family: "Lora";
   font-weight: 400;
   font-size: 23px;
   line-height: 130%;
 
-  color: #202B21;
+  color: #202b21;
+
+  
 }
 
 .wrapperMobileBtnFilter {
   margin-top: 26px;
   margin-left: 10px;
-  
 }
 
 .filtersHeadingMobileWrapper {
@@ -145,43 +153,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .filtersHeadingMobile {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 18px;
   line-height: 130%;
-  color: #2C2C2C;
+  color: #2c2c2c;
 }
 
 .BtnFilterOpen {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 18px;
   line-height: 130%;
-  color: #2C2C2C;
+  color: #2c2c2c;
 }
 
-.BtnFilterFirstLine{
+.BtnFilterFirstLine {
   display: block;
   margin-bottom: -2px;
   width: 27px;
   height: 2px;
   border-radius: 5px;
-  background: #2C2C2C;
+  background: #2c2c2c;
   transform: rotate(45deg);
 }
 
-.BtnFilterSecondLine{
+.BtnFilterSecondLine {
   display: block;
   width: 27px;
   height: 2px;
   border-radius: 5px;
-  background: #2C2C2C;
+  background: #2c2c2c;
   transform: rotate(-45deg);
 }
 

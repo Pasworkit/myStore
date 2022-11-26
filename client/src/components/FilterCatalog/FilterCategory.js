@@ -2,63 +2,72 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
-import {
-  filterCategoryCatalogAC, paginationProductsNumberAC, setCurrentPageAC,
-} from '../../store/catalog/actionCreatorCatalog';
+// import {
+//   filterCategoryCatalogAC, paginationProductsNumberAC, setCurrentPageAC,
+// } from '../../store/catalog/actionCreatorCatalog';
 
 function FilterCategory() {
   const [checkedCategory, setCheckedCategory] = useState({
-    Hanging: false,
-    Flowering: false,
-    fernsPalms: false,
-    SucculentsCacti: false,
+    hanging: false,
+    flowering: false,
+    'fern-and-palms': false,
+    'succulents-and-cacti': false,
   });
-  const [checkedCategoryName, setCheckedCategoryName] = useState({
-    Hanging: '',
-    Flowering: '',
-    fernsPalms: '',
-    SucculentsCacti: '',
-  });
+
+  const [searchHanging, setSearchHanging] = useState(false);
+  const [searshFlowering, setSearchFlowering] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [showcheckedCategory, setShowcheckedCategory] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const filterParamsCategory = () => {
-    // if (checked) {
-    dispatch(filterCategoryCatalogAC(checkedCategoryName));
-    setTimeout(() => {
-      dispatch(setCurrentPageAC(1));
-      dispatch(paginationProductsNumberAC());
-    }, 200);
-    // } else {
-    //   dispatch(getAllProductsAC());
-    //   setTimeout(() => {
-    //     dispatch(paginationProductsNumberAC());
-    //   }, 200);
-    // }
+  const paramsQuery = searchParams.get('categories') || [];
+  const arrayUrl = [];
+
+  const handeleCheckedHanging = (event) => {
+    const hanging = event.target.name;
+    setSearchHanging(event.target.checked);
+    if (event.target.checked) {
+      paramsQuery.push(hanging);
+      // console.log(paramsQuery);
+    }
+    // eslint-disable-next-line no-undef
+
+    // setSearchParams({ categories: `${hanging}` });
+  };
+
+  const handeleCheckedFlowering = (event) => {
+    const flowering = event.target.name;
+    setSearchFlowering(event.target.checked);
+    if (event.target.checked) {
+      paramsQuery.push(flowering);
+    }
+    // console.log(paramsQuery);
+    setSearchParams({ categories: 'flowering, hanging' });
   };
 
   const handleChangeCategory = (event) => {
     setCheckedCategory({
       ...checkedCategory, [event.target.name]: event.target.checked,
     });
-    setCheckedCategoryName({
-      ...checkedCategoryName, [event.target.name]: event.target.value,
-    });
-    filterParamsCategory();
-  };
 
-  const {
-    Hanging,
-    Flowerin,
-    fernsPalms,
-    SucculentsCacti,
-  } = checkedCategory;
+    if (event.target.checked) {
+      arrayUrl.push(event.target.name);
+    }
+    console.log(event.target.checked);
+    console.log(arrayUrl);
+
+    // const paramsQuerySet = searchParams.set('categories', event.target.name);
+
+    // setSearchParams({ categories: event.target.name });
+  };
 
   return (
     <div className={styles.containerFilterMenu}>
@@ -72,10 +81,10 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={Hanging}
-                name="Hanging"
-                value="Hanging"
-                onChange={handleChangeCategory}
+                checked={searchHanging}
+                name="hanging"
+                // value="hanging"
+                onChange={handeleCheckedHanging}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -84,10 +93,10 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={Flowerin}
-                name="Flowering"
-                value="Flowering"
-                onChange={handleChangeCategory}
+                checked={searshFlowering}
+                name="flowering"
+                // value="flowering"
+                onChange={handeleCheckedFlowering}
                 inputProps={{ 'aria-label': 'controlled' }}
 
               />
@@ -97,8 +106,8 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={fernsPalms}
-                name="fernsPalms"
+                checked={checkedCategory.fernsPalms}
+                name="fern-and-palms"
                 onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
 
@@ -109,8 +118,8 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={SucculentsCacti}
-                name="SucculentsCacti"
+                checked={checkedCategory.SucculentsCacti}
+                name="succulents-and-cacti"
                 onChange={handleChangeCategory}
                 inputProps={{ 'aria-label': 'controlled' }}
 
