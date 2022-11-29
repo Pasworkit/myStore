@@ -9,20 +9,20 @@ function YmalProducts(props) {
   const { products } = props;
 
   const [favoriteArr, setFavoriteArr] = useState(JSON.parse(localStorage.getItem('favoriteArr')) || []);
-  const toggleFavoriteStatus = (id) => {
-    const index = favoriteArr.indexOf(id);
+  const toggleFavoriteStatus = (itemNo) => {
+    const index = favoriteArr.indexOf(itemNo);
     const newFavoriteArr = [...favoriteArr];
     if (index !== -1) {
       newFavoriteArr.splice(index, 1);
     } else {
-      newFavoriteArr.push(id);
+      newFavoriteArr.push(itemNo);
     }
     setFavoriteArr(newFavoriteArr);
     localStorage.setItem('favoriteArr', JSON.stringify(newFavoriteArr));
   };
 
   // eslint-disable-next-line max-len
-  const ymalProductsItems = products.map((item) => <Card toggleFavoriteStatus={toggleFavoriteStatus} key={item.id} productCardData={item} />);
+  const ymalProductsItems = products.map((item) => <Card toggleFavoriteStatus={toggleFavoriteStatus} key={item.itemNo} productCardData={item} />);
 
   return (
     <div className={styles.ymalContainer}>
