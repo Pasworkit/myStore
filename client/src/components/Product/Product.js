@@ -86,13 +86,15 @@ function Product() {
     localStorage.setItem('cartObj', JSON.stringify(productInCartCount));
   };
 
+  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
+
   return (
     <section className={styles.productPageContainer}>
       <div>
         {/* eslint-disable-next-line max-len */}
-        <Breadcrumbs currenProductCategory={categories} currenProductPage={name} midLinkName={categories} />
+        <Breadcrumbs currenProductCategory={renderStringTitle(categories)} currenProductPage={renderStringTitle(name)} midLinkName={renderStringTitle(categories)} />
       </div>
-      <h1 className={styles.name}>{name}</h1>
+      <h1 className={styles.name}>{renderStringTitle(name)}</h1>
       <div className={styles.case}>
         <div className={styles.productImgWrapper}>
           <img src={imageUrls} alt={name} className={styles.productImg} />

@@ -51,6 +51,8 @@ function Card(props) {
   const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
   const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(itemNo) !== -1 : false;
 
+  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
+
   return (
     <div key={itemNo} className={styles.cardProductBox}>
       <div
@@ -72,7 +74,7 @@ function Card(props) {
           <img src={imageUrls} className={styles.cardProductImg} alt={name} />
         </div>
         <div className={styles.cardProductInfoWrapper}>
-          <span className={styles.cardInfoTitleText}>{name}</span>
+          <span className={styles.cardInfoTitleText}>{renderStringTitle(name)}</span>
         </div>
       </Link>
       <div className={styles.cardPriceWrapper}>
