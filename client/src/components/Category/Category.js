@@ -32,33 +32,13 @@ function Category() {
     document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
   }, [categoryName, documentMetaDesc]);
 
-  const renderSwitchTitleName = (titleName) => {
-    switch (titleName) {
-      case
-        'hanging'
-        :
-        return 'Hanging';
-      case
-        'flowering'
-        :
-        return 'Flowering';
-      case
-        'ferns-and-palms'
-        :
-        return 'Ferns and palms';
-      case
-        'succulents-and-cacti'
-        :
-        return 'Succulents and cacti';
-      default:
-        return titleName;
-    }
-  };
+  const renderCategoryTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ').split('and')
+    .join('&');
 
   return (
     <section className={styles.categoryPageContainer}>
       <h1 className={styles.categoryTitle}>
-        {renderSwitchTitleName(categoryName)}
+        {renderCategoryTitle(categoryName)}
       </h1>
       <div className={styles.categoryItemsWrapper}>
         {CategoryItems}
