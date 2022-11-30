@@ -1,64 +1,116 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
-import {
-  filterCategoryCatalogAC, paginationProductsNumberAC, setCurrentPageAC,
-} from '../../store/catalog/actionCreatorCatalog';
+import { filterCatalogProducts, getAllProducts, paginationCatalog } from '../../store/slices/catalogSlice';
 
 function FilterCategory() {
-  const [checkedCategory, setCheckedCategory] = useState({
-    Hanging: false,
-    Flowering: false,
-    fernsPalms: false,
-    SucculentsCacti: false,
-  });
-  const [checkedCategoryName, setCheckedCategoryName] = useState({
-    Hanging: '',
-    Flowering: '',
-    fernsPalms: '',
-    SucculentsCacti: '',
-  });
-
   const [showcheckedCategory, setShowcheckedCategory] = useState(false);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsUrl = {};
   const dispatch = useDispatch();
+  const allParams = searchParams.get('categories') || '';
 
-  const filterParamsCategory = () => {
-    // if (checked) {
-    dispatch(filterCategoryCatalogAC(checkedCategoryName));
-    setTimeout(() => {
-      dispatch(setCurrentPageAC(1));
-      dispatch(paginationProductsNumberAC());
-    }, 200);
-    // } else {
-    //   dispatch(getAllProductsAC());
-    //   setTimeout(() => {
-    //     dispatch(paginationProductsNumberAC());
-    //   }, 200);
-    // }
+  // const serializeQuery = (search, value) => {
+  //   const params = {};
+
+  //   params[search] = value;
+
+  //   return params;
+  // };
+
+  const handleChangeCategoryHanging = (event) => {
+    const { checked } = event.target;
+    const { name } = event.target;
+    if (checked) paramsUrl.categories = name;
+    setSearchParams(paramsUrl);
   };
 
-  const handleChangeCategory = (event) => {
-    setCheckedCategory({
-      ...checkedCategory, [event.target.name]: event.target.checked,
-    });
-    setCheckedCategoryName({
-      ...checkedCategoryName, [event.target.name]: event.target.value,
-    });
-    filterParamsCategory();
-  };
+  useEffect(() => {
+    if (allParams) {
+      console.log(paramsUrl);
+      setShowcheckedCategory(true);
+      dispatch(filterCatalogProducts(allParams));
+      setTimeout(() => {
+        dispatch(paginationCatalog());
+      }, 400);
+    } else {
+      dispatch(getAllProducts());
+      setTimeout(() => {
+        dispatch(paginationCatalog());
+      }, 400);
+    }
+  }, [allParams]);
 
-  const {
-    Hanging,
-    Flowerin,
-    fernsPalms,
-    SucculentsCacti,
-  } = checkedCategory;
+  // const handleChangeCategoryFlowering = (event) => {
+  //   const { checked } = event.target;
+  //   const { name } = event.target;
+  //   if (checked) paramsUrl.categories = name;
+  //   setSearchParams(paramsUrl);
+  // };
+
+  // const handleChangeCategoryFernsAndPalms = (event) => {
+  //   const { checked } = event.target;
+  //   const { name } = event.target;
+  //   if (checked) paramsUrl.categories = name;
+  //   setSearchParams(paramsUrl);
+  // };
+  // const handleChangeCategorySucculents = (event) => {
+  //   const { checked } = event.target;
+  //   const { name } = event.target;
+  //   if (checked) paramsUrl.categories = name;
+  //   setSearchParams(paramsUrl);
+  // };
+  // const [checkedCategory, setCheckedCategory] = useState({
+  //   hanging: false,
+  //   flowering: false,
+  //   'ferns-and-palms': false,
+  //   'succulents-and-cacti': false,
+  // });
+
+  // const dispatch = useDispatch();
+  // const [arrayUrl, setArrayUrl] = useState([]);
+
+  // searchParams.set('categories', arrayUrl);
+
+  // const handleChangeCategory = (event) => {
+  //   setCheckedCategory({
+  //     ...checkedCategory, [event.target.name]: event.target.checked,
+  //   });
+
+  //   if (event.target.checked) {
+  //     setArrayUrl([...arrayUrl, event.target.name]);
+  //   } else {
+  //     setArrayUrl(currentUrlName => currentUrlName.filter(el => el !== event.target.name));
+  //     const delUrlCategory = searchParams.delete('categories');
+  //     setSearchParams(delUrlCategory);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (arrayUrl.length) {
+  //     setSearchParams({ categories: arrayUrl.join(' ') });
+  //   }
+
+  //   const paramsQuery = searchParams.get('categories');
+  //   // console.log(paramsQuery);
+  //   if (paramsQuery !== '') {
+  //     dispatch(filterCatalogProducts(paramsQuery));
+  //     setTimeout(() => {
+  //       dispatch(paginationCatalog());
+  //     }, 400);
+  //   } else {
+  //     dispatch(getAllProducts());
+  //     setTimeout(() => {
+  //       dispatch(paginationCatalog());
+  //     }, 400);
+  //   }
+  // }, [arrayUrl]);
 
   return (
     <div className={styles.containerFilterMenu}>
@@ -72,10 +124,10 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={Hanging}
-                name="Hanging"
-                value="Hanging"
-                onChange={handleChangeCategory}
+                checked={allParams === 'hanging'}
+                name="hanging"
+                // value="hanging"
+                onChange={handleChangeCategoryHanging}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -84,10 +136,10 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={Flowerin}
-                name="Flowering"
-                value="Flowering"
-                onChange={handleChangeCategory}
+                checked={allParams === 'flowering'}
+                name="flowering"
+                // value="flowering"
+                onChange={handleChangeCategoryHanging}
                 inputProps={{ 'aria-label': 'controlled' }}
 
               />
@@ -97,9 +149,9 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={fernsPalms}
-                name="fernsPalms"
-                onChange={handleChangeCategory}
+                checked={allParams === 'ferns-and-palms'}
+                name="ferns-and-palms"
+                onChange={handleChangeCategoryHanging}
                 inputProps={{ 'aria-label': 'controlled' }}
 
               />
@@ -109,9 +161,9 @@ function FilterCategory() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={SucculentsCacti}
-                name="SucculentsCacti"
-                onChange={handleChangeCategory}
+                checked={allParams === 'succulents-and-cacti'}
+                name="succulents-and-cacti"
+                onChange={handleChangeCategoryHanging}
                 inputProps={{ 'aria-label': 'controlled' }}
 
               />

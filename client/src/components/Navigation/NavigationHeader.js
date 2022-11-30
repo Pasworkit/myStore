@@ -7,10 +7,10 @@ function NavigationHeader() {
     <nav>
       <ul className={styles.listNavigation}>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLink} to="/">Home Page</NavLink>
+          <NavLink className={styles.itemNavigationLink} data-home-page-link="home-page-link" to="/">Home Page</NavLink>
         </li>
         <li className={styles.itemNavigation}>
-          <NavLink className={styles.itemNavigationLink} to="/catalog">Catalog</NavLink>
+          <NavLink className={styles.itemNavigationLink} data-catalog-page-link="catalog-page-link" to="/catalog">Catalog</NavLink>
         </li>
       </ul>
     </nav>

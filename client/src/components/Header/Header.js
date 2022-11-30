@@ -80,7 +80,7 @@ function Header() {
             </div>
 
             <div className={styles.basketWrapper}>
-              <NavLink className={styles.basketLink} to="/cart">
+              <NavLink className={styles.basketLink} data-basket-text="basket-text" to="/cart">
                 <HeaderBascetIcon />
                 <p data-basket-text="basket-text" className={styles.basketLinkText}>Basket</p>
               </NavLink>
@@ -89,8 +89,10 @@ function Header() {
                 <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorite</p>
               </NavLink>
 
+
               {!token && (
               <NavLink className={styles.FavoritesLink} to="/login">
+
                 <HeaderLogin />
                 <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>
               </NavLink>
