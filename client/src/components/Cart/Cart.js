@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
 import CartSlider from '../CartSlider/CartSlider';
@@ -40,7 +41,9 @@ function Cart({ productsCartSlider }) {
           </div>
           <div className={styles.cart__buttons}>
             <button type="button" className={styles.cart__button}>Continue shopping</button>
-            <button type="button" className={styles.cart__buttonOrder}>Checkout</button>
+            <Link to="/cart/order">
+              <button type="button" className={styles.cart__buttonOrder}>Checkout</button>
+            </Link>
           </div>
         </div>
       </div>
