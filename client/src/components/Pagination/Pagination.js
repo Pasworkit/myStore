@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -11,6 +11,7 @@ import styles from './Pagination.module.scss';
 
 function Pagination() {
   const pageNumber = [];
+  const [nextAndPrevPage, setNextAndPrevPage] = useState(1);
   const catalogProducts = useSelector((store) => store.catalog.catalogProducts);
   const productsPurPage = useSelector((store) => store.catalog.productsPurPage);
   const currentPage = useSelector((store) => store.catalog.currentPage);
@@ -26,6 +27,7 @@ function Pagination() {
   const handleClickPadination = (num) => {
     dispatch(setCurrentPage(num));
     dispatch(paginationCatalog());
+    setNextAndPrevPage(num);
     if (num !== 1) {
       setSearchParams({ page: num });
     } else {
@@ -40,22 +42,42 @@ function Pagination() {
     });
   };
 
+  const setNextPageUrl = () => {
+    setNextAndPrevPage(curentNumber => curentNumber + 1);
+
+    setSearchParams({ page: pageNumber[nextAndPrevPage] });
+  };
+
+  const setPrevPageUrl = () => {
+    setNextAndPrevPage(curentNumber => curentNumber - 1);
+    const newPrevNum = nextAndPrevPage - 1;
+
+    if (newPrevNum !== 1) {
+      setSearchParams({ page: newPrevNum });
+    } else {
+      const deletePageUtl = searchParams.delete('page') || '';
+
+      setSearchParams(deletePageUtl);
+    }
+  };
+
   useEffect(() => {
     dispatch(setCurrentPage(pageUrl === '' ? 1 : Number(pageUrl)));
     dispatch(paginationCatalog());
-  }, []);
 
-  // console.log(currentPage);
+    setNextAndPrevPage(pageUrl === '' ? 1 : Number(pageUrl));
+  }, []);
 
   return (
     <>
+      {catalogProducts.length > 9 && (
       <button
         type="button"
         onClick={() => {
           if (currentPage === 1) {
             return;
           }
-          console.log(currentPage);
+          setPrevPageUrl();
           dispatch(prevPageCatalog());
           dispatch(paginationCatalog());
           window.scrollTo({
@@ -66,6 +88,8 @@ function Pagination() {
       >
         <PreviousIconC />
       </button>
+      )}
+
       <ul className={styles.listPagination}>
         {pageNumber.map((number) => (
           <li
@@ -85,12 +109,14 @@ function Pagination() {
           </li>
         ))}
       </ul>
+      {catalogProducts.length > 9 && (
       <button
         type="button"
         onClick={() => {
           if (currentPage === Math.ceil(catalogProducts.length / productsPurPage)) {
             return;
           }
+          setNextPageUrl();
           dispatch(nextPageCatalog());
           dispatch(paginationCatalog());
           window.scrollTo({
@@ -101,6 +127,8 @@ function Pagination() {
       >
         <NextIconC />
       </button>
+      )}
+
     </>
   );
 }

@@ -53,6 +53,18 @@ const getAllProducts = () => async (dispatch) => {
   }
 };
 
-export { getAllProducts };
+const filterCatalogProducts = (value) => async (dispatch) => {
+  try {
+    const { status, data } = await axios.get(`${process.env.REACT_APP_API_URL}/products/filter?categories=${value}`);
+
+    if (status === 200) {
+      dispatch(allCatalogProducts(data.products));
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+};
+
+export { getAllProducts, filterCatalogProducts };
 
 export default catalogSlise.reducer;
