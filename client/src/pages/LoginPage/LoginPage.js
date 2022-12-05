@@ -30,7 +30,6 @@ function LoginPage() {
         }));
         setCookie('token', data.token.replace('Bearer ', ''));
         navigate('/');
-        console.log(cookies);
       } else {
         throw new Error('Invalid Credentials');
       }
