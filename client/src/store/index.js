@@ -5,7 +5,6 @@ import authReducer from './slices/authSlice';
 import catalogsReduser from './slices/catalogSlice';
 import orderReducer from './slices/orderSlice';
 
-
 const store = configureStore({
   reducer: {
     productsAll: reducerProducts,

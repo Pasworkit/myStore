@@ -89,7 +89,6 @@ function Header() {
                 <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorite</p>
               </NavLink>
 
-
               {!token && (
               <NavLink className={styles.FavoritesLink} to="/login">
 

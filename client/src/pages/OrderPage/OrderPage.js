@@ -8,19 +8,49 @@ import {
   Grid, Radio, RadioGroup, TextareaAutosize,
   TextField,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './OrderPage.module.scss';
 import { createOrder } from '../../API/ApiTest';
+import { fetchCart } from '../../store/slices/orderSlice';
 
 function OrderPage() {
-  const auth = useSelector((store) => store.auth);
+  const navigate = useNavigate();
+  const token = useSelector((store) => store.auth.token);
+  const customerId = useSelector((store) => store.auth.id);
+  const products = useSelector((store) => store.order.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCart(token));
+  }, []);
+
+  const createOrderFromValues = (values) => ({
+    letterSubject: 'Thank you for order! You are welcome!',
+    letterHtml:
+        '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
+        + '<p>In this place will be good letter</p>',
+    products,
+    customerId,
+    shipping: values.shipping,
+    email: values.email,
+    mobile: values.mobile,
+    paymentInfo: values.paymentInfo,
+    comments: values.comments,
+    deliveryAddress: {
+      country: values.deliveryAddress.country,
+      city: values.deliveryAddress.city,
+      address: values.deliveryAddress.address,
+    },
+  });
 
   const formik = useFormik({
     initialValues: {
       shipping: '',
-      email: auth.email,
-      mobile: auth.mobile,
+      email: '',
+      mobile: '',
 
       deliveryAddress: {
         country: '',
@@ -28,18 +58,14 @@ function OrderPage() {
         address: '',
       },
       paymentInfo: '',
-      letterSubject: 'Thank you for order! You are welcome!',
-      letterHtml:
-          '<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>',
       comments: '',
-
     },
     onSubmit: async (values) => {
       const {
         data, status,
-      } = await createOrder(values);
+      } = await createOrder(token, createOrderFromValues(values));
       if (status === 200) {
-        console.log(status);
+        navigate('/');
       } else {
         throw new Error('Invalid');
       }
@@ -69,9 +95,9 @@ function OrderPage() {
                 }}
               >
                 <ButtonGroup variant="outlined" aria-label="outlined button group">
-                  <Button type="text" onClick={() => formik.setFieldValue('shipping', 'Courier')}>By Courier</Button>
-                  <Button type="text" onClick={() => formik.setFieldValue('shipping', 'Pickup')}> Pickup</Button>
-                  <Button type="text" onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}>Nova Poshta</Button>
+                  <Button type="button" onClick={() => formik.setFieldValue('shipping', 'Courier')}>By Courier</Button>
+                  <Button type="button" onClick={() => formik.setFieldValue('shipping', 'Pickup')}> Pickup</Button>
+                  <Button type="button" onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}>Nova Poshta</Button>
                 </ButtonGroup>
               </Box>
               <h2 className={styles.title}>Fill in your personal details</h2>
