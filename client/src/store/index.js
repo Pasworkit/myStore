@@ -4,7 +4,7 @@ import commentsReducer from './slices/commentsSlice';
 import authReducer from './slices/authSlice';
 import catalogsReduser from './slices/catalogSlice';
 import orderReducer from './slices/orderSlice';
-
+import filterCatalogReduser from './slices/filterCatalogSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +13,7 @@ const store = configureStore({
     auth: authReducer,
     catalog: catalogsReduser,
     order: orderReducer,
+    filter: filterCatalogReduser,
   },
 });
 

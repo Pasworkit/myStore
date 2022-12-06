@@ -2,22 +2,15 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterPetAndBabySafe() {
-  const [checkedPetAndBabySafeYes, setCheckedPetAndBabySafeYes] = useState(false);
-  const [checkedPetAndBabySafeYNo, setCheckedPetAndBabySafeYNo] = useState(false);
+function FilterPetAndBabySafe({ handleChangePetAndBabySafe }) {
   const [showcheckedPetAndBabySafe, setShowcheckedPetAndBabySafe] = useState(false);
 
-  const handleChangePetAndBabySafeYes = (event) => {
-    setCheckedPetAndBabySafeYes(event.target.checked);
-  };
-
-  const handleChangePetAndBabySafeNo = (event) => {
-    setCheckedPetAndBabySafeYNo(event.target.checked);
-  };
+  const checkeFilter = useSelector(store => store.filter);
 
   return (
     <div className={styles.containerFilterMenu}>
@@ -31,22 +24,24 @@ function FilterPetAndBabySafe() {
             <FormControlLabel
               control={(
                 <Checkbox
-                  checked={checkedPetAndBabySafeYes}
-                  onChange={handleChangePetAndBabySafeYes}
+                  checked={checkeFilter.safe}
+                  name="safe"
+                  onChange={handleChangePetAndBabySafe}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
 )}
-              label="Yes"
+              label="Safe"
             />
             <FormControlLabel
               control={(
                 <Checkbox
-                  checked={checkedPetAndBabySafeYNo}
-                  onChange={handleChangePetAndBabySafeNo}
+                  checked={checkeFilter['not-safe']}
+                  name="not-safe"
+                  onChange={handleChangePetAndBabySafe}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
 )}
-              label="No"
+              label="Not safe"
             />
           </FormGroup>
         </div>

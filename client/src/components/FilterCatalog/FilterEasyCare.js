@@ -2,22 +2,14 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterEasyCare() {
-  const [checkedEasyCareYes, setCheckedEasyCareYes] = useState(false);
-  const [checkedEasyCareYNo, setCheckedEasyCareYNo] = useState(false);
+function FilterEasyCare({ handleChangeEasyCare }) {
   const [showcheckedEasyCare, setShowcheckedEasyCare] = useState(false);
-
-  const handleChangeEasyCareYes = (event) => {
-    setCheckedEasyCareYes(event.target.checked);
-  };
-
-  const handleChangeEasyCareNo = (event) => {
-    setCheckedEasyCareYNo(event.target.checked);
-  };
+  const checkeFilter = useSelector(store => store.filter);
 
   return (
 
@@ -32,8 +24,9 @@ function FilterEasyCare() {
             <FormControlLabel
               control={(
                 <Checkbox
-                  checked={checkedEasyCareYes}
-                  onChange={handleChangeEasyCareYes}
+                  checked={checkeFilter['easy-care-yes']}
+                  name="easy-care-yes"
+                  onChange={handleChangeEasyCare}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
 )}
@@ -42,8 +35,9 @@ function FilterEasyCare() {
             <FormControlLabel
               control={(
                 <Checkbox
-                  checked={checkedEasyCareYNo}
-                  onChange={handleChangeEasyCareNo}
+                  checked={checkeFilter['easy-care-no']}
+                  name="easy-care-no"
+                  onChange={handleChangeEasyCare}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
 )}
