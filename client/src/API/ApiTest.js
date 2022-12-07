@@ -6,7 +6,16 @@ export const createCustomer = async (newUser) => axios.post(`${process.env.REACT
 
 export const loginCustomer = async (userData) => axios.post(`${process.env.REACT_APP_API_URL}/customers/login`, userData);
 
-export const createOrder = async (newOrder) => axios.post(`${process.env.REACT_APP_API_URL}/orders`, newOrder);
+export const createOrder = async (token, newOrder) => axios.post(
+  `${process.env.REACT_APP_API_URL}/orders`,
+  newOrder,
+  {
+    headers: {
+    // eslint-disable-next-line quote-props
+      'Authorization': `Bearer ${token}`,
+    },
+  },
+);
 
 export const getComments = async () => axios.get(`${process.env.REACT_APP_API_URL}/comments`);
 

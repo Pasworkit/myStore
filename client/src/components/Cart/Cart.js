@@ -31,7 +31,7 @@ function Cart({ productsCartSlider }) {
             <p className={styles.cart__textOrder}>
               Total price:
               <span className={styles.cart__amountProducts}>
-                {totalPrice}
+                {totalPrice.toFixed(2)}
                 {' '}
                 $
               </span>

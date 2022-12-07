@@ -1,35 +1,19 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import FilterCatalog from '../FilterCatalog/FilterCatalog';
 import FilterIcon from '../FilterIcon/FilterIcon';
 import Card from '../Card/Card';
 import styles from './Catalog.module.scss';
 import Pagination from '../Pagination/Pagination';
-import PreviousIconC from './CatalogPaginationIcon/PreviousIcon/PreviousIcon';
-import NextIconC from './CatalogPaginationIcon/NextIcon/NextIcon';
-import {
-  getAllProductsAC, nextPageCatalogeAC, paginationProductsNumberAC, previousPageCatalogeAC,
-} from '../../store/catalog/actionCreatorCatalog';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
-  const catalogProducts = useSelector((state) => state.catalogProducts.catalogProducts);
-  const currentProducts = useSelector((state) => state.catalogProducts.currentProducts);
-  const productsPurPage = useSelector((store) => store.catalogProducts.productsPurPage);
-  const currentPage = useSelector((state) => state.catalogProducts.currentPage);
-  const dispatch = useDispatch();
+  const currentProducts = useSelector((state) => state.catalog.currentProducts);
 
   const handleClickShowFilter = () => {
     setShowMobileFilter((prevStatus) => !prevStatus);
   };
-
-  useEffect(() => {
-    dispatch(getAllProductsAC());
-    if (catalogProducts.length !== 0) {
-      dispatch(paginationProductsNumberAC());
-    }
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -78,39 +62,8 @@ function Catalog() {
             })}
           </ul>
           <div className={styles.wrapperPagination}>
-            <button
-              type="button"
-              onClick={() => {
-                if (currentPage === 1) {
-                  return;
-                }
-                dispatch(previousPageCatalogeAC());
-                dispatch(paginationProductsNumberAC());
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-              }}
-            >
-              <PreviousIconC />
-            </button>
             <Pagination />
-            <button
-              type="button"
-              onClick={() => {
-                if (currentPage === Math.ceil(catalogProducts.length / productsPurPage)) {
-                  return;
-                }
-                dispatch(nextPageCatalogeAC());
-                dispatch(paginationProductsNumberAC());
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-              }}
-            >
-              <NextIconC />
-            </button>
+
           </div>
         </div>
       </div>

@@ -291,7 +291,7 @@
   }
 }
 
-.navigationHeaderDesctopWrapper {
+.navigationHeaderDesktopWrapper {
   @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0 15px;
     display: flex;
@@ -307,7 +307,7 @@
   }
 }
 
-.navigationHeaderFilterDesctopWrapper {
+.navigationHeaderFilterDesktopWrapper {
   @media (min-width: breakpoints.$tablet-min-width) {
     padding: 0 15px;
   }

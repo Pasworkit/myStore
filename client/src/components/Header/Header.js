@@ -25,19 +25,18 @@ function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const nodeRef = useRef(null);
 
-  const hendleIsOpenMenu = () => {
+  const handleIsOpenMenu = () => {
     setIsOpenMenu((currentIsOpen) => !currentIsOpen);
   };
 
   useOnClickOutside(nodeRef, () => {
     if (isOpenMenu) {
-      hendleIsOpenMenu();
+      handleIsOpenMenu();
     }
   });
 
   const token = useSelector((store) => store.auth.token);
   const dispatch = useDispatch();
-  console.log(token);
 
   return (
     <header className={styles.header}>
@@ -48,8 +47,8 @@ function Header() {
           </NavLink>
         </div>
 
-        <div className={styles.burgerMenu}>
-          <button data-open-burger-btn="open-burger-btn" type="button" className={styles.burgerMenuBtn} onClick={hendleIsOpenMenu}>
+        <div>
+          <button data-open-burger-btn="open-burger-btn" type="button" className={styles.burgerMenuBtn} onClick={handleIsOpenMenu}>
             <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
             <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
             <span data-open-burger-menu="open-burger-menu" className={styles.menuSpanBurger} />
@@ -67,7 +66,7 @@ function Header() {
         >
           <div ref={nodeRef} className={styles.menuMobileContainer}>
             <div className={styles.btnWrapper}>
-              <button type="button" className={styles.burgerMenuBtn} onClick={hendleIsOpenMenu}>
+              <button type="button" className={styles.burgerMenuBtn} onClick={handleIsOpenMenu}>
                 <span className={styles.closeBtnMenu} />
                 <span className={styles.closeBtnMenu} />
               </button>
@@ -81,19 +80,29 @@ function Header() {
             </div>
 
             <div className={styles.basketWrapper}>
-              <NavLink className={styles.basketLink} to="/cart">
+              <NavLink className={styles.basketLink} data-basket-text="basket-text" to="/cart">
                 <HeaderBascetIcon />
                 <p data-basket-text="basket-text" className={styles.basketLinkText}>Basket</p>
               </NavLink>
               <NavLink className={styles.FavoritesLink} to="/favorites">
                 <HeaderFavoritesIcon />
-                <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorit</p>
+                <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorite</p>
               </NavLink>
 
+              {!token && (
               <NavLink className={styles.FavoritesLink} to="/login">
+
                 <HeaderLogin />
                 <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>
               </NavLink>
+              )}
+
+              {token && (
+              <NavLink className={styles.FavoritesLink} to="/">
+                <HeaderLogin />
+                <p data-sign-in="sign-in" className={styles.basketLinkText}>Log out</p>
+              </NavLink>
+              )}
 
               <NavLink data-sign-up-link="sign-up-link" className={styles.FavoritesLink} to="/sign-up">
                 <HeaderSignUpIconMob />
@@ -119,13 +128,13 @@ function Header() {
 
         <div>
           <div className={styles.createLine}>
-            <div className={styles.navigationHeaderDesctopWrapper}>
+            <div className={styles.navigationHeaderDesktopWrapper}>
               <NavigationHeader />
               <a className={styles.phoneNumber} href="tel:+ 375 (29) 918-28-88">
                 <span className={styles.phoneNumberSpan}>+ 375 (29) 918-28-88</span>
               </a>
               <div className={styles.wrapperHeaderIconDesc}>
-                <NavLink className={styles.favoritesDescLink} to="/favorites"><HeaderFavoritesIcon /></NavLink>
+                <NavLink to="/favorites"><HeaderFavoritesIcon /></NavLink>
                 <div className={styles.basketDescLinkLine}>
                   <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
                 </div>
@@ -149,7 +158,7 @@ function Header() {
               </div>
             </div>
           </div>
-          <div className={styles.navigationHeaderFilterDesctopWrapper}>
+          <div className={styles.navigationHeaderFilterDesktopWrapper}>
             <NavigationHeaderFilter />
           </div>
         </div>

@@ -38,15 +38,17 @@ function Card(props) {
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
-  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(_id) !== -1 : false;
+  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(itemNo) !== -1 : false;
+
+  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
 
   return (
     <div key={itemNo} className={styles.cardProductBox}>
       <div
         role="button"
         tabIndex={0}
-        onClick={() => toggleFavoriteStatus(_id)}
-        onKeyDown={() => toggleFavoriteStatus(_id)}
+        onClick={() => toggleFavoriteStatus(itemNo)}
+        onKeyDown={() => toggleFavoriteStatus(itemNo)}
       >
         {isFavoriteStatus
           ? (
@@ -56,15 +58,12 @@ function Card(props) {
             <FavoriteBorderIcon className={styles.star} />
           )}
       </div>
-      <Link to={`/${name.trim().toLowerCase().split('&').join('and')
-        .split(' ')
-        .join('-')}`}
-      >
+      <Link to={`/${itemNo}`}>
         <div className={styles.cardProductImgWrapper}>
           <img src={imageUrls} className={styles.cardProductImg} alt={name} />
         </div>
         <div className={styles.cardProductInfoWrapper}>
-          <span className={styles.cardInfoTitleText}>{name}</span>
+          <span className={styles.cardInfoTitleText}>{renderStringTitle(name)}</span>
         </div>
       </Link>
       <div className={styles.cardPriceWrapper}>
@@ -107,6 +106,7 @@ function Card(props) {
 Card.propTypes = {
   productCardData: PropTypes.shape({
     _id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    itemNo: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     name: PropTypes.string,
     currentPrice: PropTypes.number,
     imageUrls: PropTypes.arrayOf(PropTypes.string),
