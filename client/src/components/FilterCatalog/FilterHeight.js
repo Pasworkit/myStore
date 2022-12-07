@@ -1,33 +1,13 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterHeight() {
-  const [checkedHeightShort, setCheckedHeightShort] = useState(false);
-  const [checkedHeightMedium, setCheckedHeightMedium] = useState(false);
-  const [checkedHeightHigh, setCheckedHeightHigh] = useState(false);
-  const [checkedHeightMultirange, setCheckedHeightMultirange] = useState(false);
-  const [showcheckedHeight, setShowcheckedHeight] = useState(false);
-
-  const handleChangeHeightShort = (event) => {
-    setCheckedHeightShort(event.target.checked);
-  };
-
-  const handleChangeHeightMedium = (event) => {
-    setCheckedHeightMedium(event.target.checked);
-  };
-
-  const handleChangeHeightHigh = (event) => {
-    setCheckedHeightHigh(event.target.checked);
-  };
-
-  const handleChangeHeightMultirange = (event) => {
-    setCheckedHeightMultirange(event.target.checked);
-  };
+function FilterHeight({ showcheckedHeight, setShowcheckedHeight, handleChangeHeight }) {
+  const checkeFilter = useSelector(store => store.filter);
 
   return (
     <div className={styles.containerFilterMenu}>
@@ -41,8 +21,9 @@ function FilterHeight() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedHeightShort}
-                onChange={handleChangeHeightShort}
+                checked={checkeFilter.short}
+                name="short"
+                onChange={handleChangeHeight}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -51,8 +32,9 @@ function FilterHeight() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedHeightMedium}
-                onChange={handleChangeHeightMedium}
+                checked={checkeFilter.medium}
+                name="medium"
+                onChange={handleChangeHeight}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -61,8 +43,9 @@ function FilterHeight() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedHeightHigh}
-                onChange={handleChangeHeightHigh}
+                checked={checkeFilter.high}
+                name="high"
+                onChange={handleChangeHeight}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
@@ -71,8 +54,9 @@ function FilterHeight() {
           <FormControlLabel
             control={(
               <Checkbox
-                checked={checkedHeightMultirange}
-                onChange={handleChangeHeightMultirange}
+                checked={checkeFilter.multirange}
+                name="multirange"
+                onChange={handleChangeHeight}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
 )}
