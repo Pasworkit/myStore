@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
+import { Link } from 'react-router-dom';
 import styles from './CartItem.module.scss';
 import { ReactComponent as DeleteIcon } from '../../svg/icon-delete.svg';
 import { ReactComponent as MinusIcon } from '../../svg/icon-minus.svg';
@@ -13,6 +14,7 @@ function CartItem({
     name,
     currentPrice,
     imageUrls,
+    itemNo,
   },
 }) {
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
@@ -24,13 +26,16 @@ function CartItem({
   // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies();
   const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart, cookies.token));
-  // const addToCartHandler = () => dispatch(toggleProductInCart(_id));
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantityInStockCardCount, isInCart, cookies.token));
+
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(cookies.token, _id, quantityCardCount, quantityInStockCardCount, isInCart));
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   return (
     <li className={styles.item}>
-      <img className={styles.img} src={imageUrls} alt={name} />
+
+      <Link to={`/${itemNo}`}>
+        <img className={styles.img} src={imageUrls} alt={name} />
+      </Link>
 
       <span className={styles.title}>{name}</span>
 
