@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './OrderPage.module.scss';
 import { createOrder } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
+import { deleteCart } from '../../store/products/actionCreatorsProducts';
 
 function OrderPage() {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ function OrderPage() {
   useEffect(() => {
     dispatch(fetchCart(token));
   }, []);
+
+  const deleteCartHandler = () => dispatch(deleteCart(token));
 
   const createOrderFromValues = (values) => ({
     letterSubject: 'Thank you for order! You are welcome!',
@@ -67,6 +70,7 @@ function OrderPage() {
         data, status,
       } = await createOrder(token, createOrderFromValues(values));
       if (status === 200) {
+        deleteCartHandler();
         navigate('/');
       } else {
         throw new Error('Invalid');
@@ -164,7 +168,7 @@ function OrderPage() {
                 <p className={styles.cart__textOrder}>
                   Total price:
                   <span className={styles.cart__amountProducts}>
-                    {totalPrice}
+                    {totalPrice.toFixed(2)}
                     {' '}
                     $
                   </span>

@@ -1,8 +1,8 @@
 import {
-  GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART, INCREMENT_QUANTITY_PRODUCT_IN_CART, DECREMENT_QUANTITY_PRODUCT_IN_CART,
+  GET_PRODUCTS, TOGGLE_PRODUCT_IN_CART, INCREMENT_QUANTITY_PRODUCT_IN_CART, DECREMENT_QUANTITY_PRODUCT_IN_CART, DELETE_CART,
 } from './actionsProducts';
 import {
-  getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart, getCart,
+  getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart, getCart, deleteCartFromBack,
 } from '../../API/ApiTest';
 
 export const getProducts = () => async (dispatch) => {
@@ -48,8 +48,8 @@ export const toggleProductInCart = (id, isInCart, token, quantityInCart) => asyn
     } catch (error) {
       console.error(error);
     }
-    dispatch({ type: TOGGLE_PRODUCT_IN_CART, payload: id });
   }
+  dispatch({ type: TOGGLE_PRODUCT_IN_CART, payload: id });
 };
 
 export const incrementQuantityProductInCart = (token, id, quantityInCart, quantityInStock, isInCart) => async (dispatch) => {
@@ -97,4 +97,13 @@ export const decrementQuantityProductInCart = (id, quantityInCart, isInCart, tok
     }
   }
   dispatch({ type: DECREMENT_QUANTITY_PRODUCT_IN_CART, payload: { id, quantityInCart } });
+};
+
+export const deleteCart = (token) => async (dispatch) => {
+  try {
+    await deleteCartFromBack(token);
+  } catch (error) {
+    console.error(error);
+  }
+  dispatch({ type: DELETE_CART, payload: { token } });
 };

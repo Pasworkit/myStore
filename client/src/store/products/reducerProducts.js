@@ -5,6 +5,7 @@ import {
   TOGGLE_PRODUCT_IN_CART,
   INCREMENT_QUANTITY_PRODUCT_IN_CART,
   DECREMENT_QUANTITY_PRODUCT_IN_CART,
+  DELETE_CART,
 } from './actionsProducts';
 
 const initialState = {
@@ -137,9 +138,25 @@ const reducerProducts = (state = initialState, action) => {
       });
     }
 
+    case DELETE_CART: {
+      return produce(state, draftState => {
+        const { products } = state;
+        const productsNotIsInCart = products.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
+        draftState.products = productsNotIsInCart;
+        draftState.productsInCart = [];
+        draftState.totalPrice = 0;
+        draftState.amountProductsInCart = 0;
+
+        localStorage.setItem('products', JSON.stringify(productsNotIsInCart));
+        localStorage.setItem('productsInCart', []);
+      });
+    }
+
     default:
       return state;
   }
 };
 
 export default reducerProducts;
+
+// const products = productsData.data.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
