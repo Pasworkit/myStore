@@ -22,6 +22,8 @@ function OrderPage() {
   const customerId = useSelector((store) => store.auth.id);
   const products = useSelector((store) => store.order.data);
   const dispatch = useDispatch();
+  const totalPrice = useSelector((store) => store.productsAll.totalPrice);
+  const amountProducts = useSelector((store) => store.productsAll.amountProductsInCart);
 
   useEffect(() => {
     dispatch(fetchCart(token));
@@ -157,12 +159,12 @@ function OrderPage() {
                 <p className={styles.cart__titleOrder}>Your order</p>
                 <p className={styles.cart__textOrder}>
                   Amount products:
-                  <span className={styles.cart__amountProducts}>{6}</span>
+                  <span className={styles.cart__amountProducts}>{amountProducts}</span>
                 </p>
                 <p className={styles.cart__textOrder}>
                   Total price:
                   <span className={styles.cart__amountProducts}>
-                    {5}
+                    {totalPrice}
                     {' '}
                     $
                   </span>
