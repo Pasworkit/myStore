@@ -11,8 +11,9 @@ import { setUser } from '../../store/slices/authSlice';
 
 function LoginPage() {
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies(['token']);
-  console.log(cookies);
+
   const dispatch = useDispatch();
 
   const formik = useFormik({

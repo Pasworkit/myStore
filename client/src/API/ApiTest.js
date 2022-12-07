@@ -48,3 +48,10 @@ export const deleteProductInCart = async (id, token) => axios.delete(`${process.
     'Authorization': `Bearer ${token}`,
   },
 });
+
+export const deleteCartFromBack = async (token) => axios.delete(`${process.env.REACT_APP_API_URL}/cart`, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
