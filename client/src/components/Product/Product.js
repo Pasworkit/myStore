@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import WavesOutlinedIcon from '@mui/icons-material/WavesOutlined';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
@@ -10,10 +10,12 @@ import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useCookies } from 'react-cookie';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
+import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
 
 function Product() {
   const { linkItemNo } = useParams();
@@ -22,10 +24,20 @@ function Product() {
     setShow(!show); // Toggle accordion
   };
   const products = useSelector((state) => state.productsAll.products);
+
   const [theProduct] = products.filter((product) => product.itemNo === linkItemNo);
   const {
-    // eslint-disable-next-line max-len
-    itemNo, name, currentPrice, imageUrls, description, categories, botanicalName, isPetAndBabySafe, isEasyCare, quantity,
+    _id,
+    itemNo,
+    name,
+    currentPrice,
+    imageUrls,
+    description,
+    categories,
+    botanicalName,
+    isPetAndBabySafe,
+    isEasyCare,
+    quantity,
   } = theProduct;
   const {
     text, light, watering, humidity,
@@ -52,39 +64,18 @@ function Product() {
     localStorage.setItem('favoriteArr', JSON.stringify(newFavoriteArr));
   };
 
-  const [quantityCount, setQuantityCount] = useState(1);
-  const incrementProductQuantity = () => {
-    setQuantityCount((prevState) => {
-      if (prevState < quantity) {
-        return prevState + 1;
-      }
-      // eslint-disable-next-line no-alert
-      alert(`You can't buy more products than there is in stock: ${quantity}`);
-      return prevState;
-    });
-  };
-  const decrementProductQuantity = () => {
-    setQuantityCount((prevState) => {
-      if (prevState > 1) {
-        return prevState - 1;
-      }
-      return prevState;
-    });
-  };
+  const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
+  const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
 
-  const [/* cartArr */, setCartArr] = useState(JSON.parse(localStorage.getItem('cartArr')) || []);
-  // eslint-disable-next-line no-shadow
-  const addToCart = (itemNo) => {
-    let newCartArr = JSON.parse(localStorage.getItem('cartArr')) || [];
-    // newCartArr.push(id);
-    newCartArr = [...newCartArr, ...[...Array(quantityCount)].map(() => itemNo)];
-    setCartArr(newCartArr);
-    localStorage.setItem('cartArr', JSON.stringify(newCartArr));
-    const productInCartCount = {};
-    // eslint-disable-next-line max-len
-    newCartArr.forEach((item) => { productInCartCount[item] = (productInCartCount[item] || 0) + 1; });
-    localStorage.setItem('cartObj', JSON.stringify(productInCartCount));
+  const dispatch = useDispatch();
+
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies();
+  const addToCartHandler = () => {
+    dispatch(toggleProductInCart(_id, isInCart, cookies.token, quantityCardCount));
   };
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(cookies.token, _id, quantityCardCount, quantity, isInCart));
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
 
@@ -182,22 +173,22 @@ function Product() {
           <div className={styles.quantityBlock}>
             <p className={styles.infoTitleText}>Quantity:</p>
             <p className={styles.quantitySet}>
-              <span role="button" tabIndex={0} onClick={decrementProductQuantity} onKeyDown={decrementProductQuantity}>
+              <span role="button" tabIndex={0} onClick={decrementCardQuantity} onKeyDown={decrementCardQuantity}>
                 <RemoveIcon className={styles.minus} />
               </span>
-              <span className={styles.num}>{quantityCount}</span>
-              <span role="button" tabIndex={0} onClick={incrementProductQuantity} onKeyDown={incrementProductQuantity}>
+              <span className={styles.num}>{quantityCardCount}</span>
+              <span role="button" tabIndex={0} onClick={incrementCardQuantity} onKeyDown={incrementCardQuantity}>
                 <AddIcon className={styles.plus} />
               </span>
             </p>
           </div>
           <ButtonBuy
             handleClick={() => {
-              addToCart(itemNo);
+              addToCartHandler();
             }}
             backgroundColor="#456F49"
             padding="15px 102px"
-            text="Add to cart"
+            text={isInCart ? 'Delete' : 'Add to cart'}
             id={itemNo}
           />
         </div>

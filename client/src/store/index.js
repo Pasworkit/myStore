@@ -6,6 +6,7 @@ import catalogsReduser from './slices/catalogSlice';
 import orderReducer from './slices/orderSlice';
 import filterCatalogReduser from './slices/filterCatalogSlice';
 
+
 const store = configureStore({
   reducer: {
     productsAll: reducerProducts,
