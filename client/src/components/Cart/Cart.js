@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
 import CartSlider from '../CartSlider/CartSlider';
 
 function Cart({ productsCartSlider }) {
   const productsCart = useSelector((store) => store.productsAll.productsInCart);
-
-  const amountProducts = 3;
-  const totalPrice = 3500;
+  const totalPrice = useSelector((store) => store.productsAll.totalPrice);
+  const amountProducts = useSelector((store) => store.productsAll.amountProductsInCart);
 
   return (
     <section className={styles.cart__container}>
@@ -39,7 +39,7 @@ function Cart({ productsCartSlider }) {
             <p className={styles.cart__textOrderStar}>* excluding delivery</p>
           </div>
           <div className={styles.cart__buttons}>
-            <button type="button" className={styles.cart__button}>Continue shopping</button>
+            <NavLink className={styles.cart__button} to="/catalog">Continue shopping</NavLink>
             <button type="button" className={styles.cart__buttonOrder}>Checkout</button>
           </div>
         </div>

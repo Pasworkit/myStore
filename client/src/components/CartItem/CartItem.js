@@ -24,8 +24,8 @@ function CartItem({
   // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies();
   const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart, cookies.token));
-  // const addToCartHandler = () => dispatch(toggleProductInCart(_id));
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(_id, quantityCardCount, quantityInStockCardCount, isInCart, cookies.token));
+
+  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(cookies.token, _id, quantityCardCount, quantityInStockCardCount, isInCart));
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
 
   return (

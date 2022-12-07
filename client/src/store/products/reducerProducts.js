@@ -10,6 +10,8 @@ import {
 const initialState = {
   products: [],
   productsInCart: [],
+  totalPrice: 0,
+  amountProductsInCart: 0,
 };
 
 const reducerProducts = (state = initialState, action) => {
@@ -22,6 +24,15 @@ const reducerProducts = (state = initialState, action) => {
 
         draftState.products = action.payload;
         draftState.productsInCart = productsInCart;
+        let amountProducts = 0;
+        let totalPrice = 0;
+        productsInCart.forEach(item => {
+          totalPrice += (item.currentPrice * item.quantityInCart);
+          amountProducts += (item.quantityInCart);
+        });
+
+        draftState.totalPrice = totalPrice;
+        draftState.amountProductsInCart = amountProducts;
 
         localStorage.setItem('products', JSON.stringify(draftState.products));
         localStorage.setItem(
@@ -40,9 +51,20 @@ const reducerProducts = (state = initialState, action) => {
         if (!draftState.products[index].isInCart) {
           draftState.products[index].quantityInCart = 1;
         }
-        draftState.productsInCart = draftState.products.filter(
+        const productsInCart = draftState.products.filter(
           ({ isInCart }) => isInCart,
         );
+        draftState.productsInCart = productsInCart;
+
+        let amountProducts = 0;
+        let totalPrice = 0;
+        productsInCart.forEach(item => {
+          totalPrice += (item.currentPrice * item.quantityInCart);
+          amountProducts += (item.quantityInCart);
+        });
+
+        draftState.totalPrice = totalPrice;
+        draftState.amountProductsInCart = amountProducts;
 
         localStorage.setItem('products', JSON.stringify(draftState.products));
         localStorage.setItem(
@@ -57,9 +79,23 @@ const reducerProducts = (state = initialState, action) => {
         const index = draftState.products.findIndex(
           ({ _id }) => _id === action.payload.id,
         );
-        if (action.payload.quantityInCart < action.payload.quantity) {
+        if (action.payload.quantityInCart < action.payload.quantityInStock) {
           draftState.products[index].quantityInCart = action.payload.quantityInCart + 1;
         }
+
+        const productsInCart = draftState.products.filter(
+          ({ isInCart }) => isInCart,
+        );
+
+        let amountProducts = 0;
+        let totalPrice = 0;
+        productsInCart.forEach(item => {
+          totalPrice += (item.currentPrice * item.quantityInCart);
+          amountProducts += (item.quantityInCart);
+        });
+
+        draftState.totalPrice = totalPrice;
+        draftState.amountProductsInCart = amountProducts;
 
         localStorage.setItem('products', JSON.stringify(draftState.products));
         localStorage.setItem(
@@ -78,6 +114,20 @@ const reducerProducts = (state = initialState, action) => {
         if (quantityInCart > 1) {
           draftState.products[index].quantityInCart = action.payload.quantityInCart - 1;
         }
+
+        const productsInCart = draftState.products.filter(
+          ({ isInCart }) => isInCart,
+        );
+
+        let amountProducts = 0;
+        let totalPrice = 0;
+        productsInCart.forEach(item => {
+          totalPrice += (item.currentPrice * item.quantityInCart);
+          amountProducts += (item.quantityInCart);
+        });
+
+        draftState.totalPrice = totalPrice;
+        draftState.amountProductsInCart = amountProducts;
 
         localStorage.setItem('products', JSON.stringify(draftState.products));
         localStorage.setItem(

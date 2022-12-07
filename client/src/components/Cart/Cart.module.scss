@@ -102,6 +102,9 @@
 }
 
 .cart__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	padding: 15px 0;
 	margin-bottom: 12px;
