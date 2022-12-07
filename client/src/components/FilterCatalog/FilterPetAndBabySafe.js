@@ -1,15 +1,12 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterPetAndBabySafe({ handleChangePetAndBabySafe }) {
-  const [showcheckedPetAndBabySafe, setShowcheckedPetAndBabySafe] = useState(false);
-
+function FilterPetAndBabySafe({ showcheckedPetAndBabySafe, setShowcheckedPetAndBabySafe, handleChangePetAndBabySafe }) {
   const checkeFilter = useSelector(store => store.filter);
 
   return (

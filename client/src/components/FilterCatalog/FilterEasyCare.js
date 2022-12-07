@@ -1,14 +1,13 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterEasyCare({ handleChangeEasyCare }) {
-  const [showcheckedEasyCare, setShowcheckedEasyCare] = useState(false);
+function FilterEasyCare({ showcheckedEasyCare, setShowcheckedEasyCare, handleChangeEasyCare }) {
   const checkeFilter = useSelector(store => store.filter);
 
   return (

@@ -97,11 +97,58 @@ const filterCatalogSlice = createSlice({
         state.heightRange = state.heightRange.filter(el => el !== action.payload.name);
       }
     },
+
+    createNewArrCategory: (state, action) => {
+      state.categories = action.payload;
+      // eslint-disable-next-line no-return-assign
+      state.categories.forEach(el => state[el] = true);
+    },
+    createNewArrIsPopular: (state, action) => {
+      if (action.payload === 'true') {
+        state.isPopular.push(action.payload);
+        state.popular = true;
+      }
+
+      if (action.payload === 'false') {
+        state.isPopular.push(action.payload);
+        state['not-popular'] = true;
+      }
+    },
+
+    createNewArrIsEasyCare: (state, action) => {
+      if (action.payload === 'true') {
+        state.isEasyCare.push(action.payload);
+        state['easy-care-yes'] = true;
+      }
+
+      if (action.payload === 'false') {
+        state.isEasyCare.push(action.payload);
+        state['easy-care-no'] = true;
+      }
+    },
+
+    createNewArrIsPetAndBabySafe: (state, action) => {
+      if (action.payload === 'true') {
+        state.isPetAndBabySafe.push(action.payload);
+        state.safe = true;
+      }
+
+      if (action.payload === 'false') {
+        state.isPetAndBabySafe.push(action.payload);
+        state['not-safe'] = true;
+      }
+    },
+
+    createNewArrHeightRange: (state, action) => {
+      state.heightRange = action.payload;
+      // eslint-disable-next-line no-return-assign
+      state.heightRange.forEach(el => state[el] = true);
+    },
   },
 });
 
 export const {
-  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter,
+  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter, createNewArrCategory, createNewArrIsPopular, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrHeightRange,
 } = filterCatalogSlice.actions;
 
 export default filterCatalogSlice.reducer;

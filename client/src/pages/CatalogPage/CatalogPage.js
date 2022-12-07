@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 
 import Catalog from '../../components/Catalog/Catalog';
 
-import { getAllProducts, paginationCatalog } from '../../store/slices/catalogSlice';
+// import { getAllProducts, paginationCatalog } from '../../store/slices/catalogSlice';
 
 function CatalogPage() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-    setTimeout(() => {
-      dispatch(paginationCatalog());
-    }, 300);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllProducts());
+  //   setTimeout(() => {
+  //     dispatch(paginationCatalog());
+  //   }, 300);
+  // }, []);
 
   return (
     <main>

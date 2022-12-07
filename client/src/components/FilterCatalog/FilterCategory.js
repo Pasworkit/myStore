@@ -1,16 +1,13 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
-function FilterCategory({ handleChangeCategories }) {
-  const [showcheckedCategory, setShowcheckedCategory] = useState(false);
-
+function FilterCategory({ showcheckedCategory, setShowcheckedCategory, handleChangeCategories }) {
   const checkeFilter = useSelector(store => store.filter);
 
   return (
