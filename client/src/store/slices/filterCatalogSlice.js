@@ -23,6 +23,9 @@ const filterCatalogSlice = createSlice({
     high: false,
     multirange: false,
     heightRange: [],
+    price: [0, 500],
+    minPrice: null,
+    maxPrice: null,
   },
 
   reducers: {
@@ -98,25 +101,36 @@ const filterCatalogSlice = createSlice({
       }
     },
 
+    changePricefilter: (state, action) => {
+      state.price = action.payload;
+    },
+
+    setPriceMinMaxfilter: (state, action) => {
+      // eslint-disable-next-line prefer-destructuring
+      state.minPrice = action.payload[0];
+      // eslint-disable-next-line prefer-destructuring
+      state.maxPrice = action.payload[1];
+    },
+
     createNewArrCategory: (state, action) => {
       state.categories = action.payload;
       // eslint-disable-next-line no-return-assign
       state.categories.forEach(el => state[el] = true);
     },
     createNewArrIsPopular: (state, action) => {
-      if (action.payload === 'true') {
+      if (action.payload === 'true' && state.isPopular.length === 0) {
         state.isPopular.push(action.payload);
         state.popular = true;
       }
 
-      if (action.payload === 'false') {
+      if (action.payload === 'false' && state.isPopular.length === 0) {
         state.isPopular.push(action.payload);
         state['not-popular'] = true;
       }
     },
 
     createNewArrIsEasyCare: (state, action) => {
-      if (action.payload === 'true') {
+      if (action.payload === 'true' && state.isEasyCare.length === 0) {
         state.isEasyCare.push(action.payload);
         state['easy-care-yes'] = true;
       }
@@ -128,12 +142,12 @@ const filterCatalogSlice = createSlice({
     },
 
     createNewArrIsPetAndBabySafe: (state, action) => {
-      if (action.payload === 'true') {
+      if (action.payload === 'true' && state.isPetAndBabySafe.length === 0) {
         state.isPetAndBabySafe.push(action.payload);
         state.safe = true;
       }
 
-      if (action.payload === 'false') {
+      if (action.payload === 'false' && state.isPetAndBabySafe.length === 0) {
         state.isPetAndBabySafe.push(action.payload);
         state['not-safe'] = true;
       }
@@ -148,7 +162,7 @@ const filterCatalogSlice = createSlice({
 });
 
 export const {
-  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter, createNewArrCategory, createNewArrIsPopular, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrHeightRange,
+  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter, changePricefilter, setPriceMinMaxfilter, createNewArrCategory, createNewArrIsPopular, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrHeightRange,
 } = filterCatalogSlice.actions;
 
 export default filterCatalogSlice.reducer;

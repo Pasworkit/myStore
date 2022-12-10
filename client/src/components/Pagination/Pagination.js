@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useSearchParams } from 'react-router-dom';
 import {
-  nextPageCatalog, paginationCatalog, prevPageCatalog, setCurrentPage,
+  nextPageCatalog, prevPageCatalog, setCurrentPage,
 } from '../../store/slices/catalogSlice';
 import NextIconC from '../Catalog/CatalogPaginationIcon/NextIcon/NextIcon';
 import PreviousIconC from '../Catalog/CatalogPaginationIcon/PreviousIcon/PreviousIcon';
@@ -12,21 +12,20 @@ import styles from './Pagination.module.scss';
 function Pagination() {
   const pageNumber = [];
   // const [nextAndPrevPage, setNextAndPrevPage] = useState(1);
-  const catalogProducts = useSelector((store) => store.catalog.catalogProducts);
+  const productsQuantity = useSelector((store) => store.catalog.productsQuantity);
   const productsPurPage = useSelector((store) => store.catalog.productsPurPage);
-  const currentPage = useSelector((store) => store.catalog.currentPage);
+  const currentPageNumber = useSelector((store) => store.catalog.currentPageNumber);
   // const [searchParams, setSearchParams] = useSearchParams();
 
   // const pageUrl = searchParams.get('page') || '';
   const dispatch = useDispatch();
 
-  for (let i = 1; i <= Math.ceil(catalogProducts.length / productsPurPage); i += 1) {
+  for (let i = 1; i <= Math.ceil(productsQuantity / productsPurPage); i += 1) {
     pageNumber.push(i);
   }
 
   const handleClickPadination = (num) => {
     dispatch(setCurrentPage(num));
-    dispatch(paginationCatalog());
     // setNextAndPrevPage(num);
     // if (num !== 1) {
     //   setSearchParams({ page: num });
@@ -63,23 +62,21 @@ function Pagination() {
 
   useEffect(() => {
     // dispatch(setCurrentPage(pageUrl === '' ? 1 : Number(pageUrl)));
-    dispatch(paginationCatalog());
 
     // setNextAndPrevPage(pageUrl === '' ? 1 : Number(pageUrl));
   }, []);
 
   return (
     <>
-      {catalogProducts.length > 9 && (
+      {productsQuantity > 9 && (
       <button
         type="button"
         onClick={() => {
-          if (currentPage === 1) {
+          if (currentPageNumber === 1) {
             return;
           }
           setPrevPageUrl();
           dispatch(prevPageCatalog());
-          dispatch(paginationCatalog());
           window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -93,7 +90,7 @@ function Pagination() {
       <ul className={styles.listPagination}>
         {pageNumber.map((number) => (
           <li
-            className={currentPage === number ? styles.itemActivePagination : ''}
+            className={currentPageNumber === number ? styles.itemActivePagination : ''}
             key={number}
           >
             <button
@@ -109,16 +106,15 @@ function Pagination() {
           </li>
         ))}
       </ul>
-      {catalogProducts.length > 9 && (
+      {productsQuantity > 9 && (
       <button
         type="button"
         onClick={() => {
-          if (currentPage === Math.ceil(catalogProducts.length / productsPurPage)) {
+          if (currentPageNumber === Math.ceil(productsQuantity / productsPurPage)) {
             return;
           }
           setNextPageUrl();
           dispatch(nextPageCatalog());
-          dispatch(paginationCatalog());
           window.scrollTo({
             top: 0,
             behavior: 'smooth',

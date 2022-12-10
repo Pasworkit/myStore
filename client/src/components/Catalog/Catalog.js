@@ -9,7 +9,7 @@ import Pagination from '../Pagination/Pagination';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
-  const currentProducts = useSelector((state) => state.catalog.currentProducts);
+  const catalogProducts = useSelector((state) => state.catalog.catalogProducts);
 
   const handleClickShowFilter = () => {
     setShowMobileFilter((prevStatus) => !prevStatus);
@@ -24,7 +24,7 @@ function Catalog() {
           <FilterCatalog />
         </div>
 
-        <div className={currentProducts.length < 4 ? styles.wrapperWidth : ''}>
+        <div className={catalogProducts.length < 4 ? styles.wrapperWidth : ''}>
           <h2 className={styles.heading}>Catalog</h2>
 
           <div className={styles.wrapperMobile}>
@@ -49,7 +49,7 @@ function Catalog() {
           </div>
 
           <ul className={styles.wrapperProductsList}>
-            {currentProducts.map((item) => {
+            {catalogProducts.map((item) => {
               const { _id: idItem } = item;
               return (
                 <li
