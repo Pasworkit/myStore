@@ -1,16 +1,54 @@
 import { Form, Formik, useFormik } from 'formik';
 import {
-  Button, Container, Grid, TextField,
+  Button, Container, Grid, TextField, ThemeProvider,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { createTheme } from '@mui/material/styles';
+import * as Yup from 'yup';
 import { createCustomer } from '../../API/ApiTest';
 import styles from './SignUpPage.module.scss';
 import { regUser } from '../../store/slices/authSlice';
 
 function SignUpPage() {
+  const phoneRegExp = /^\+?[1-9][0-9]{11}$/;
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#456F49',
+      },
+      secondary: {
+        main: '#DE1818',
+      },
+    },
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const schema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, 'First Name must be between 2 and 25 characters')
+      .max(25, 'Too Long!')
+      .required('Required'),
+    lastName: Yup.string()
+      .min(2, 'Last Name must be between 2 and 25 characters')
+      .max(25, 'Too Long!')
+      .required('Required'),
+    login: Yup.string()
+      .min(3, 'Login must be between 3 and 10 characters!')
+      .max(10, 'Too Long!')
+      .required('Required'),
+    email: Yup.string()
+      .email('Invalid email format')
+      .required('Mail is required'),
+    password: Yup.string()
+      .min(7, 'Password must be between 7 and 30 characters')
+      .max(30, 'Too Long!')
+      .required('Required'),
+    telephone: Yup.string().matches(phoneRegExp, 'Phone number is not valid')
+      .required('Required'),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -19,7 +57,7 @@ function SignUpPage() {
       login: '',
       email: '',
       password: '',
-      telephone: '',
+      telephone: '+38',
     },
     onSubmit: async (values, { resetForm }) => {
       const { status, data } = await createCustomer(values);
@@ -39,50 +77,66 @@ function SignUpPage() {
         throw new Error('Invalid');
       }
     },
+    validationSchema: schema,
   });
 
   return (
-    <Container>
-      <h1 className={styles.title}>Sign Up</h1>
-      <Formik
-        initialValues={formik.initialValues}
-        onSubmit={formik.handleSubmit}
-      >
-        <Form>
-          <Grid container spacing={2}>
+    <ThemeProvider theme={theme}>
+      <Container className={styles.container} sx={{ mb: 4 }}>
+        <h1 className={styles.title}>Sign Up</h1>
+        <Formik
+          initialValues={formik.initialValues}
+          onSubmit={formik.handleSubmit}
+          isValid={formik.isValid}
+        >
+          <Form>
+            <Grid container spacing={2}>
 
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="firstName" label="Name" value={formik.values.firstName} onChange={formik.handleChange} />
+                {formik.errors.firstName
+                  ? <div>{formik.errors.firstName}</div> : null}
+              </Grid>
+
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="lastName" label="Last Name" value={formik.values.lastName} onChange={formik.handleChange} />
+                {formik.errors.lastName
+                  ? <div>{formik.errors.lastName}</div> : null}
+              </Grid>
+
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="login" label="Login" value={formik.values.login} onChange={formik.handleChange} />
+                {formik.errors.login
+                  ? <div>{formik.errors.login}</div> : null}
+              </Grid>
+
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
+                {formik.errors.password
+                  ? <div>{formik.errors.password}</div> : null}
+              </Grid>
+
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
+                {formik.errors.email
+                  ? <div>{formik.errors.email}</div> : null}
+              </Grid>
+
+              <Grid item md={6}>
+                <TextField type="text" fullWidth name="telephone" label="Telephone" value={formik.values.telephone} onChange={formik.handleChange} />
+                {formik.errors.telephone
+                  ? <div>{formik.errors.telephone}</div> : null}
+              </Grid>
+
+            </Grid>
             <Grid item md={6}>
-              <TextField type="text" fullWidth name="firstName" label="Name" value={formik.values.firstName} onChange={formik.handleChange} />
+              <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 2, mb: 2 }} disabled={!formik.isValid}>Sign Up</Button>
             </Grid>
 
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="lastName" label="Last Name" value={formik.values.lastName} onChange={formik.handleChange} />
-            </Grid>
-
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="login" label="Login" value={formik.values.login} onChange={formik.handleChange} />
-            </Grid>
-
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
-            </Grid>
-
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
-            </Grid>
-
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="telephone" label="Telephone" value={formik.values.telephone} onChange={formik.handleChange} />
-            </Grid>
-
-          </Grid>
-          <Grid item md={6}>
-            <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 2, mb: 2 }}>Sign Up</Button>
-          </Grid>
-
-        </Form>
-      </Formik>
-    </Container>
+          </Form>
+        </Formik>
+      </Container>
+    </ThemeProvider>
   );
 }
 

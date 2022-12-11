@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.container {
+  border: 2px solid #2A592E;
+  border-radius: 1%;
+}
+
 .title {
   font-weight: 500;
   font-size: 16px;
@@ -140,3 +145,5 @@
     margin-bottom: 20px;
   }
 }
+
+

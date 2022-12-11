@@ -67,7 +67,7 @@ function Footer() {
               <div className={styles.footerMailAndTelPositionDesc}>
                 <div>
                   <h2 className={styles.footerContactsEmailText}>E-mail</h2>
-                  <a className={styles.footerContactsEmailLink} href="mailto:homedecor@gmail.com">homedecor@gmail.com</a>
+                  <a className={styles.footerContactsEmailLink} href="mailto:HomeDecoPostTest@gmail.com">HomeDecoPostTest@gmail.com</a>
                 </div>
                 <div>
                   <p className={styles.footerContactsEmailPhone}>Phone</p>
