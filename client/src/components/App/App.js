@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import AppRoutes from '../../AppRoutes';
-import { getProducts } from '../../store/products/actionCreatorsProducts';
+import { getProducts } from '../../store/slices/productsSlice';
 
 function App() {
   const dispatch = useDispatch();

@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const getProductsFromBack = async () => axios.get(`${process.env.REACT_APP_API_URL}/products`);
 
+export const getProductByItemNumber = async (itemNumber) => axios.get(`${process.env.REACT_APP_API_URL}/products/${itemNumber}`);
+
 export const createCustomer = async (newUser) => axios.post(`${process.env.REACT_APP_API_URL}/customers`, newUser);
 
 export const loginCustomer = async (userData) => axios.post(`${process.env.REACT_APP_API_URL}/customers/login`, userData);

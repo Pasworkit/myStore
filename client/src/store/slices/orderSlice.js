@@ -28,13 +28,32 @@ const orderSlice = createSlice({
 const { postOrder, cartClient } = orderSlice.actions;
 
 const fetchCart = (token) => async (dispatch) => {
-  try {
-    const { status, data: { products } } = await getCart(token);
-    if (status === 200) {
-      dispatch(cartClient(products));
+  if (token) {
+    try {
+      const { status, data: { products } } = await getCart(token);
+      if (status === 200) {
+        dispatch(cartClient(products));
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
+  } else {
+    const dataProductsInCart = JSON.parse(localStorage.getItem('productsInCart')).map((product) => ({
+      _id: product._id,
+      cartQuantity: product.quantityInCart,
+      product,
+    }));
+    const productsInCart = dataProductsInCart.map(({ _id, product, cartQuantity }) => {
+      delete product.quantityInCart;
+      delete product.isInCart;
+      return {
+        _id,
+        product,
+        cartQuantity,
+      };
+    });
+
+    dispatch(cartClient(productsInCart));
   }
 };
 

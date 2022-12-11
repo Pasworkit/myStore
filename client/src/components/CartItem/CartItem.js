@@ -6,7 +6,7 @@ import styles from './CartItem.module.scss';
 import { ReactComponent as DeleteIcon } from '../../svg/icon-delete.svg';
 import { ReactComponent as MinusIcon } from '../../svg/icon-minus.svg';
 import { ReactComponent as PlusIcon } from '../../svg/icon-plus.svg';
-import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
+import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
 
 function CartItem({
   product: {

@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './OrderPage.module.scss';
 import { createOrder } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
-import { deleteCart } from '../../store/products/actionCreatorsProducts';
+import { deleteCart } from '../../store/slices/productsSlice';
 
 function OrderPage() {
   const navigate = useNavigate();
@@ -35,8 +35,8 @@ function OrderPage() {
   const createOrderFromValues = (values) => ({
     letterSubject: 'Thank you for order! You are welcome!',
     letterHtml:
-        '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
-        + '<p>In this place will be good letter</p>',
+      '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
+      + '<p>In this place will be good letter</p>',
     products,
     customerId,
     shipping: values.shipping,
