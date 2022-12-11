@@ -144,7 +144,7 @@ function OrderPage() {
                   </Button>
                   <Button
                     type="button"
-                    pre={formik.values.shipping === 'NovaPoshta'}
+                    disabled={formik.values.shipping === 'NovaPoshta'}
                     onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}
                   >
                     Nova Poshta
