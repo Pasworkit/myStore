@@ -158,11 +158,38 @@ const filterCatalogSlice = createSlice({
       // eslint-disable-next-line no-return-assign
       state.heightRange.forEach(el => state[el] = true);
     },
+
+    deleteCategorisFilter: (state, action) => {
+      state[action.payload] = false;
+      state.categories = state.categories.filter(el => el !== action.payload);
+    },
+    deleteIsPopularFilter: (state, action) => {
+      state[action.payload.name] = false;
+      state.isPopular = state.isPopular.filter(el => el !== action.payload.bool);
+    },
+    deleteIsEasyCareFilter: (state, action) => {
+      state[action.payload.name] = false;
+      state.isEasyCare = state.isEasyCare.filter(el => el !== action.payload.bool);
+    },
+    deletePetAndBabeSafeFilter: (state, action) => {
+      state[action.payload.name] = false;
+      state.isPetAndBabySafe = state.isPetAndBabySafe.filter(el => el !== action.payload.bool);
+    },
+    deleteHeightRangeFilter: (state, action) => {
+      state[action.payload] = false;
+      state.heightRange = state.heightRange.filter(el => el !== action.payload);
+    },
+    deletePriceFilter: (state, action) => {
+      state.price = action.payload.startPrice;
+      state.minPrice = action.payload.startValue;
+      state.maxPrice = action.payload.startValue;
+    },
+
   },
 });
 
 export const {
-  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter, changePricefilter, setPriceMinMaxfilter, createNewArrCategory, createNewArrIsPopular, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrHeightRange,
+  checkedCategoriesFilter, checkedPopularFilter, checkedEasyCareFilter, checkedPetAndBabeSafeFilter, checkedHeightRangeFilter, changePricefilter, setPriceMinMaxfilter, createNewArrCategory, createNewArrIsPopular, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrHeightRange, deleteCategorisFilter, deleteIsPopularFilter, deleteIsEasyCareFilter, deletePetAndBabeSafeFilter, deleteHeightRangeFilter, deletePriceFilter,
 } = filterCatalogSlice.actions;
 
 export default filterCatalogSlice.reducer;

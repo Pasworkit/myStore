@@ -18,15 +18,15 @@
   }
 }
 
-// .wrapperWidth {
-//   @media (min-width: breakpoints.$tablet-min-width) {
-//     width: 100vh;
-//   }
+.wrapperWidth {
+  @media (min-width: breakpoints.$tablet-min-width) {
+    width: 100vh;
+  }
 
-//   @media (min-width: breakpoints.$desktop-min-width) {
-//     width: 100vh;
-//   }
-// }
+  @media (min-width: breakpoints.$desktop-min-width) {
+    width: 100vh;
+  }
+}
 
 .containerDesc {
   @media (min-width: 768px) {
@@ -62,8 +62,19 @@
   }
 
   @media (min-width: 768px) {
-    margin: 100px 0 0 0;
+    margin: 150px 0 0 0;
   }
+}
+
+.catalogNotFound {
+  margin-top: 200px;
+  text-align: center;
+  font-family: "Lora";
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+
+  color: #202b21;
 }
 
 .wrapperProductsList {
@@ -87,7 +98,7 @@
     margin: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 }
@@ -108,7 +119,7 @@
     }
   }
 
-  @media (min-width: breakpoints.$tablet-min-width) and (max-width: 1023px) {
+  @media (min-width: breakpoints.$tablet-min-width) and (max-width: 1024px) {
     margin: 0;
     max-width: 283px;
     margin-bottom: 20px;
@@ -142,6 +153,63 @@
   line-height: 130%;
 
   color: #202b21;
+}
+
+.wrapperDelFilterBtn {
+
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    padding-top: 20px;
+  }
+
+  @media (min-width: breakpoints.$desktop-min-width) {
+    padding-top: 30px;
+  }
+}
+
+.btnFilterCatalogName {
+  margin-bottom: 15px;
+  display: inline-block;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+
+  color: #2c2c2c;
+
+  margin-right: 15px;
+  padding: 5px 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+}
+
+.btnDelFilterName {
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+.btnDelFilterNameSpan {
+  display: block;
+
+  height: 1.5px;
+  background: #dcdcdc;
+  border-radius: 10px;
+
+  &:first-child {
+    transform: rotate(45deg);
+    margin-bottom: -2px;
+    width: 18px;
+  }
+
+  &:last-child {
+    transform: rotate(-45deg);
+    margin-bottom: 5px;
+    width: 18px;
+  }
 }
 
 .wrapperMobileBtnFilter {

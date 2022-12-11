@@ -14,7 +14,7 @@ import {
   checkedCategoriesFilter, checkedEasyCareFilter, checkedHeightRangeFilter, checkedPetAndBabeSafeFilter, checkedPopularFilter, createNewArrCategory, createNewArrHeightRange, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrIsPopular, setPriceMinMaxfilter,
 } from '../../store/slices/filterCatalogSlice';
 import {
-  filterCatalogProducts, getAllProducts,
+  filterCatalogProducts, getAllProducts, setCurrentPage,
 } from '../../store/slices/catalogSlice';
 
 function FilterCatalog() {
@@ -44,10 +44,12 @@ function FilterCatalog() {
     const { name } = event.target;
     const { checked } = event.target;
     dispatch(checkedCategoriesFilter({ name, checked }));
+    dispatch(setCurrentPage(1));
 
     if (!checked) {
       const params = searchParams.delete('categories');
       setSearchParams(params);
+      dispatch(setCurrentPage(1));
     }
   };
 
@@ -56,10 +58,12 @@ function FilterCatalog() {
     const { checked } = event.target;
 
     dispatch(checkedPopularFilter({ name, checked }));
+    dispatch(setCurrentPage(1));
 
     if (!checked) {
       const params = searchParams.delete('isPopular');
       setSearchParams(params);
+      dispatch(setCurrentPage(1));
     }
   };
 
@@ -68,10 +72,12 @@ function FilterCatalog() {
     const { checked } = event.target;
 
     dispatch(checkedEasyCareFilter({ name, checked }));
+    dispatch(setCurrentPage(1));
 
     if (!checked) {
       const params = searchParams.delete('isEasyCare');
       setSearchParams(params);
+      dispatch(setCurrentPage(1));
     }
   };
 
@@ -79,10 +85,12 @@ function FilterCatalog() {
     const { name } = event.target;
     const { checked } = event.target;
     dispatch(checkedPetAndBabeSafeFilter({ name, checked }));
+    dispatch(setCurrentPage(1));
 
     if (!checked) {
       const params = searchParams.delete('isPetAndBabySafe');
       setSearchParams(params);
+      dispatch(setCurrentPage(1));
     }
   };
 
@@ -90,10 +98,12 @@ function FilterCatalog() {
     const { name } = event.target;
     const { checked } = event.target;
     dispatch(checkedHeightRangeFilter({ name, checked }));
+    dispatch(setCurrentPage(1));
 
     if (!checked) {
       const params = searchParams.delete('height');
       setSearchParams(params);
+      dispatch(setCurrentPage(1));
     }
   };
 
@@ -103,8 +113,7 @@ function FilterCatalog() {
     // eslint-disable-next-line prefer-destructuring
     e.maxPrice = price[1];
     dispatch(setPriceMinMaxfilter([e.minPrice, e.maxPrice]));
-
-    console.log(e);
+    dispatch(setCurrentPage(1));
   };
 
   useEffect(() => {
@@ -114,6 +123,7 @@ function FilterCatalog() {
     const isPetAndBabySafeParams = searchParams.get('isPetAndBabySafe') || '';
     const heightParams = searchParams.get('height') || '';
     const priceParams = searchParams.get('price') || '';
+    const pageParams = searchParams.get('page') || '';
 
     if (categoriesParams !== '') {
       const newArrCategories = categoriesParams.split(' ');
@@ -145,9 +155,21 @@ function FilterCatalog() {
       dispatch(changePricefilter(newArrPrice));
       dispatch(setPriceMinMaxfilter(newArrPrice));
     }
+
+    if (pageParams !== '') {
+      dispatch(setCurrentPage(Number(pageParams)));
+    }
   }, []);
 
   useEffect(() => {
+    if (currentPageNumber > 1) {
+      searchParams.set('page', currentPageNumber);
+      setSearchParams(searchParams);
+    } else {
+      const params = searchParams.delete('page');
+      setSearchParams(params);
+    }
+
     if (categories.length !== 0) {
       searchParams.set('categories', categories.join(' '));
       setSearchParams(searchParams);
@@ -179,11 +201,10 @@ function FilterCatalog() {
       setShowcheckedPrice(true);
     }
 
-    // console.log(searchParams.toString());
-    if (categories.length !== 0 || isPopular.length !== 0 || isEasyCare.length !== 0 || isPetAndBabySafe.length !== 0 || heightRange.length !== 0 || searchParams.toString().includes('price')) {
+    if (categories.length !== 0 || isPopular.length !== 0 || isEasyCare.length !== 0 || isPetAndBabySafe.length !== 0 || heightRange.length !== 0 || minPrice !== null || maxPrice !== null) {
       setTimeout(() => {
         dispatch(filterCatalogProducts(filterState, currentPageNumber));
-      }, 600);
+      }, 300);
     } else {
       dispatch(getAllProducts(currentPageNumber));
     }

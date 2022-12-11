@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import FilterCatalog from '../FilterCatalog/FilterCatalog';
@@ -6,9 +7,11 @@ import FilterIcon from '../FilterIcon/FilterIcon';
 import Card from '../Card/Card';
 import styles from './Catalog.module.scss';
 import Pagination from '../Pagination/Pagination';
+import DeletBtnFilterCatalog from './DeletBtnFilterCatalog/DeletBtnFilterCatalog';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
+
   const catalogProducts = useSelector((state) => state.catalog.catalogProducts);
 
   const handleClickShowFilter = () => {
@@ -17,7 +20,7 @@ function Catalog() {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs currenProductPage="Categories" currenProductCategory="Catalog" midLinkName="catalog" />
+      <Breadcrumbs currenProductPage="" currenProductCategory="Catalog" midLinkName="catalog" />
 
       <div className={styles.containerDesc}>
         <div className={styles.wrapperFilterDesc}>
@@ -47,7 +50,8 @@ function Catalog() {
             </div>
             )}
           </div>
-
+          <DeletBtnFilterCatalog />
+          {catalogProducts.length === 0 ? <h2 className={styles.catalogNotFound}>Products not found</h2> : ''}
           <ul className={styles.wrapperProductsList}>
             {catalogProducts.map((item) => {
               const { _id: idItem } = item;
@@ -63,8 +67,8 @@ function Catalog() {
           </ul>
           <div className={styles.wrapperPagination}>
             <Pagination />
-
           </div>
+
         </div>
       </div>
     </div>
