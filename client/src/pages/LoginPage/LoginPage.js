@@ -1,20 +1,52 @@
 import { Form, Formik, useFormik } from 'formik';
 import {
-  Button, Container, Grid, TextField,
+  Box,
+  Button, Container, TextField, ThemeProvider,
 } from '@mui/material';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { createTheme } from '@mui/material/styles';
 import { loginCustomer } from '../../API/ApiTest';
 import styles from './LoginPage.module.scss';
 import { setUser } from '../../store/slices/authSlice';
 
 function LoginPage() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        // Purple and green play nicely together.
+        main: '#456F49',
+
+      },
+      secondary: {
+        // This is green.A700 as hex.
+        main: '#DE1818',
+      },
+      error: {
+        // This is green.A700 as hex.
+        main: '#ffff00',
+      },
+    },
+  });
+
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies(['token']);
 
   const dispatch = useDispatch();
+
+  const schema = Yup.object().shape({
+    loginOrEmail: Yup.string()
+      .min(3, 'Login or Email is required.')
+      .max(10, 'Too Long!')
+      .required('Required'),
+    password: Yup.string()
+      .min(7, 'Password must be between 7 and 30 characters')
+      .max(30, 'Too Long!')
+      .required('Required'),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -36,33 +68,40 @@ function LoginPage() {
       }
       return data;
     },
+    validationSchema: schema,
   });
 
   return (
-    <Container>
-      <h1 className={styles.title}>Login</h1>
-      <Formik
-        initialValues={formik.initialValues}
-        onSubmit={formik.handleSubmit}
-      >
-        <Form>
-          <Grid container spacing={2}>
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="loginOrEmail" label="Login Or Email" value={formik.values.loginOrEmail} onChange={formik.handleChange} />
-            </Grid>
+    <ThemeProvider theme={theme}>
+      <Container className={styles.container} sx={{ mb: 4 }}>
+        <h1 className={styles.title}>Login</h1>
+        <Formik
+          initialValues={formik.initialValues}
+          onSubmit={formik.handleSubmit}
+          isValid={formik.isValid}
+        >
+          <Form>
+            <Box>
+              <Box sx={{ m: 2 }}>
+                <TextField type="text" fullWidth name="loginOrEmail" label="Login Or Email" value={formik.values.loginOrEmail} onChange={formik.handleChange} />
+                {formik.errors.loginOrEmail
+                  ? <div>{formik.errors.loginOrEmail}</div> : null}
+              </Box>
 
-            <Grid item md={6}>
-              <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
-            </Grid>
-          </Grid>
+              <Box sx={{ m: 2 }}>
+                <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
+                {formik.errors.password
+                  ? <div>{formik.errors.password}</div> : null}
+              </Box>
+            </Box>
 
-          <Grid item md={6}>
-            <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 2, mb: 2 }}>Login</Button>
-          </Grid>
-
-        </Form>
-      </Formik>
-    </Container>
+            <Box>
+              <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 2, mb: 4 }} disabled={!formik.isValid}>Login</Button>
+            </Box>
+          </Form>
+        </Formik>
+      </Container>
+    </ThemeProvider>
   );
 }
 
