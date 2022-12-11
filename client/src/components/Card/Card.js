@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
-import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/products/actionCreatorsProducts';
+import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
 
 function Card(props) {
   const {
@@ -24,7 +24,7 @@ function Card(props) {
     toggleFavoriteStatus,
   } = props;
 
-  const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
+  const isInCart = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
 
   const dispatch = useDispatch();
