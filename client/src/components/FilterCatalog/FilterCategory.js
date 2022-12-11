@@ -24,7 +24,6 @@ function FilterCategory({ showcheckedCategory, setShowcheckedCategory, handleCha
                 <Checkbox
                   checked={checkeFilter.hanging}
                   name="hanging"
-                // value="hanging"
                   onChange={handleChangeCategories}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
@@ -36,7 +35,6 @@ function FilterCategory({ showcheckedCategory, setShowcheckedCategory, handleCha
                 <Checkbox
                   checked={checkeFilter.flowering}
                   name="flowering"
-                // value="flowering"
                   onChange={handleChangeCategories}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />

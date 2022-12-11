@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Field, Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import debounce from 'lodash.debounce';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
+import { changePricefilter } from '../../store/slices/filterCatalogSlice';
 
 function valuetext(value) {
   return `${value}$`;
@@ -20,26 +22,18 @@ const theme = createTheme({
   },
 });
 
-function FilterPrice() {
-  const [showcheckedPrice, setShowcheckedPrice] = useState(false);
+function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPrice }) {
+  const price = useSelector(store => store.filter.price);
 
-  const [valuePrice, setValuePrice] = useState([0, 100]);
+  const dispatch = useDispatch();
 
   const handleChangePrice = (event, newValue) => {
-    setValuePrice(newValue);
-  };
-
-  const handelSubmitPriceForm = (e) => {
-    // eslint-disable-next-line prefer-destructuring
-    e.minPrice = valuePrice[0];
-    // eslint-disable-next-line prefer-destructuring
-    e.maxPrice = valuePrice[1];
-    console.log(e);
+    dispatch(changePricefilter(newValue));
   };
 
   const initialValues = {
-    minPrice: 0,
-    maxPrice: 0,
+    minPrice: price[0],
+    maxPrice: price[1],
   };
 
   return (
@@ -60,13 +54,17 @@ function FilterPrice() {
 
                 <Field
                   type="text"
-                  disabled
-                  value={valuePrice[0]}
+                  value={price[0]}
                   name="minPrice"
                   className={styles.priceWrapper}
                 />
                 <p className={styles.lineFormPrice} />
-                <Field type="text" disabled value={valuePrice[1]} name="maxPrice" className={styles.priceWrapper} />
+                <Field
+                  type="text"
+                  value={price[1]}
+                  name="maxPrice"
+                  className={styles.priceWrapper}
+                />
                 <button className={styles.priceBtnSubmit} type="submit">ok</button>
               </Form>
             </Formik>
@@ -80,10 +78,12 @@ function FilterPrice() {
             <ThemeProvider theme={theme}>
               <Slider
                 getAriaLabel={() => 'Temperature range'}
-                value={valuePrice}
+                value={price}
                 onChange={handleChangePrice}
                 valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
+                getAriaValueText={debounce(valuetext, 600)}
+                min={0}
+                max={500}
               />
             </ThemeProvider>
           </Box>

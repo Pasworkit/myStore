@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import FilterCatalog from '../FilterCatalog/FilterCatalog';
@@ -6,10 +7,12 @@ import FilterIcon from '../FilterIcon/FilterIcon';
 import Card from '../Card/Card';
 import styles from './Catalog.module.scss';
 import Pagination from '../Pagination/Pagination';
+import DeletBtnFilterCatalog from './DeletBtnFilterCatalog/DeletBtnFilterCatalog';
 
 function Catalog() {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
-  const currentProducts = useSelector((state) => state.catalog.currentProducts);
+
+  const catalogProducts = useSelector((state) => state.catalog.catalogProducts);
 
   const handleClickShowFilter = () => {
     setShowMobileFilter((prevStatus) => !prevStatus);
@@ -17,14 +20,14 @@ function Catalog() {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs currenProductPage="Categories" currenProductCategory="Catalog" midLinkName="catalog" />
+      <Breadcrumbs currenProductPage="" currenProductCategory="Catalog" midLinkName="catalog" />
 
       <div className={styles.containerDesc}>
         <div className={styles.wrapperFilterDesc}>
           <FilterCatalog />
         </div>
 
-        <div className={currentProducts.length < 4 ? styles.wrapperWidth : ''}>
+        <div className={catalogProducts.length < 4 ? styles.wrapperWidth : ''}>
           <h2 className={styles.heading}>Catalog</h2>
 
           <div className={styles.wrapperMobile}>
@@ -47,9 +50,10 @@ function Catalog() {
             </div>
             )}
           </div>
-
+          <DeletBtnFilterCatalog />
+          {catalogProducts.length === 0 ? <h2 className={styles.catalogNotFound}>Products not found</h2> : ''}
           <ul className={styles.wrapperProductsList}>
-            {currentProducts.map((item) => {
+            {catalogProducts.map((item) => {
               const { _id: idItem } = item;
               return (
                 <li
@@ -63,8 +67,8 @@ function Catalog() {
           </ul>
           <div className={styles.wrapperPagination}>
             <Pagination />
-
           </div>
+
         </div>
       </div>
     </div>
