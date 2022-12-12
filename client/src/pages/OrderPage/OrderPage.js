@@ -124,7 +124,7 @@ function OrderPage() {
         data, status,
       } = token ? await createOrder(token, createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
       if (status === 200) {
-        deleteCartHandler();
+        await deleteCartHandler();
         navigate('/');
       } else {
         throw new Error('Invalid');
