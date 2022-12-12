@@ -40,7 +40,7 @@ function LoginPage() {
   const schema = Yup.object().shape({
     loginOrEmail: Yup.string()
       .min(3, 'Login or Email is required.')
-      .max(10, 'Too Long!')
+      .max(25, 'Too Long!')
       .required('Required'),
     password: Yup.string()
       .min(7, 'Password must be between 7 and 30 characters')

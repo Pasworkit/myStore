@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { useSelector } from 'react-redux';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import FilterCatalog from '../FilterCatalog/FilterCatalog';

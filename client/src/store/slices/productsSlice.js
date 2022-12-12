@@ -131,7 +131,7 @@ const getProducts = () => async (dispatch) => {
   } else {
     try {
       const productsData = await getProductsFromBack();
-      const products = productsData.data.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
+      const products = await productsData.data.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
       dispatch(getProductsInState(products));
     } catch (error) {
       console.error(error);

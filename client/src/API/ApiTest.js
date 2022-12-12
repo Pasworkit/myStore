@@ -19,6 +19,11 @@ export const createOrder = async (token, newOrder) => axios.post(
   },
 );
 
+export const createOrderWithoutAuthorization = async (newOrder) => axios.post(
+  `${process.env.REACT_APP_API_URL}/orders`,
+  newOrder,
+);
+
 export const getComments = async () => axios.get(`${process.env.REACT_APP_API_URL}/comments`);
 
 export const apdatedCart = async (token, productsInCart) => axios.put(`${process.env.REACT_APP_API_URL}/cart`, {

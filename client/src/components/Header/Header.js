@@ -20,8 +20,10 @@ import HeaderRegister from '../HeaderRegister/HeaderRegister';
 import LightTooltip from '../LightTooltip/LightTooltip';
 import HeaderSignUpIconMob from '../HeaderIcon/HeaderSignUpIconMob/HeaderSignUpIconMob';
 import { removeUser } from '../../store/slices/authSlice';
+import Modal from '../Modal/Modal';
 
 function Header() {
+  const modalData = useSelector((store) => store.modal.modalData);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const nodeRef = useRef(null);
 
@@ -40,6 +42,13 @@ function Header() {
 
   return (
     <header className={styles.header}>
+
+      <Modal
+        header={modalData.header}
+        text={modalData.text}
+        actions={modalData.actions}
+      />
+
       <div className={styles.containerMobile}>
         <div>
           <NavLink to="/">
@@ -90,18 +99,18 @@ function Header() {
               </NavLink>
 
               {!token && (
-              <NavLink className={styles.FavoritesLink} to="/login">
+                <NavLink className={styles.FavoritesLink} to="/login">
 
-                <HeaderLogin />
-                <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>
-              </NavLink>
+                  <HeaderLogin />
+                  <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>
+                </NavLink>
               )}
 
               {token && (
-              <NavLink className={styles.FavoritesLink} to="/">
-                <HeaderLogin />
-                <p data-sign-in="sign-in" className={styles.basketLinkText}>Log out</p>
-              </NavLink>
+                <NavLink className={styles.FavoritesLink} to="/">
+                  <HeaderLogin />
+                  <p data-sign-in="sign-in" className={styles.basketLinkText}>Log out</p>
+                </NavLink>
               )}
 
               <NavLink data-sign-up-link="sign-up-link" className={styles.FavoritesLink} to="/sign-up">
@@ -139,16 +148,16 @@ function Header() {
                   <NavLink className={styles.basketDescLink} to="/cart"><HeaderBascetIcon /></NavLink>
                 </div>
                 {!token && (
-                <LightTooltip title="Sign in">
-                  <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
-                </LightTooltip>
+                  <LightTooltip title="Sign in">
+                    <NavLink className={styles.basketDescLink} to="/login"><HeaderLogin /></NavLink>
+                  </LightTooltip>
                 )}
                 {token && (
-                <LightTooltip title="Log out" onClick={() => dispatch(removeUser())}>
-                  <NavLink className={styles.logOut} to="/">
-                    <HeaderLogin />
-                  </NavLink>
-                </LightTooltip>
+                  <LightTooltip title="Log out" onClick={() => dispatch(removeUser())}>
+                    <NavLink className={styles.logOut} to="/">
+                      <HeaderLogin />
+                    </NavLink>
+                  </LightTooltip>
                 )}
 
                 <LightTooltip title="Sign up">

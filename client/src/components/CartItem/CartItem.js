@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 import styles from './CartItem.module.scss';
 import { ReactComponent as DeleteIcon } from '../../svg/icon-delete.svg';
 import { ReactComponent as MinusIcon } from '../../svg/icon-minus.svg';
 import { ReactComponent as PlusIcon } from '../../svg/icon-plus.svg';
 import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
+import { setModalIsOpen, setModalData } from '../../store/slices/modalSlise';
 
 function CartItem({
   product: {
@@ -15,20 +16,61 @@ function CartItem({
     currentPrice,
     imageUrls,
     itemNo,
+    quantity,
   },
 }) {
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
-  const quantityInStockCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantity);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
+  const token = useSelector((store) => store.auth.token);
 
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies();
-  const addToCartHandler = () => dispatch(toggleProductInCart(_id, isInCart, cookies.token));
+  const handleModalCancel = () => { dispatch(setModalIsOpen(false)); };
 
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(cookies.token, _id, quantityCardCount, quantityInStockCardCount, isInCart));
-  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
+  const addToCartHandler = () => {
+    dispatch(setModalIsOpen(true));
+    dispatch(setModalData({
+      header: 'Delete product from cart?',
+      text: `Product Name: ${name}`,
+      actions: (
+        <div className={styles.modal__button}>
+          <Button
+            color="success"
+            onClick={handleModalCancel}
+          >
+            Сancel
+          </Button>
+          <Button
+            color="success"
+            onClick={() => {
+              dispatch(toggleProductInCart(_id, isInCart, token));
+              dispatch(setModalIsOpen(false));
+            }}
+          >
+            Delete
+          </Button>
+        </div>
+      ),
+    }));
+  };
+
+  const incrementCardQuantity = () => {
+    if (quantityCardCount < quantity) {
+      dispatch(incrementQuantityProductInCart(token, _id, quantityCardCount, quantity, isInCart));
+    } else {
+      dispatch(setModalIsOpen(true));
+      dispatch(setModalData({
+        header: 'You have selected the maximum quantity of the product that is in stock',
+        text: `Product Name: ${name}`,
+        actions: (
+          <div>
+            <Button color="success" onClick={handleModalCancel}> OK </Button>
+          </div>
+        ),
+      }));
+    }
+  };
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, token));
 
   return (
     <li className={styles.item}>
@@ -48,13 +90,13 @@ function CartItem({
           <PlusIcon />
         </button>
       </div>
-
       <span className={styles.price}>{currentPrice}</span>
 
       <button type="button" className={styles.buttonCartItem} onClick={addToCartHandler}>
         <DeleteIcon />
       </button>
     </li>
+
   );
 }
 

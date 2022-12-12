@@ -20,6 +20,11 @@ function Cart({ productsCartSlider }) {
               <CartItem key={product._id} product={product} />
             ))}
           </ul>
+          {!productsCart.length && (
+            <div className={styles.cart__text}>
+              You have no items in your shopping cart, please continue shopping!
+            </div>
+          )}
         </div>
         <div className={styles.cart__containerOrder}>
           <div className={styles.cart__order}>
@@ -40,9 +45,11 @@ function Cart({ productsCartSlider }) {
           </div>
           <div className={styles.cart__buttons}>
             <NavLink className={styles.cart__button} to="/catalog">Continue shopping</NavLink>
-            <Link to="/cart/order">
-              <button type="button" className={styles.cart__buttonOrder}>Checkout</button>
-            </Link>
+            {productsCart.length ? (
+              <Link to="/cart/order">
+                <button type="button" className={styles.cart__buttonOrder}>Checkout</button>
+              </Link>
+            ) : <p />}
           </div>
         </div>
       </div>
