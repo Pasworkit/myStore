@@ -1,7 +1,8 @@
 @use '../../styles/abstracts/variables';
+@import '../../styles/abstracts/config';
 
 .wrapper {
-  padding-bottom: 70px;
+  padding-bottom: 50px;
   text-align: center;
 }
 
@@ -16,8 +17,8 @@
   }
 }
 
-.card {
-  margin-bottom: 50px;
+.dot__margin{
+  margin-bottom: 40px;
 }
 
 :global(.slick-slider .slick-dots li) {
@@ -61,9 +62,7 @@
 //}
 
 
-.slick-slide > div {
-  display: grid;
-  place-items: center;
+.center{
+  width: 90%;
+  margin: 0 auto;
 }
-
-

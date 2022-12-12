@@ -26,10 +26,11 @@ function SectionBest() {
             arrows: false,
             dots: true,
             infinite: true,
-            slidesToShow: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
             speed: 500,
-            rows: 3,
-            slidesPerRow: 1,
+            slidesToShow: 1,
+            slidesToScroll: 1,
           },
         },
         {
@@ -48,7 +49,7 @@ function SectionBest() {
           },
         },
         {
-          breakpoint: 1150,
+          breakpoint: 1190,
           settings: {
             arrows: false,
             dots: true,
@@ -82,20 +83,22 @@ function SectionBest() {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>The best offers of the month</h2>
-      <Slider {...settings}>
-        {catalogProducts.map((item) => {
-          const { isPopular } = item;
-          return (
-            <li
-              key={isPopular}
-              className={styles2.wrapperProductsItem}
-            >
-              <Card productCardData={item} />
-            </li>
-          );
-        })}
-      </Slider>
+      <h2 className={styles.title}>Most popular items of the month</h2>
+      <div className={styles.center}>
+        <Slider {...settings}>
+          {catalogProducts.map((item) => {
+            const { isPopular } = item;
+            return (
+              <li
+                key={isPopular}
+                className={styles2.wrapperProductsItem}
+              >
+                <Card productCardData={item} />
+              </li>
+            );
+          })}
+        </Slider>
+      </div>
     </div>
   );
 }
