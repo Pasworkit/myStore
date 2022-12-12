@@ -5,7 +5,7 @@ import {
   Box,
   Button, ButtonGroup,
   Container, FormControl,
-  Grid, Radio, RadioGroup, TextareaAutosize,
+  Grid, Radio, RadioGroup, TextareaAutosize, ThemeProvider,
   TextField,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +13,21 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { createTheme } from '@mui/material/styles';
 import styles from './OrderPage.module.scss';
 import { createOrder } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
 import { deleteCart } from '../../store/slices/productsSlice';
 
 function OrderPage() {
+  const theme = createTheme({
+    palette: {
+      action: {
+        disabledBackground: '#6CAC72',
+        disabled: '#fff',
+      },
+    },
+  });
   const phoneRegExp = /^\+?[1-9][0-9]{11}$/;
 
   const schema = Yup.object().shape({
@@ -127,29 +136,34 @@ function OrderPage() {
                   },
                 }}
               >
-                <ButtonGroup>
-                  <Button
-                    type="button"
-                    disabled={formik.values.shipping === 'Courier'}
-                    onClick={() => formik.setFieldValue('shipping', 'Courier')}
-                  >
-                    By Courier
-                  </Button>
-                  <Button
-                    type="button"
-                    disabled={formik.values.shipping === 'Pickup'}
-                    onClick={() => formik.setFieldValue('shipping', 'Pickup')}
-                  >
-                    Pickup
-                  </Button>
-                  <Button
-                    type="button"
-                    disabled={formik.values.shipping === 'NovaPoshta'}
-                    onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}
-                  >
-                    Nova Poshta
-                  </Button>
-                </ButtonGroup>
+                <ThemeProvider theme={theme}>
+                  <ButtonGroup>
+                    <Button
+                      variant="contained"
+                      type="button"
+                      disabled={formik.values.shipping === 'Courier'}
+                      onClick={() => formik.setFieldValue('shipping', 'Courier')}
+                    >
+                      By Courier
+                    </Button>
+                    <Button
+                      variant="contained"
+                      type="button"
+                      disabled={formik.values.shipping === 'Pickup'}
+                      onClick={() => formik.setFieldValue('shipping', 'Pickup')}
+                    >
+                      Pickup
+                    </Button>
+                    <Button
+                      variant="contained"
+                      type="button"
+                      disabled={formik.values.shipping === 'NovaPoshta'}
+                      onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}
+                    >
+                      Nova Poshta
+                    </Button>
+                  </ButtonGroup>
+                </ThemeProvider>
               </Box>
               <h2 className={styles.title}>Fill in your personal details</h2>
 
