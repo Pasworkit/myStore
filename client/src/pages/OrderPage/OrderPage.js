@@ -201,7 +201,7 @@ function OrderPage() {
 
               </Grid>
 
-              <h2 className={styles.title}>Fill in the delivery address</h2>
+              <h2 className={styles.title}>Fill in the delivery address:</h2>
 
               <Grid container spacing={2}>
                 <Grid item md={6}>
