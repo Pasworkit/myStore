@@ -10,12 +10,13 @@ import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { useCookies } from 'react-cookie';
+import { Button } from '@mui/material';
 import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
+import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
 function Product() {
   const { linkItemNo } = useParams();
@@ -68,14 +69,50 @@ function Product() {
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
 
   const dispatch = useDispatch();
+  const token = useSelector((store) => store.auth.token);
 
-  // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies();
+  const handleModalCancel = () => { dispatch(setModalIsOpen(false)); };
   const addToCartHandler = () => {
-    dispatch(toggleProductInCart(_id, isInCart, cookies.token, quantityCardCount));
+    if (isInCart) {
+      dispatch(setModalIsOpen(true));
+      dispatch(setModalData({
+        header: 'Delete product from cart?',
+        text: `Product Name: ${name}`,
+        actions: (
+          <div>
+            <Button color="success" onClick={handleModalCancel}>Сancel</Button>
+            <Button
+              color="success"
+              onClick={() => {
+                dispatch(setModalIsOpen(false));
+                dispatch(toggleProductInCart(_id, isInCart, token, quantityCardCount));
+              }}
+            >
+              Delete
+            </Button>
+          </div>
+        ),
+      }));
+    } else { dispatch(toggleProductInCart(_id, isInCart, token, quantityCardCount)); }
   };
-  const incrementCardQuantity = () => dispatch(incrementQuantityProductInCart(cookies.token, _id, quantityCardCount, quantity, isInCart));
-  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, cookies.token));
+
+  const incrementCardQuantity = () => {
+    if (quantityCardCount < quantity) {
+      dispatch(incrementQuantityProductInCart(token, _id, quantityCardCount, quantity, isInCart));
+    } else {
+      dispatch(setModalIsOpen(true));
+      dispatch(setModalData({
+        header: 'You have selected the maximum quantity of the product that is in stock',
+        text: `Product Name: ${name}`,
+        actions: (
+          <div>
+            <Button color="success" onClick={handleModalCancel}> OK </Button>
+          </div>
+        ),
+      }));
+    }
+  };
+  const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, token));
 
   const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
 

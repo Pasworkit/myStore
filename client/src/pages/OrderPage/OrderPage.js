@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { createTheme } from '@mui/material/styles';
 import styles from './OrderPage.module.scss';
-import { createOrder } from '../../API/ApiTest';
+import { createOrder, createOrderWithoutAuthorization } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
 import { deleteCart } from '../../store/slices/productsSlice';
 
@@ -66,25 +66,45 @@ function OrderPage() {
 
   const deleteCartHandler = () => dispatch(deleteCart(token));
 
-  const createOrderFromValues = (values) => ({
-    letterSubject: 'Thank you for order! You are welcome!',
-    letterHtml:
+  const createOrderFromValues = (values) => {
+    if (token) {
+      return ({
+        letterSubject: 'Thank you for order! You are welcome!',
+        letterHtml:
       '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
       + '<p>In this place will be good letter</p>',
-    products,
-    customerId,
-    shipping: values.shipping,
-    email: values.email,
-    mobile: values.mobile,
-    paymentInfo: values.paymentInfo,
-    comments: values.comments,
-    deliveryAddress: {
-      country: values.deliveryAddress.country,
-      city: values.deliveryAddress.city,
-      address: values.deliveryAddress.address,
-    },
-  });
-
+        products,
+        customerId,
+        shipping: values.shipping,
+        email: values.email,
+        mobile: values.mobile,
+        paymentInfo: values.paymentInfo,
+        comments: values.comments,
+        deliveryAddress: {
+          country: values.deliveryAddress.country,
+          city: values.deliveryAddress.city,
+          address: values.deliveryAddress.address,
+        },
+      });
+    }
+    return ({
+      letterSubject: 'Thank you for order! You are welcome!',
+      letterHtml:
+      '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
+      + '<p>In this place will be good letter</p>',
+      products,
+      shipping: values.shipping,
+      email: values.email,
+      mobile: values.mobile,
+      paymentInfo: values.paymentInfo,
+      comments: values.comments,
+      deliveryAddress: {
+        country: values.deliveryAddress.country,
+        city: values.deliveryAddress.city,
+        address: values.deliveryAddress.address,
+      },
+    });
+  };
   const formik = useFormik({
     initialValues: {
       shipping: 'Courier',
@@ -102,7 +122,7 @@ function OrderPage() {
     onSubmit: async (values) => {
       const {
         data, status,
-      } = await createOrder(token, createOrderFromValues(values));
+      } = token ? await createOrder(token, createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
       if (status === 200) {
         deleteCartHandler();
         navigate('/');

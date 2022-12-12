@@ -1,11 +1,9 @@
-
-
 .thumbsCenter {
   :global(.carousel ul) {
     text-align: center;
   }
 }
 
-  :global(.carousel.carousel-slider .control-arrow){
-    background: #B6D5B9;
-  }
+:global(.carousel.carousel-slider .control-arrow) {
+  background: #B6D5B9;
+}
