@@ -9,7 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
-import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
+import {
+  toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart, toggleProductInFavorites,
+} from '../../store/slices/productsSlice';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
 function Card(props) {
@@ -22,10 +24,10 @@ function Card(props) {
       quantity,
       name,
     },
-    toggleFavoriteStatus,
   } = props;
 
   const isInCart = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInCart);
+  const isInFavorites = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInFavorites);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
   const token = useSelector((store) => store.auth.token);
 
@@ -56,6 +58,7 @@ function Card(props) {
       }));
     } else { dispatch(toggleProductInCart(_id, isInCart, token, quantityCardCount)); }
   };
+
   const incrementCardQuantity = () => {
     if (quantityCardCount < quantity) {
       dispatch(incrementQuantityProductInCart(token, _id, quantityCardCount, quantity, isInCart));
@@ -72,10 +75,39 @@ function Card(props) {
       }));
     }
   };
+
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, token));
 
-  const favoriteArr = JSON.parse(localStorage.getItem('favoriteArr'));
-  const isFavoriteStatus = favoriteArr ? favoriteArr.indexOf(itemNo) !== -1 : false;
+  const addToFavoritesHandler = () => {
+    if (isInFavorites) {
+      dispatch(setModalIsOpen(true));
+      dispatch(setModalData({
+        header: 'Delete product from favorites?',
+        text: `Product Name: ${name}`,
+        actions: (
+          <div>
+            <Button
+              color="success"
+              onClick={handleModalCancel}
+            >
+              Сancel
+            </Button>
+            <Button
+              color="success"
+              onClick={() => {
+                dispatch(toggleProductInFavorites(_id, isInFavorites, token));
+                dispatch(setModalIsOpen(false));
+              }}
+            >
+              Delete
+            </Button>
+          </div>
+        ),
+      }));
+    } else {
+      dispatch(toggleProductInFavorites(_id, isInFavorites, token));
+    }
+  };
 
   const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
 
@@ -84,10 +116,11 @@ function Card(props) {
       <div
         role="button"
         tabIndex={0}
-        onClick={() => toggleFavoriteStatus(itemNo)}
-        onKeyDown={() => toggleFavoriteStatus(itemNo)}
+        onClick={addToFavoritesHandler}
+        onKeyDown={addToFavoritesHandler}
+        className={styles.favoritesIcon}
       >
-        {isFavoriteStatus
+        {isInFavorites
           ? (
             <FavoriteIcon className={styles.star} />
           )

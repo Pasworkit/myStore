@@ -1,48 +1,38 @@
-@use '../../styles/abstracts/_breakpoints';
-
-.container {
-  height: 100vh;
-}
-
-.wrapper {
-  min-width: 375px;
+.favorites__container {
+  margin-top: 15px;
   padding: 0 15px;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    min-width: 768px;
-    padding: 0 30px;
+  margin: 0 auto;
+  
+  @media (min-width: 769px) {
+  margin-top: 70px;
+  padding: 0 30px;
   }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 15px;
+
+  @media (min-width: 1025px) {
+  margin-top: 70px;
+  padding: 0 40px;
+  max-width: 1440px;
   }
 }
 
-.fevoritesHeading {
-  padding-top: 24px;
-  font-family: "Lora";
-  font-weight: 400;
-  font-size: 23px;
-  line-height: 1.6;
-  color: #202b21;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-    font-size: 36px;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    font-size: 36px;
-  }
+.favorites__containerItem {
+@media (max-width: 769px) {
+  min-width: 345px;
+}
 }
 
-.favoritesList {
-  list-style: none;
-  padding: 35px 0;
+.favorites__title {
+margin-bottom: 24px;
+font-family: 'Lora';
+font-size: 36px;
+line-height: 130%;
+color: #202B21;
+}
 
-  @media (min-width: breakpoints.$tablet-min-width) {
-    padding: 60px 0;
-  }
-  @media (min-width: breakpoints.$desktop-min-width) {
-    padding: 55px 0;
-  }
+.favorites__text {
+margin-bottom: 24px;
+font-family: 'Lora';
+font-size: 24px;
+line-height: 130%;
+color: #1b822e;
 }

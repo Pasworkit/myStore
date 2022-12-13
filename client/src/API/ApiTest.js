@@ -62,3 +62,17 @@ export const deleteCartFromBack = async (token) => axios.delete(`${process.env.R
     'Authorization': `Bearer ${token}`,
   },
 });
+
+export const addProductInFavorites = async (id, token) => axios.put(`${process.env.REACT_APP_API_URL}/wishlist/${id}`, {}, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
+
+export const deleteProductInFavorites = async (id, token) => axios.delete(`${process.env.REACT_APP_API_URL}/wishlist/${id}`, {
+  headers: {
+    // eslint-disable-next-line quote-props
+    'Authorization': `Bearer ${token}`,
+  },
+});
