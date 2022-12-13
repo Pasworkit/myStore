@@ -11,13 +11,9 @@ processes = []
 allowed_public_ports = []
 auto_rollback = true
 
-[[statics]]
-guest_path = "/app/public/build"
-url_prefix = "/build"
-
 [[services]]
 http_checks = []
-internal_port = 8080
+internal_port = 5000
 processes = ["app"]
 protocol = "tcp"
 script_checks = []
