@@ -52,7 +52,7 @@ function SectionPromo() {
               <img src={Pot1} alt="pot" />
             </div>
             <ThemeProvider theme={theme}>
-              <Button variant="contained" href="/shop" className={styles.btn1}>
+              <Button variant="contained" href="/catalog" className={styles.btn1}>
                 go to catalog
               </Button>
             </ThemeProvider>

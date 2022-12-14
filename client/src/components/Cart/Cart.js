@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import CartItem from '../CartItem/CartItem';
-import CartSlider from '../CartSlider/CartSlider';
+import SectionBest from '../SectionBest/SectionBest';
 
-function Cart({ productsCartSlider }) {
+function Cart() {
   const productsCart = useSelector((store) => store.productsAll.productsInCart);
   const totalPrice = useSelector((store) => store.productsAll.totalPrice);
   const amountProducts = useSelector((store) => store.productsAll.amountProductsInCart);
@@ -54,9 +54,7 @@ function Cart({ productsCartSlider }) {
         </div>
       </div>
 
-      <div className={styles.cart__containerSlider}>
-        <CartSlider productsSlider={productsCartSlider} />
-      </div>
+      <SectionBest />
     </section>
   );
 }

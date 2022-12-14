@@ -11,10 +11,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { createTheme } from '@mui/material/styles';
 import styles from './OrderPage.module.scss';
+import styles2 from '../../components/Cart/Cart.module.scss';
 import { createOrder, createOrderWithoutAuthorization } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
 import { deleteCart } from '../../store/slices/productsSlice';
@@ -23,8 +24,7 @@ function OrderPage() {
   const theme = createTheme({
     palette: {
       action: {
-        disabledBackground: '#6CAC72',
-        disabled: '#fff',
+        disabled: '#6CAC72',
       },
     },
   });
@@ -136,157 +136,162 @@ function OrderPage() {
 
   return (
     <Container className={styles.container} sx={{ mb: 4 }}>
-      <h2 className={styles.main_title}>Making your order</h2>
-      <Formik
-        initialValues={formik.initialValues}
-        onSubmit={formik.handleSubmit}
-        isValid={formik.isValid}
-      >
-        <Form>
-          <h2 className={styles.title}>Choose a shipping method</h2>
-          <Grid container spacing={3}>
-            <Grid item xs={7}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'start',
-                  '& > *': {
-                    m: 1,
-                  },
-                }}
-              >
-                <ThemeProvider theme={theme}>
-                  <ButtonGroup>
-                    <Button
-                      variant="contained"
-                      type="button"
-                      disabled={formik.values.shipping === 'Courier'}
-                      onClick={() => formik.setFieldValue('shipping', 'Courier')}
-                    >
-                      By Courier
-                    </Button>
-                    <Button
-                      variant="contained"
-                      type="button"
-                      disabled={formik.values.shipping === 'Pickup'}
-                      onClick={() => formik.setFieldValue('shipping', 'Pickup')}
-                    >
-                      Pickup
-                    </Button>
-                    <Button
-                      variant="contained"
-                      type="button"
-                      disabled={formik.values.shipping === 'NovaPoshta'}
-                      onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}
-                    >
-                      Nova Poshta
-                    </Button>
-                  </ButtonGroup>
-                </ThemeProvider>
-              </Box>
-              <h2 className={styles.title}>Fill in your personal details</h2>
-
-              <Grid container spacing={2}>
-                <Grid item md={6}>
-                  <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
-                  {formik.errors.email
-                    ? <div>{formik.errors.email}</div> : null}
-                </Grid>
-                <Grid item md={6}>
-                  <TextField type="text" fullWidth name="mobile" label="Mobile" value={formik.values.mobile} onChange={formik.handleChange} />
-                  {formik.errors.mobile
-                    ? <div>{formik.errors.mobile}</div> : null}
-                </Grid>
-
-              </Grid>
-
-              <h2 className={styles.title}>Fill in the delivery address:</h2>
-
-              <Grid container spacing={2}>
-                <Grid item md={6}>
-                  <TextField type="text" fullWidth name="deliveryAddress.country" label="Country" value={formik.values.deliveryAddress.country} onChange={formik.handleChange} />
-                  {formik.errors.deliveryAddress && formik.errors.deliveryAddress.country
-                    ? <div>{formik.errors.deliveryAddress.country}</div> : null}
-                </Grid>
-                <Grid item md={6}>
-                  <TextField type="text" fullWidth name="deliveryAddress.city" label="City" value={formik.values.deliveryAddress.city} onChange={formik.handleChange} />
-                  {formik.errors.deliveryAddress && formik.errors.deliveryAddress.city
-                    ? <div>{formik.errors.deliveryAddress.city}</div> : null}
-                </Grid>
-                <Grid item md={6}>
-                  <TextField type="text" fullWidth name="deliveryAddress.address" label="Address" value={formik.values.deliveryAddress.address} onChange={formik.handleChange} />
-                  {formik.errors.deliveryAddress && formik.errors.deliveryAddress.address
-                    ? <div>{formik.errors.deliveryAddress.address}</div> : null}
-                </Grid>
-              </Grid>
-
-              <h2 className={styles.title}>Select a Payment Method</h2>
-
-              <FormControl>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="creditCard"
-                  name="radio-buttons-group"
+      <Box sx={{ mt: 4 }}>
+        <h2 className={styles.main_title}>Making your order</h2>
+        <Formik
+          initialValues={formik.initialValues}
+          onSubmit={formik.handleSubmit}
+          isValid={formik.isValid}
+        >
+          <Form>
+            <h2 className={styles.title}>Choose a shipping method</h2>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    '& > *': {
+                      m: 1,
+                    },
+                  }}
                 >
-                  <FormControlLabel
-                    checked={formik.values.paymentInfo === 'creditCard'}
-                    onClick={() => formik.setFieldValue('paymentInfo', 'creditCard')}
-                    control={<Radio />}
-                    label="Payment by credit card in the online store"
-                  />
-                  <FormControlLabel
-                    checked={formik.values.paymentInfo === 'creditCardAfter'}
-                    onClick={() => formik.setFieldValue('paymentInfo', 'creditCardAfter')}
-                    control={<Radio />}
-                    label="Payment by credit card upon receipt"
-                  />
-                  <FormControlLabel
-                    checked={formik.values.paymentInfo === 'cash'}
-                    onClick={() => formik.setFieldValue('paymentInfo', 'cash')}
-                    control={<Radio />}
-                    label="Cash upon receipt"
-                  />
-                </RadioGroup>
-              </FormControl>
+                  <ThemeProvider theme={theme}>
+                    <ButtonGroup>
+                      <Button
+                        variant="outlined"
+                        type="button"
+                        disabled={formik.values.shipping === 'Courier'}
+                        onClick={() => formik.setFieldValue('shipping', 'Courier')}
+                      >
+                        By Courier
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        type="button"
+                        disabled={formik.values.shipping === 'Pickup'}
+                        onClick={() => formik.setFieldValue('shipping', 'Pickup')}
+                      >
+                        Pickup
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        type="button"
+                        disabled={formik.values.shipping === 'NovaPoshta'}
+                        onClick={() => formik.setFieldValue('shipping', 'NovaPoshta')}
+                      >
+                        Nova Poshta
+                      </Button>
+                    </ButtonGroup>
+                  </ThemeProvider>
+                </Box>
+                <h2 className={styles.title}>Fill in your personal details</h2>
 
-              <h2 className={styles.title}>Order comment (optional)</h2>
-              <TextareaAutosize
-                type="text"
-                name="comments"
-                value={formik.values.comments}
-                onChange={formik.handleChange}
-                className={styles.textArea}
-                minRows={6}
-                aria-label="maximum height"
-                placeholder="Leave your comment..."
-              />
+                <Grid container spacing={2}>
+                  <Grid item md={6} xs={12}>
+                    <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
+                    {formik.errors.email
+                      ? <div>{formik.errors.email}</div> : null}
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                    <TextField type="text" fullWidth name="mobile" label="Mobile" value={formik.values.mobile} onChange={formik.handleChange} />
+                    {formik.errors.mobile
+                      ? <div>{formik.errors.mobile}</div> : null}
+                  </Grid>
+
+                </Grid>
+
+                <h2 className={styles.title}>Fill in the delivery address:</h2>
+
+                <Grid container spacing={2}>
+                  <Grid item md={6} xs={12}>
+                    <TextField type="text" fullWidth name="deliveryAddress.country" label="Country" value={formik.values.deliveryAddress.country} onChange={formik.handleChange} />
+                    {formik.errors.deliveryAddress && formik.errors.deliveryAddress.country
+                      ? <div>{formik.errors.deliveryAddress.country}</div> : null}
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                    <TextField type="text" fullWidth name="deliveryAddress.city" label="City" value={formik.values.deliveryAddress.city} onChange={formik.handleChange} />
+                    {formik.errors.deliveryAddress && formik.errors.deliveryAddress.city
+                      ? <div>{formik.errors.deliveryAddress.city}</div> : null}
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                    <TextField type="text" fullWidth name="deliveryAddress.address" label="Address" value={formik.values.deliveryAddress.address} onChange={formik.handleChange} />
+                    {formik.errors.deliveryAddress && formik.errors.deliveryAddress.address
+                      ? <div>{formik.errors.deliveryAddress.address}</div> : null}
+                  </Grid>
+                </Grid>
+
+                <h2 className={styles.title}>Select a Payment Method</h2>
+
+                <FormControl>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="creditCard"
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      checked={formik.values.paymentInfo === 'creditCard'}
+                      onClick={() => formik.setFieldValue('paymentInfo', 'creditCard')}
+                      control={<Radio />}
+                      label="Payment by credit card in the online store"
+                    />
+                    <FormControlLabel
+                      checked={formik.values.paymentInfo === 'creditCardAfter'}
+                      onClick={() => formik.setFieldValue('paymentInfo', 'creditCardAfter')}
+                      control={<Radio />}
+                      label="Payment by credit card upon receipt"
+                    />
+                    <FormControlLabel
+                      checked={formik.values.paymentInfo === 'cash'}
+                      onClick={() => formik.setFieldValue('paymentInfo', 'cash')}
+                      control={<Radio />}
+                      label="Cash upon receipt"
+                    />
+                  </RadioGroup>
+                </FormControl>
+
+                <h2 className={styles.title}>Order comment (optional)</h2>
+                <TextareaAutosize
+                  type="text"
+                  name="comments"
+                  value={formik.values.comments}
+                  onChange={formik.handleChange}
+                  className={styles.textArea}
+                  minRows={6}
+                  aria-label="maximum height"
+                  placeholder="Leave your comment..."
+                />
+              </Grid>
             </Grid>
 
-            <Grid item xs={4}>
-
-              <Box className={styles.cart__order}>
-                <p className={styles.cart__titleOrder}>Your order</p>
-                <p className={styles.cart__textOrder}>
-                  Amount products:
-                  <span className={styles.cart__amountProducts}>{amountProducts}</span>
-                </p>
-                <p className={styles.cart__textOrder}>
-                  Total price:
-                  <span className={styles.cart__amountProducts}>
-                    {totalPrice.toFixed(2)}
-                    {' '}
-                    $
-                  </span>
-                </p>
-              </Box>
-              <div>
-                <Button color="primary" variant="contained" fullWidth type="submit" disabled={!formik.isValid}>Confirm the order</Button>
+            <Box sx={{ mb: 4 }}>
+              <div className={styles.cart__containerOrder}>
+                <div className={styles.cart__order}>
+                  <p className={styles2.cart__titleOrder}>Your order</p>
+                  <p className={styles2.cart__textOrder}>
+                    Amount products:
+                    <span className={styles2.cart__amountProducts}>{amountProducts}</span>
+                  </p>
+                  <p className={styles2.cart__textOrder}>
+                    Total price:
+                    <span className={styles2.cart__amountProducts}>
+                      {totalPrice.toFixed(2)}
+                      {' '}
+                      $
+                    </span>
+                  </p>
+                  <p className={styles2.cart__textOrderStar}>* excluding delivery</p>
+                </div>
+                <div className={styles2.cart__buttons}>
+                  <NavLink className={styles2.cart__button} to="/catalog">Continue shopping</NavLink>
+                  <Button color="primary" className={styles2.cart__buttonOrder} variant="outlined" fullWidth type="submit" disabled={!formik.isValid}>Confirm the order</Button>
+                </div>
               </div>
-            </Grid>
-          </Grid>
-        </Form>
-      </Formik>
+            </Box>
+          </Form>
+        </Formik>
+      </Box>
     </Container>
   );
 }
