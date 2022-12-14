@@ -15,7 +15,9 @@ import YmalProducts from '../YmalProducts/YmalProducts';
 import styles from './Product.module.scss';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
-import { toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart } from '../../store/slices/productsSlice';
+import {
+  toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart, toggleProductInFavorites,
+} from '../../store/slices/productsSlice';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
 function Product() {
@@ -51,20 +53,7 @@ function Product() {
     document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
   }, [name, documentMetaDesc]);
 
-  const [favoriteArr, setFavoriteArr] = useState(JSON.parse(localStorage.getItem('favoriteArr')) || []);
-  const isFavoriteStatus = favoriteArr.indexOf(itemNo) !== -1;
-  const toggleFavoriteStatus = () => {
-    const index = favoriteArr.indexOf(itemNo);
-    const newFavoriteArr = [...favoriteArr];
-    if (index !== -1) {
-      newFavoriteArr.splice(index, 1);
-    } else {
-      newFavoriteArr.push(itemNo);
-    }
-    setFavoriteArr(newFavoriteArr);
-    localStorage.setItem('favoriteArr', JSON.stringify(newFavoriteArr));
-  };
-
+  const isInFavorites = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInFavorites);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
 
@@ -114,6 +103,37 @@ function Product() {
   };
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, token));
 
+  const addToFavoritesHandler = () => {
+    if (isInFavorites) {
+      dispatch(setModalIsOpen(true));
+      dispatch(setModalData({
+        header: 'Delete product from favorites?',
+        text: `Product Name: ${name}`,
+        actions: (
+          <div>
+            <Button
+              color="success"
+              onClick={handleModalCancel}
+            >
+              Сancel
+            </Button>
+            <Button
+              color="success"
+              onClick={() => {
+                dispatch(toggleProductInFavorites(_id, isInFavorites, token));
+                dispatch(setModalIsOpen(false));
+              }}
+            >
+              Delete
+            </Button>
+          </div>
+        ),
+      }));
+    } else {
+      dispatch(toggleProductInFavorites(_id, isInFavorites, token));
+    }
+  };
+
   const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
 
   return (
@@ -133,8 +153,8 @@ function Product() {
               <span className={styles.infoTitleText}>ItemNo: </span>
               {itemNo}
             </p>
-            <div role="button" tabIndex={0} onClick={() => toggleFavoriteStatus(itemNo)} onKeyDown={() => toggleFavoriteStatus(itemNo)}>
-              {isFavoriteStatus
+            <div role="button" tabIndex={0} onClick={addToFavoritesHandler} onKeyDown={addToFavoritesHandler}>
+              {isInFavorites
                 ? (
                   <FavoriteIcon className={styles.star} />
                 )

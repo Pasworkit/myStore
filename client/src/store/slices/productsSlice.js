@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart, getCart, deleteCartFromBack,
+  getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart, getCart, deleteCartFromBack, addProductInFavorites, deleteProductInFavorites,
 } from '../../API/ApiTest';
 
 const productsSlice = createSlice({
@@ -8,6 +8,7 @@ const productsSlice = createSlice({
   initialState: {
     products: [],
     productsInCart: [],
+    productsInFavorites: [],
     totalPrice: 0,
     amountProductsInCart: 0,
   },
@@ -17,8 +18,12 @@ const productsSlice = createSlice({
       const productsInCart = action.payload.filter(
         (product) => product.isInCart,
       );
+      const productsInFavorites = action.payload.filter(
+        (product) => product.isInFavorites,
+      );
       state.products = action.payload;
       state.productsInCart = productsInCart;
+      state.productsInFavorites = productsInFavorites;
       let amountProducts = 0;
       let totalPrice = 0;
       productsInCart.forEach(item => {
@@ -30,9 +35,10 @@ const productsSlice = createSlice({
 
       localStorage.setItem('products', JSON.stringify(state.products));
       localStorage.setItem('productsInCart', JSON.stringify(state.productsInCart));
+      localStorage.setItem('productsInFavorites', JSON.stringify(state.productsInFavorites));
     },
 
-    toggleProduct: (state, action) => {
+    toggleProductCart: (state, action) => {
       const index = state.products.findIndex(
         ({ _id }) => _id === action.payload,
       );
@@ -115,11 +121,25 @@ const productsSlice = createSlice({
       localStorage.setItem('products', JSON.stringify(productsNotIsInCart));
       localStorage.setItem('productsInCart', []);
     },
+
+    toggleProductFavorites: (state, action) => {
+      const index = state.products.findIndex(
+        ({ _id }) => _id === action.payload,
+      );
+      state.products[index].isInFavorites = !state.products[index].isInFavorites;
+      const productsInFavorites = state.products.filter(
+        ({ isInFavorites }) => isInFavorites,
+      );
+      state.productsInFavorites = productsInFavorites;
+
+      localStorage.setItem('products', JSON.stringify(state.products));
+      localStorage.setItem('productsInFavorites', JSON.stringify(state.productsInFavorites));
+    },
   },
 });
 
 export const {
-  getProductsInState, toggleProduct, incrementQuantityProduct, decrementQuantityProduct, deleteCartInState,
+  getProductsInState, toggleProductCart, incrementQuantityProduct, decrementQuantityProduct, deleteCartInState, toggleProductFavorites,
 } = productsSlice.actions;
 
 const getProducts = () => async (dispatch) => {
@@ -131,7 +151,9 @@ const getProducts = () => async (dispatch) => {
   } else {
     try {
       const productsData = await getProductsFromBack();
-      const products = await productsData.data.map((product) => ({ ...product, isInCart: false, quantityInCart: 1 }));
+      const products = await productsData.data.map((product) => ({
+        ...product, isInCart: false, isInFavorites: false, quantityInCart: 1,
+      }));
       dispatch(getProductsInState(products));
     } catch (error) {
       console.error(error);
@@ -166,7 +188,7 @@ const toggleProductInCart = (id, isInCart, token, quantityInCart) => async (disp
       console.error(error);
     }
   }
-  dispatch(toggleProduct(id));
+  dispatch(toggleProductCart(id));
 };
 
 const incrementQuantityProductInCart = (token, id, quantityInCart, quantityInStock, isInCart) => async (dispatch) => {
@@ -206,7 +228,6 @@ const decrementQuantityProductInCart = (id, quantityInCart, isInCart, token) => 
           product: item.product._id,
           cartQuantity: item.cartQuantity,
         }));
-        console.log(productsInCart);
         await apdatedCart(token, productsInCart);
       }
     } catch (error) {
@@ -227,8 +248,25 @@ const deleteCart = (token) => async (dispatch) => {
   dispatch(deleteCartInState({ token }));
 };
 
+const toggleProductInFavorites = (id, isInFavorites, token) => async (dispatch) => {
+  if (token) {
+    try {
+      if (isInFavorites) {
+        await deleteProductInFavorites(id, token);
+        dispatch(toggleProductFavorites(id));
+      } else {
+        await addProductInFavorites(id, token);
+        dispatch(toggleProductFavorites(id));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
+
 export {
   getProducts, toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart, deleteCart,
+  toggleProductInFavorites,
 };
 
 export default productsSlice.reducer;
