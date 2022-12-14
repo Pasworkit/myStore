@@ -55,6 +55,7 @@ function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPr
                 <Field
                   type="text"
                   value={price[0]}
+                  disabled
                   name="minPrice"
                   className={styles.priceWrapper}
                 />
@@ -62,6 +63,7 @@ function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPr
                 <Field
                   type="text"
                   value={price[1]}
+                  disabled
                   name="maxPrice"
                   className={styles.priceWrapper}
                 />

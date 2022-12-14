@@ -99,7 +99,7 @@ function Header() {
               </NavLink>
 
               {!token && (
-                <NavLink className={styles.FavoritesLink} to="/login">
+                <NavLink data-sign-in="sign-in" className={styles.FavoritesLink} to="/login">
 
                   <HeaderLogin />
                   <p data-sign-in="sign-in" className={styles.basketLinkText}>Sign in</p>

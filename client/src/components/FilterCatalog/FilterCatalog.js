@@ -204,7 +204,7 @@ function FilterCatalog() {
     if (categories.length !== 0 || isPopular.length !== 0 || isEasyCare.length !== 0 || isPetAndBabySafe.length !== 0 || heightRange.length !== 0 || minPrice !== null || maxPrice !== null) {
       setTimeout(() => {
         dispatch(filterCatalogProducts(filterState, currentPageNumber));
-      }, 300);
+      }, 600);
     } else {
       dispatch(getAllProducts(currentPageNumber));
     }
