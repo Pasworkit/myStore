@@ -22,7 +22,7 @@ function Cart({ productsCartSlider }) {
           </ul>
           {!productsCart.length && (
             <div className={styles.cart__text}>
-              You have no items in your shopping cart, please continue shopping!
+              You do not have items in your shopping cart, please continue shopping!
             </div>
           )}
         </div>

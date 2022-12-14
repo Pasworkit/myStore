@@ -33,7 +33,7 @@ function CartItem({
       header: 'Delete product from cart?',
       text: `Product Name: ${name}`,
       actions: (
-        <div className={styles.modal__button}>
+        <div>
           <Button
             color="success"
             onClick={handleModalCancel}
