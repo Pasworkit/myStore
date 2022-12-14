@@ -38,7 +38,7 @@ const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -70,7 +70,7 @@ app.use("/partners", partners);
 // app.use("/", mainRoute);
 
 // Server static assets if in production
-if (process.env.NODE_ENV === "production") {
+if (true || process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
 

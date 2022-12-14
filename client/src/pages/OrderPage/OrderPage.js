@@ -124,7 +124,7 @@ function OrderPage() {
         data, status,
       } = token ? await createOrder(token, createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
       if (status === 200) {
-        deleteCartHandler();
+        await deleteCartHandler();
         navigate('/');
       } else {
         throw new Error('Invalid');
@@ -201,7 +201,7 @@ function OrderPage() {
 
               </Grid>
 
-              <h2 className={styles.title}>Fill in the delivery address</h2>
+              <h2 className={styles.title}>Fill in the delivery address:</h2>
 
               <Grid container spacing={2}>
                 <Grid item md={6}>
