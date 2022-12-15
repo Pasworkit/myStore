@@ -1,36 +1,10 @@
-@use '../../styles/abstracts/variables';
-@use '../../styles/abstracts/mixins';
 
 .wrapper {
-  width: 100%;
-  display: grid;
   background: #B6D5B9;
-
-  @media (min-width: variables.$tablet-bp) {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-}
-
-.banner1 {
-  background: white;
-  margin: 50px 30px 15px 15px;
-
-  @media (min-width: variables.$tablet-bp) {
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-left: 30px;
-  }
 }
 
 .banner {
   background: white;
-  margin: 15px 30px 50px 15px;
-  @media (min-width: variables.$tablet-bp) {
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-right: 30px;
-  }
 }
 
 .title {
@@ -38,89 +12,9 @@
   font-size: 16px;
   line-height: 130%;
   color: #202B21;
-  padding-top: 15px;
-  padding-left: 15px;
-  margin-bottom: 10px;
-  @media (min-width: variables.$tablet-bp) {
-    margin: 35px auto 10px 35px;
-    font-size: 20px;
-  }
-}
-
-.subTitle {
-  grid-area: p;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 130%;
-  color: #202B21;
-
-  @media (min-width: variables.$tablet-bp) {
-    font-size: 13px;
-  }
-
-  @media (min-width: variables.$desktop-bp) {
-    font-size: 16px;
-  }
-}
-
-.wrapper_content1 {
-  padding-right: 15px;
-  padding-left: 15px;
-  display: grid;
-  grid-template-areas: "p p . img"
-                       ". . . img"
-                       "btn btn . img"
-                       ". . . img";
-  grid-template-columns: repeat(4, 1fr);
-
-  @media (min-width: variables.$tablet-bp) {
-    padding-left: 35px;
-    padding-right: 35px;
-    grid-template-areas: "img p p"
-                         "img . ."
-                         "img btn btn"
-                          "img . .";
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-
-.wrapper_content2 {
-  padding-right: 15px;
-  padding-left: 15px;
-  display: grid;
-  grid-template-areas: ". . . imgs imgs"
-                       "btn1 . . imgs imgs"
-                       ". . . imgs imgs"
-                       ". . . . .";
-  grid-template-columns: repeat(5, 1fr);
-  @media (min-width: variables.$tablet-bp) {
-    padding-left: 35px;
-    padding-right: 35px;
-    grid-template-areas: ". . . . ."
-                         "imgs imgs . . ."
-                         "imgs imgs . btn1 btn1"
-                         ". . . . .";
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-.img {
-  grid-area: img;
-}
-
-.wrapper_img {
-  grid-area: imgs;
 }
 
 
 
-.btn {
-  grid-area: btn;
-}
-
-.btn1 {
-  grid-area: btn1;
-}
 
 

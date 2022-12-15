@@ -58,8 +58,8 @@ function Footer() {
                 <p className={styles.footerContactsAddress}>Address</p>
                 <p className={styles.footerContactsCity}>Kyiv</p>
                 <p className={styles.footerContactsStreet}>
-                  <span className={styles.footerContactsCitySpan}>Kyiv</span>
-                  st. Kalinovskogo 61,
+                  <span className={styles.footerContactsCitySpan}>Dnipro</span>
+                  Yavornytskogo Dmytra ( Marksa Karla ) ave., 48.
                   <br />
                   entrance 1, office 6
                 </p>
