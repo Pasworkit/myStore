@@ -1,15 +1,25 @@
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Link } from 'react-router-dom';
-import ST from '../../img/Carousel/Banner.svg';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './SectionCarousel.module.scss';
+import { fetchSlides } from '../../store/slices/slidesSlice';
 
 function SectionCarousel() {
-  const renderCustomThumbs = () => [
-    <img src={ST} alt="slide1" key="1" />,
-    <img src={ST} alt="slide2" key="2" />,
-    <img src={ST} alt="slide3" key="3" />,
-  ];
+  const dispatch = useDispatch();
+  const slides = useSelector((store) => store.slides.data);
+
+  useEffect(() => {
+    dispatch(fetchSlides());
+  }, []);
+
+  const renderCustomThumbs = () => slides.map((item) => {
+    const { imageUrl, customId } = item;
+    return (
+      <img src={imageUrl} alt={customId} key={customId} />
+    );
+  });
 
   return (
     <div>
@@ -23,24 +33,18 @@ function SectionCarousel() {
         swipeable
         showArrows
       >
-        <Link to="/hanging">
-          <div>
-            <img src={ST} alt="slide1" />
-          </div>
-        </Link>
-
-        <Link to="/flowering">
-          <div>
-            <img src={ST} alt="slide2" />
-          </div>
-        </Link>
-
-        <Link to="ferns-and-palms">
-          <div>
-            <img src={ST} alt="slide3" />
-          </div>
-        </Link>
-
+        {
+                    slides.map((item) => {
+                      const { imageUrl, customId } = item;
+                      return (
+                        <Link to={`/${customId}`} key={customId}>
+                          <div>
+                            <img src={imageUrl} alt={customId} />
+                          </div>
+                        </Link>
+                      );
+                    })
+                }
       </Carousel>
     </div>
   );

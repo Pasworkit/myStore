@@ -91,7 +91,7 @@ function Header() {
             <div className={styles.basketWrapper}>
               <NavLink className={styles.basketLink} data-basket-text="basket-text" to="/cart">
                 <HeaderBascetIcon />
-                <p data-basket-text="basket-text" className={styles.basketLinkText}>Basket</p>
+                <p data-basket-text="basket-text" className={styles.basketLinkText}>Cart</p>
               </NavLink>
               <NavLink className={styles.FavoritesLink} to="/favorites">
                 <HeaderFavoritesIcon />

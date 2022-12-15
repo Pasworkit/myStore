@@ -76,3 +76,5 @@ export const deleteProductInFavorites = async (id, token) => axios.delete(`${pro
     'Authorization': `Bearer ${token}`,
   },
 });
+
+export const getSlides = async () => axios.get(`${process.env.REACT_APP_API_URL}/slides`);
