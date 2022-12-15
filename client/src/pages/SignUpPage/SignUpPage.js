@@ -45,6 +45,7 @@ function SignUpPage() {
     },
   });
 
+
   const schema = Yup.object().shape({
     firstName: Yup.string()
       .min(2, 'First Name must be between 2 and 25 characters')
@@ -90,8 +91,7 @@ function SignUpPage() {
           password: data.password,
           telephone: data.telephone,
         }));
-        console.log(values.login);
-        console.log(values.password);
+
         await log({ loginOrEmail: values.login, password: values.password });
         navigate('/');
         resetForm();
