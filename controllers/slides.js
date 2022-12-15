@@ -6,17 +6,17 @@ exports.addSlide = (req, res, next) => {
   Slider.findOne({ customId: req.body.customId }).then(slide => {
     if (slide) {
       res.status(400).json({
-        message: `Slide with customId '${slide.customId}' is already exists. cutomId must be unique.`
+        message: `Slide with customId '${customId}' is already exists. customId must be unique.`
       });
     } else {
       const slideData = _.cloneDeep(req.body);
       const newSlide = new Slider(queryCreator(slideData));
 
-      newSlide
-        .populate("product")
-        .populate("category")
-        .populate("customer")
-        .execPopulate();
+      // newSlide
+      //   .populate("product")
+      //   .populate("category")
+      //   .populate("customer")
+      //   .execPopulate();
 
       newSlide
         .save()
