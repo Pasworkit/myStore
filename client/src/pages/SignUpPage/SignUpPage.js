@@ -6,12 +6,33 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createTheme } from '@mui/material/styles';
 import * as Yup from 'yup';
-import { createCustomer } from '../../API/ApiTest';
+import { useCookies } from 'react-cookie';
+import { createCustomer, loginCustomer } from '../../API/ApiTest';
 import styles from './SignUpPage.module.scss';
-import { regUser } from '../../store/slices/authSlice';
+import { regUser, setUser } from '../../store/slices/authSlice';
 
 function SignUpPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies(['token']);
   const phoneRegExp = /^\+?[1-9][0-9]{11}$/;
+
+  const log = async ({ loginOrEmail, password }) => {
+    const {
+      data, status,
+    } = await loginCustomer({ loginOrEmail, password });
+    if (status === 200) {
+      dispatch(setUser({
+        token: data.token.replace('Bearer ', ''),
+      }));
+      setCookie('token', data.token.replace('Bearer ', ''));
+      navigate('/');
+    } else {
+      throw new Error('Invalid Credentials');
+    }
+    return data;
+  };
 
   const theme = createTheme({
     palette: {
@@ -24,8 +45,6 @@ function SignUpPage() {
     },
   });
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const schema = Yup.object().shape({
     firstName: Yup.string()
@@ -73,6 +92,7 @@ function SignUpPage() {
           telephone: data.telephone,
         }));
 
+        await log({ loginOrEmail: values.login, password: values.password });
         navigate('/');
         resetForm();
       } else {
