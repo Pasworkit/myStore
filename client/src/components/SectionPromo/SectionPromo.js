@@ -32,7 +32,7 @@ function SectionPromo() {
       <Grid item xs={12} md={5.5} m={2} className={styles.banner}>
         <Grid container spacing={2}>
 
-          <Grid item sx={12} m={2}>
+          <Grid item xs={12} m={2}>
             <h2 className={styles.title}>Get 10% off on our Instagram!</h2>
           </Grid>
 
@@ -76,7 +76,7 @@ function SectionPromo() {
 
         <Grid container spacing={2}>
 
-          <Grid item sx={12} m={2}>
+          <Grid item xs={12} m={2}>
             <h2 className={styles.title}>New collection of ceramic pots!</h2>
           </Grid>
 
