@@ -5,10 +5,10 @@ import {
 } from '@mui/material';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { createTheme } from '@mui/material/styles';
-import { loginCustomer } from '../../API/ApiTest';
+import { loginCustomer, createFavorites, apdatedCart } from '../../API/ApiTest';
 import styles from './LoginPage.module.scss';
 import { setUser } from '../../store/slices/authSlice';
 
@@ -30,6 +30,12 @@ function LoginPage() {
       },
     },
   });
+
+  const productsInFavorites = useSelector((store) => store.productsAll.productsInFavorites.map((product) => product._id));
+  const productsInCart = useSelector((store) => store.productsAll.productsInCart.map((item) => ({
+    product: item._id,
+    cartQuantity: item.quantityInCart,
+  })));
 
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
@@ -62,6 +68,8 @@ function LoginPage() {
           token: data.token.replace('Bearer ', ''),
         }));
         setCookie('token', data.token.replace('Bearer ', ''));
+        createFavorites(productsInFavorites, data.token.replace('Bearer ', ''));
+        apdatedCart(data.token.replace('Bearer ', ''), productsInCart);
         navigate('/');
       } else {
         throw new Error('Invalid Credentials');

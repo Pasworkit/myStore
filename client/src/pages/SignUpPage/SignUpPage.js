@@ -23,6 +23,7 @@ function SignUpPage() {
       },
     },
   });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -71,6 +72,7 @@ function SignUpPage() {
           password: data.password,
           telephone: data.telephone,
         }));
+
         navigate('/');
         resetForm();
       } else {
