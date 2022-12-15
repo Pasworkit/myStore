@@ -261,6 +261,8 @@ const toggleProductInFavorites = (id, isInFavorites, token) => async (dispatch) 
     } catch (error) {
       console.error(error);
     }
+  } else {
+    dispatch(toggleProductFavorites(id));
   }
 };
 
