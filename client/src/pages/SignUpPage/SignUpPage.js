@@ -3,11 +3,13 @@ import {
   Button, Container, Grid, TextField, ThemeProvider,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createTheme } from '@mui/material/styles';
 import * as Yup from 'yup';
 import { useCookies } from 'react-cookie';
-import { createCustomer, loginCustomer } from '../../API/ApiTest';
+import {
+  createCustomer, loginCustomer, createFavorites, apdatedCart,
+} from '../../API/ApiTest';
 import styles from './SignUpPage.module.scss';
 import { regUser, setUser } from '../../store/slices/authSlice';
 
@@ -18,6 +20,12 @@ function SignUpPage() {
   const [cookies, setCookie] = useCookies(['token']);
   const phoneRegExp = /^\+?[1-9][0-9]{11}$/;
 
+  const productsInFavorites = useSelector((store) => store.productsAll.productsInFavorites.map((product) => product._id));
+  const productsInCart = useSelector((store) => store.productsAll.productsInCart.map((item) => ({
+    product: item._id,
+    cartQuantity: item.quantityInCart,
+  })));
+
   const log = async ({ loginOrEmail, password }) => {
     const {
       data, status,
@@ -27,6 +35,8 @@ function SignUpPage() {
         token: data.token.replace('Bearer ', ''),
       }));
       setCookie('token', data.token.replace('Bearer ', ''));
+      createFavorites(productsInFavorites, data.token.replace('Bearer ', ''));
+      apdatedCart(data.token.replace('Bearer ', ''), productsInCart);
       navigate('/');
     } else {
       throw new Error('Invalid Credentials');
@@ -44,7 +54,6 @@ function SignUpPage() {
       },
     },
   });
-
 
   const schema = Yup.object().shape({
     firstName: Yup.string()
@@ -93,6 +102,7 @@ function SignUpPage() {
         }));
 
         await log({ loginOrEmail: values.login, password: values.password });
+
         navigate('/');
         resetForm();
       } else {
