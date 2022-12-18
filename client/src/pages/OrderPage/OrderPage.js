@@ -18,7 +18,8 @@ import styles from './OrderPage.module.scss';
 import styles2 from '../../components/Cart/Cart.module.scss';
 import { createOrder, createOrderWithoutAuthorization } from '../../API/ApiTest';
 import { fetchCart } from '../../store/slices/orderSlice';
-import { deleteCart } from '../../store/slices/productsSlice';
+import { deleteCart } from '../../store/slices/productsSlice/actionCreators';
+import { setModalIsOpen, setModalData } from '../../store/slices/modalSlise';
 
 function OrderPage() {
   const theme = createTheme({
@@ -66,13 +67,15 @@ function OrderPage() {
 
   const deleteCartHandler = () => dispatch(deleteCart(token));
 
+  const handleModalCancel = () => { dispatch(setModalIsOpen(false)); };
+
   const createOrderFromValues = (values) => {
     if (token) {
       return ({
         letterSubject: 'Thank you for order! You are welcome!',
         letterHtml:
-      '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
-      + '<p>In this place will be good letter</p>',
+          '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
+          + '<p>In this place will be good letter</p>',
         products,
         customerId,
         shipping: values.shipping,
@@ -90,8 +93,8 @@ function OrderPage() {
     return ({
       letterSubject: 'Thank you for order! You are welcome!',
       letterHtml:
-      '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
-      + '<p>In this place will be good letter</p>',
+        '<h1>Your order is placed. OrderNo is 023689452.</h1><p>Other details about Order</p>'
+        + '<p>In this place will be good letter</p>',
       products,
       shipping: values.shipping,
       email: values.email,
@@ -125,6 +128,16 @@ function OrderPage() {
       } = token ? await createOrder(token, createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
       if (status === 200) {
         await deleteCartHandler();
+        dispatch(setModalIsOpen(true));
+        dispatch(setModalData({
+          header: 'Your order has been successfully placed!',
+          // text: 'Your order has been successfully placed!',
+          actions: (
+            <div>
+              <Button color="success" onClick={handleModalCancel}> OK </Button>
+            </div>
+          ),
+        }));
         navigate('/');
       } else {
         throw new Error('Invalid');

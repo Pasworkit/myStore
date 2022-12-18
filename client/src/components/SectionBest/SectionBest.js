@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import styles from './SectionBest.module.scss';
 import Card from '../Card/Card';
-import styles2 from '../Catalog/Catalog.module.scss';
 import { getAllProducts } from '../../store/slices/catalogSlice';
 
 function SectionBest() {
@@ -43,7 +42,7 @@ function SectionBest() {
             autoplaySpeed: 5000,
             speed: 500,
             slidesToShow: 2,
-            slidesToScroll: 1,
+            slidesToScroll: 2,
             adaptiveHeight: true,
             variableHeight: false,
           },
@@ -58,7 +57,7 @@ function SectionBest() {
             autoplaySpeed: 5000,
             speed: 500,
             slidesToShow: 3,
-            slidesToScroll: 1,
+            slidesToScroll: 3,
             adaptiveHeight: true,
             variableHeight: true,
           },
@@ -73,7 +72,7 @@ function SectionBest() {
             autoplaySpeed: 4000,
             speed: 400,
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
             adaptiveHeight: true,
             variableHeight: true,
           },
@@ -91,7 +90,8 @@ function SectionBest() {
             return (
               <li
                 key={isPopular}
-                className={styles2.wrapperProductsItem}
+                // className={styles2.wrapperProductsItem}
+                className={styles.productsItem}
               >
                 <Card productCardData={item} />
               </li>

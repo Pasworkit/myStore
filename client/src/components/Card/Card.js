@@ -11,7 +11,7 @@ import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import styles from './Card.module.scss';
 import {
   toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart, toggleProductInFavorites,
-} from '../../store/slices/productsSlice';
+} from '../../store/slices/productsSlice/actionCreators';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
 function Card(props) {

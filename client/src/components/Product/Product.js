@@ -17,7 +17,7 @@ import ButtonBuy from '../ButtonBuy/ButtonBuy';
 import Breadcrumbs from '../Breadсrumbs/Breadсrumbs';
 import {
   toggleProductInCart, incrementQuantityProductInCart, decrementQuantityProductInCart, toggleProductInFavorites,
-} from '../../store/slices/productsSlice';
+} from '../../store/slices/productsSlice/actionCreators';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
 function Product() {
@@ -26,6 +26,8 @@ function Product() {
   const handleOpenAccordion = () => {
     setShow(!show); // Toggle accordion
   };
+
+  const dispatch = useDispatch();
   const products = useSelector((state) => state.productsAll.products);
 
   const [theProduct] = products.filter((product) => product.itemNo === linkItemNo);
@@ -57,7 +59,6 @@ function Product() {
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
 
-  const dispatch = useDispatch();
   const token = useSelector((store) => store.auth.token);
 
   const handleModalCancel = () => { dispatch(setModalIsOpen(false)); };
@@ -189,28 +190,28 @@ function Product() {
               <div>{show ? <ArrowBackIosNewOutlinedIcon className={styles.accordionSign} /> : <ArrowForwardIosOutlinedIcon className={styles.accordionSign} />}</div>
             </div>
             {show && (
-            <div>
-              <p>
-                <span className={styles.infoTitleText}>Category: </span>
-                {categories}
-              </p>
-              <p>
-                <span className={styles.infoTitleText}>Botanical name: </span>
-                {botanicalName}
-              </p>
-              <p>
-                <span className={styles.infoTitleText}>Description: </span>
-                {text}
-              </p>
-              <p>
-                <span className={styles.infoTitleText}>Pet & Baby safe: </span>
-                {isPetAndBabySafe === 'true' ? 'Yes.' : 'No.'}
-              </p>
-              <p>
-                <span className={styles.infoTitleText}>Easy Care: </span>
-                {isEasyCare === 'true' ? 'Yes.' : 'No.'}
-              </p>
-            </div>
+              <div>
+                <p>
+                  <span className={styles.infoTitleText}>Category: </span>
+                  {categories}
+                </p>
+                <p>
+                  <span className={styles.infoTitleText}>Botanical name: </span>
+                  {botanicalName}
+                </p>
+                <p>
+                  <span className={styles.infoTitleText}>Description: </span>
+                  {text}
+                </p>
+                <p>
+                  <span className={styles.infoTitleText}>Pet & Baby safe: </span>
+                  {isPetAndBabySafe === 'true' ? 'Yes.' : 'No.'}
+                </p>
+                <p>
+                  <span className={styles.infoTitleText}>Easy Care: </span>
+                  {isEasyCare === 'true' ? 'Yes.' : 'No.'}
+                </p>
+              </div>
             )}
           </div>
           <div className={styles.priceWrapper}>

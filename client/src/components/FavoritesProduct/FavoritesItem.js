@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import styles from './FavoritesItem.module.scss';
 import { ReactComponent as DeleteIcon } from '../../svg/icon-delete.svg';
-import { toggleProductInFavorites, toggleProductInCart } from '../../store/slices/productsSlice';
+import { toggleProductInFavorites, toggleProductInCart } from '../../store/slices/productsSlice/actionCreators';
 import { setModalIsOpen, setModalData } from '../../store/slices/modalSlise';
 
 function FavoritesItem({

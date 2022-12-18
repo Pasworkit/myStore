@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Cart.module.scss';
@@ -58,9 +57,5 @@ function Cart() {
     </section>
   );
 }
-
-Cart.propTypes = {
-  productsCartSlider: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
-};
 
 export default Cart;
