@@ -128,7 +128,7 @@ function Card(props) {
             <FavoriteBorderIcon className={styles.star} />
           )}
       </div>
-      <Link to={`/product/${itemNo}`}>
+      <Link to={`/${itemNo}`}>
         <div className={styles.cardProductImgWrapper}>
           <img src={imageUrls} className={styles.cardProductImg} alt={name} />
         </div>
