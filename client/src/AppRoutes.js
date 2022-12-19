@@ -19,7 +19,7 @@ function AppRoutes() {
       <Route path="/flowering" element={<CategoryPage />} />
       <Route path="/ferns-and-palms" element={<CategoryPage />} />
       <Route path="/succulents-and-cacti" element={<CategoryPage />} />
-      <Route path="/:linkItemNo" element={<ProductPage />} />
+      <Route path="/product/:linkItemNo" element={<ProductPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/cart/order" element={<OrderPage />} />
