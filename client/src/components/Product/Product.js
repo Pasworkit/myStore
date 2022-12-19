@@ -7,7 +7,6 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import { useParams } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Button } from '@mui/material';
@@ -20,17 +19,15 @@ import {
 } from '../../store/slices/productsSlice/actionCreators';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
-function Product() {
-  const { linkItemNo } = useParams();
+function Product(props) {
   const [show, setShow] = useState(false);
   const handleOpenAccordion = () => {
     setShow(!show); // Toggle accordion
   };
 
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productsAll.products);
 
-  const [theProduct] = products.filter((product) => product.itemNo === linkItemNo);
+  const { productToRender: theProduct } = props;
   const {
     _id,
     itemNo,
@@ -48,6 +45,7 @@ function Product() {
     text, light, watering, humidity,
   } = description;
 
+  const products = useSelector((store) => store.productsAll.products);
   //  eslint-disable-next-line max-len
   const documentMetaDesc = `${botanicalName} known as ${name}: ${text.slice(0, 97)}...`;
   useEffect(() => {
@@ -135,8 +133,12 @@ function Product() {
     }
   };
 
-  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
-
+  const renderStringTitle = (stringTitle) => {
+    if (!stringTitle || stringTitle.length === 0) {
+      return '';
+    }
+    return [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
+  };
   return (
     <section className={styles.productPageContainer}>
       <div>
