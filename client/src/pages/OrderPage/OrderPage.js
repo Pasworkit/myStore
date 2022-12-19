@@ -205,12 +205,12 @@ function OrderPage() {
                   <Grid item md={6} xs={12}>
                     <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
                     {formik.errors.email
-                      ? <div>{formik.errors.email}</div> : null}
+                      ? <div className={styles.formik_error}>{formik.errors.email}</div> : null}
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <TextField type="text" fullWidth name="mobile" label="Mobile" value={formik.values.mobile} onChange={formik.handleChange} />
                     {formik.errors.mobile
-                      ? <div>{formik.errors.mobile}</div> : null}
+                      ? <div className={styles.formik_error}>{formik.errors.mobile}</div> : null}
                   </Grid>
 
                 </Grid>
@@ -221,17 +221,17 @@ function OrderPage() {
                   <Grid item md={6} xs={12}>
                     <TextField type="text" fullWidth name="deliveryAddress.country" label="Country" value={formik.values.deliveryAddress.country} onChange={formik.handleChange} />
                     {formik.errors.deliveryAddress && formik.errors.deliveryAddress.country
-                      ? <div>{formik.errors.deliveryAddress.country}</div> : null}
+                      ? <div className={styles.formik_error}>{formik.errors.deliveryAddress.country}</div> : null}
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <TextField type="text" fullWidth name="deliveryAddress.city" label="City" value={formik.values.deliveryAddress.city} onChange={formik.handleChange} />
                     {formik.errors.deliveryAddress && formik.errors.deliveryAddress.city
-                      ? <div>{formik.errors.deliveryAddress.city}</div> : null}
+                      ? <div className={styles.formik_error}>{formik.errors.deliveryAddress.city}</div> : null}
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <TextField type="text" fullWidth name="deliveryAddress.address" label="Address" value={formik.values.deliveryAddress.address} onChange={formik.handleChange} />
                     {formik.errors.deliveryAddress && formik.errors.deliveryAddress.address
-                      ? <div>{formik.errors.deliveryAddress.address}</div> : null}
+                      ? <div className={styles.formik_error}>{formik.errors.deliveryAddress.address}</div> : null}
                   </Grid>
                 </Grid>
 
