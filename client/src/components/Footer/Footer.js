@@ -56,7 +56,7 @@ function Footer() {
             <div className={styles.footerWrapperBlokeContactsPosition}>
               <div className={styles.footerContactsPosition}>
                 <p className={styles.footerContactsAddress}>Address</p>
-                <p className={styles.footerContactsCity}>Kyiv</p>
+                <p className={styles.footerContactsCity}>Dnipro</p>
                 <p className={styles.footerContactsStreet}>
                   <span className={styles.footerContactsCitySpan}>Dnipro</span>
                   Yavornytskogo Dmytra ( Marksa Karla ) ave., 48.

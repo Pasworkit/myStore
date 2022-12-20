@@ -127,37 +127,37 @@ function SignUpPage() {
               <Grid item md={6}>
                 <TextField type="text" fullWidth name="firstName" label="Name" value={formik.values.firstName} onChange={formik.handleChange} />
                 {formik.errors.firstName
-                  ? <div>{formik.errors.firstName}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.firstName}</div> : null}
               </Grid>
 
               <Grid item md={6}>
                 <TextField type="text" fullWidth name="lastName" label="Last Name" value={formik.values.lastName} onChange={formik.handleChange} />
                 {formik.errors.lastName
-                  ? <div>{formik.errors.lastName}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.lastName}</div> : null}
               </Grid>
 
               <Grid item md={6}>
                 <TextField type="text" fullWidth name="login" label="Login" value={formik.values.login} onChange={formik.handleChange} />
                 {formik.errors.login
-                  ? <div>{formik.errors.login}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.login}</div> : null}
               </Grid>
 
               <Grid item md={6}>
-                <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
+                <TextField type="password" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
                 {formik.errors.password
-                  ? <div>{formik.errors.password}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.password}</div> : null}
               </Grid>
 
               <Grid item md={6}>
                 <TextField type="text" fullWidth name="email" label="Email" value={formik.values.email} onChange={formik.handleChange} />
                 {formik.errors.email
-                  ? <div>{formik.errors.email}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.email}</div> : null}
               </Grid>
 
               <Grid item md={6}>
                 <TextField type="text" fullWidth name="telephone" label="Telephone" value={formik.values.telephone} onChange={formik.handleChange} />
                 {formik.errors.telephone
-                  ? <div>{formik.errors.telephone}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.telephone}</div> : null}
               </Grid>
 
             </Grid>

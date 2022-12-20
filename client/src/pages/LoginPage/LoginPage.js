@@ -93,13 +93,13 @@ function LoginPage() {
               <Box sx={{ m: 2 }}>
                 <TextField type="text" fullWidth name="loginOrEmail" label="Login Or Email" value={formik.values.loginOrEmail} onChange={formik.handleChange} />
                 {formik.errors.loginOrEmail
-                  ? <div>{formik.errors.loginOrEmail}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.loginOrEmail}</div> : null}
               </Box>
 
               <Box sx={{ m: 2 }}>
-                <TextField type="text" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
+                <TextField type="password" fullWidth name="password" label="Password" value={formik.values.password} onChange={formik.handleChange} />
                 {formik.errors.password
-                  ? <div>{formik.errors.password}</div> : null}
+                  ? <div className={styles.formik_error}>{formik.errors.password}</div> : null}
               </Box>
             </Box>
 
