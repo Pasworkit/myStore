@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCart } from '../../API/ApiTest';
+import { getCart } from '../../api/ApiTest';
 
 const orderSlice = createSlice({
   name: 'order',

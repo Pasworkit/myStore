@@ -1,30 +1,24 @@
 import axios from 'axios';
+import axiosConfig from './axiosConfig';
+
+export const getSlides = async () => axiosConfig.get('/slides');
+
+export const getComments = async () => axiosConfig.get('/comments');
+
+export const createOrder = async (newOrder) => axiosConfig.post('/orders', newOrder);
+
+export const createCustomer = async (newUser) => axiosConfig.post('/customers', newUser);
+
+export const loginCustomer = async (userData) => axiosConfig.post('/customers/login', userData);
 
 export const getProductsFromBack = async () => axios.get(`${process.env.REACT_APP_API_URL}/products`);
 
-export const getProductByItemNumber = async (itemNumber) => axios.get(`${process.env.REACT_APP_API_URL}/products/${itemNumber}`);
-
-export const createCustomer = async (newUser) => axios.post(`${process.env.REACT_APP_API_URL}/customers`, newUser);
-
-export const loginCustomer = async (userData) => axios.post(`${process.env.REACT_APP_API_URL}/customers/login`, userData);
-
-export const createOrder = async (token, newOrder) => axios.post(
-  `${process.env.REACT_APP_API_URL}/orders`,
-  newOrder,
-  {
-    headers: {
-    // eslint-disable-next-line quote-props
-      'Authorization': `Bearer ${token}`,
-    },
-  },
-);
+// export const getProductByItemNumber = async (itemNumber) => axios.get(`${process.env.REACT_APP_API_URL}/products/${itemNumber}`);
 
 export const createOrderWithoutAuthorization = async (newOrder) => axios.post(
   `${process.env.REACT_APP_API_URL}/orders`,
   newOrder,
 );
-
-export const getComments = async () => axios.get(`${process.env.REACT_APP_API_URL}/comments`);
 
 export const apdatedCart = async (token, productsInCart) => axios.put(`${process.env.REACT_APP_API_URL}/cart`, {
   products: productsInCart,
@@ -83,5 +77,3 @@ export const deleteProductInFavorites = async (id, token) => axios.delete(`${pro
     'Authorization': `Bearer ${token}`,
   },
 });
-
-export const getSlides = async () => axios.get(`${process.env.REACT_APP_API_URL}/slides`);

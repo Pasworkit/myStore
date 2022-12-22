@@ -30,7 +30,7 @@ const app = express();
 app.use(cors());
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // DB Config
@@ -38,9 +38,9 @@ const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+    .connect(db, {useNewUrlParser: true})
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -71,12 +71,26 @@ app.use("/api/partners", partners);
 
 // Server static assets if in production
 if (true || process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
+    // Set static folder
+    app.use(express.static("client/build"));
+    const routes = ["/catalog",
+        "/hanging",
+        "/flowering",
+        "/login",
+        "/sign-up",
+        "/cart/order",
+        "/favorites",
+        "/cart",
+        "/sign-up",
+        "/succulents-and-cacti",
+        "/ferns-and-palms",
+        "/",
+        "/:linkItemNo"
+    ];
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
+    app.get(routes, (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
 }
 
 const port = process.env.PORT || 5000;
