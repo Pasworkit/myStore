@@ -1,5 +1,5 @@
-@use '../../styles/abstracts/variables';
-@import '../../styles/abstracts/config';
+@use "../../styles/abstracts/variables";
+@import "../../styles/abstracts/config";
 
 .wrapper {
   padding-bottom: 50px;
@@ -10,59 +10,32 @@
   padding-top: 50px;
   font-size: 23px;
   line-height: 130%;
-  color: #202B21;
+  color: #202b21;
   margin-bottom: 50px;
+
   @media (min-width: variables.$tablet-bp) {
     font-size: 32px;
   }
 }
 
-.dot__margin{
+.dot__margin {
   margin-bottom: 40px;
 }
 
 :global(.slick-slider .slick-dots li) {
   border-radius: 50%;
-  border: 1px solid #2A592E;
+  border: 1px solid #2a592e;
 
   & .slick-active {
-    background: #2A592E;
+    background: #2a592e;
   }
 }
 
 :global(.slick-slider .slick-dots .slick-active) {
-  background: #2A592E;
+  background: #2a592e;
 }
 
-//
-//:global(.slick-slider .slick-arrow) {
-//  top: 90%;
-//
-//  &::before {
-//    border: 1px solid #2A592E;
-//  }
-//}
-//
-//:global(.slick-slider button.slick-arrow.slick-prev) {
-//  left: 20%;
-//}
-//
-//:global(.slick-slider button.slick-arrow.slick-next) {
-//  right: 21%;
-//}
-//
-//:global(.slick-slider button.slick-arrow.slick-prev::before) {
-//  background: #2A592E;
-//  border-radius: 50%;
-//}
-//
-//:global(.slick-slider button.slick-arrow.slick-next::before) {
-//  background: #2A592E;
-//  border-radius: 50%;
-//}
-
-
-.center{
+.center {
   width: 90%;
   margin: 0 auto;
 }

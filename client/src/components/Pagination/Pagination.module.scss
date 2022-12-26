@@ -1,5 +1,5 @@
-@use '../../styles/abstracts/_variables';
-@use '../../styles/abstracts/_breakpoints';
+@use "../../styles/abstracts/_variables";
+@use "../../styles/abstracts/_breakpoints";
 
 .listPagination {
   margin: 0 20px;
@@ -7,7 +7,7 @@
 }
 
 .itemActivePagination {
-  background: #B6D5B9;
+  background: #b6d5b9;
   border-radius: 50%;
 }
 
@@ -18,13 +18,13 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 130%;
+  color: #2c2c2c;
 
-  color: #2C2C2C;
+  @media (min-width: breakpoints.$tablet-min-width) {
+    font-size: 20px;
+  }
 
-    @media(min-width: breakpoints.$tablet-min-width){
-      font-size: 20px;
-    }
-    @media(min-width: breakpoints.$desktop-min-width){
-      font-size: 20px;
-    }
+  @media (min-width: breakpoints.$desktop-min-width) {
+    font-size: 20px;
+  }
 }

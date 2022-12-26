@@ -1,38 +1,37 @@
 .favorites__container {
-  margin-top: 15px;
   padding: 0 15px;
   margin: 0 auto;
-  
+
   @media (min-width: 769px) {
-  margin-top: 70px;
-  padding: 0 30px;
+    margin-top: 70px;
+    padding: 0 30px;
   }
 
   @media (min-width: 1025px) {
-  margin-top: 70px;
-  padding: 0 40px;
-  max-width: 1440px;
+    margin-top: 70px;
+    padding: 0 40px;
+    max-width: 1440px;
   }
 }
 
 .favorites__containerItem {
-@media (max-width: 769px) {
-  min-width: 345px;
-}
+  @media (max-width: 769px) {
+    min-width: 345px;
+  }
 }
 
 .favorites__title {
-margin-bottom: 24px;
-font-family: 'Lora';
-font-size: 36px;
-line-height: 130%;
-color: #202B21;
+  margin-bottom: 24px;
+  font-family: Lora, serif;
+  font-size: 36px;
+  line-height: 130%;
+  color: #202b21;
 }
 
 .favorites__text {
-margin-bottom: 24px;
-font-family: 'Lora';
-font-size: 24px;
-line-height: 130%;
-color: #1b822e;
+  margin-bottom: 24px;
+  font-family: Lora, serif;
+  font-size: 24px;
+  line-height: 130%;
+  color: #1b822e;
 }

@@ -1,4 +1,4 @@
-@use '../../styles/abstracts/variables';
+@use "../../styles/abstracts/variables";
 
 .wrapper {
   @media (min-width: variables.$tablet-bp) {
@@ -10,37 +10,39 @@
 
 .wrapper_list {
   grid-area: list;
-  background: #B6D5B9;
+  background: #b6d5b9;
 }
 
 .wrapper_list__content {
   padding-top: 50px;
   padding-left: 15px;
   padding-bottom: 40px;
+
   @media (min-width: variables.$tablet-bp) {
     padding-top: 80px;
     padding-left: 30px;
     padding-bottom: 70px;
   }
+
   @media (min-width: variables.$desktop-bp) {
     padding-left: 100px;
   }
-
 }
 
 .title {
   font-size: 32px;
   line-height: 130%;
-  color: #202B21;
+  color: #202b21;
   margin-bottom: 30px;
+
   @media (min-width: variables.$tablet-bp) {
     margin-bottom: 40px;
   }
-
 }
 
 .list_delivery {
   margin-bottom: 40px;
+
   @media (min-width: variables.$tablet-bp) {
     margin-bottom: 34px;
   }
@@ -49,7 +51,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    color: #202B21;
+    color: #202b21;
     margin-bottom: 8px;
   }
 
@@ -58,7 +60,7 @@
     font-size: 16px;
     line-height: 130%;
     font-style: italic;
-    color: #2C2C2C;
+    color: #2c2c2c;
     margin-bottom: 16px;
   }
 }
@@ -68,13 +70,14 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    color: #202B21;
+    color: #202b21;
     margin-bottom: 10px;
   }
 }
 
 .icon {
   margin-bottom: 30px;
+
   @media (min-width: variables.$tablet-bp) {
     margin-bottom: 40px;
   }

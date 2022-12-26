@@ -27,6 +27,7 @@
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: 30px;
     margin-bottom: 0;
+
     &:last-child {
       margin-right: 0;
     }
@@ -35,6 +36,7 @@
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 0;
     margin-right: 40px;
+
     &:last-child {
       margin-right: 0;
     }

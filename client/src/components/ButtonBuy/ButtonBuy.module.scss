@@ -4,10 +4,11 @@
   border-radius: 5px;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: #fff;
   text-shadow: 0 1px 0 #b6e6f9;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
-    filter: drop-shadow(4px 4px 4px #777777) contrast(125%);
+    filter: drop-shadow(4px 4px 4px #777) contrast(125%);
   }
 }

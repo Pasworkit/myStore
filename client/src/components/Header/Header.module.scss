@@ -52,7 +52,6 @@
 }
 
 .menuMobileContainer {
-
   @media (min-width: 100px) and (max-width: 375px) {
     width: 100%;
     border-radius: 5px;
@@ -75,7 +74,6 @@
 
 .closeBtnMenu {
   display: block;
-
   height: 1.5px;
   background: #fff;
   border-radius: 10px;
@@ -88,7 +86,6 @@
 
   &:last-child {
     transform: rotate(-45deg);
-
     width: 22px;
   }
 }
@@ -139,7 +136,7 @@
 }
 
 .basketLinkText {
-  margin: 13px 0 0 0;
+  margin: 13px 0 0;
   padding: 0;
 }
 
@@ -150,7 +147,6 @@
 .phoneNumber {
   display: flex;
   align-items: center;
-
   font-family: variables.$fontFamilyMontserrat;
   font-weight: 400;
   font-size: 16px;
@@ -174,16 +170,17 @@
 
 .phoneNumberSpan {
   margin-left: 13px;
+
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 50px;
   }
 }
 
 .basketDescLink {
-
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
+
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 14px;
   }
@@ -208,38 +205,37 @@
 
 .basketDescLinkLine {
   @media (min-width: breakpoints.$tablet-min-width) {
-    margin-right: 10px;    
+    margin-right: 10px;
 
-      &::after {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 65px;
-        content: '';
-        width: 1px;
-        height: 20px;
-        background: #202b21;
-        border-radius: 5px;
-      }
+    &::after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 65px;
+      content: "";
+      width: 1px;
+      height: 20px;
+      background: #202b21;
+      border-radius: 5px;
+    }
   }
-  @media (min-width: breakpoints.$desktop-min-width) {
-  margin-right: 10px;    
 
-      &::after {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 65px;
-        content: '';
-        width: 1px;
-        height: 20px;
-        background: #202b21;
-        border-radius: 5px;
-      }
+  @media (min-width: breakpoints.$desktop-min-width) {
+    margin-right: 10px;
+
+    &::after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 65px;
+      content: "";
+      width: 1px;
+      height: 20px;
+      background: #202b21;
+      border-radius: 5px;
+    }
   }
 }
-
-
 
 .container {
   @media (max-width: 769px) {
@@ -258,7 +254,6 @@
     max-width: 1200px;
     padding: 0 10px;
     margin: 30px auto;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -268,6 +263,7 @@
 .createLine {
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-bottom: 20px;
+
     &::after {
       content: "";
       margin-top: 20px;
@@ -280,6 +276,7 @@
 
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 25px;
+
     &::after {
       content: "";
       margin-top: 25px;
@@ -317,13 +314,14 @@
   }
 }
 
-.logOut{
-  background: #E7F1E8;
+.logOut {
+  background: #e7f1e8;
   border-radius: 30%;
 
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-left: 13px;
   }
+
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-left: 14px;
   }

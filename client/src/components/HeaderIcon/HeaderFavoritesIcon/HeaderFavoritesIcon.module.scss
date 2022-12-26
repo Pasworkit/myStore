@@ -1,36 +1,37 @@
-@use '../../../styles/abstracts/_breakpoints';
+@use "../../../styles/abstracts/_breakpoints";
 
 .favoritesButton {
-	position: relative;
+  position: relative;
 
-	&:hover {
-		background-color: #bfc0bf;
-	}
+  &:hover {
+    background-color: #bfc0bf;
+  }
 
-	&::after {
-		content: attr(data-products-in-favorites);
-		position: absolute;
-		bottom: -9px;
-		right: -10px;
-		width: 18px;
-		height: 18px;
-		border-radius: 50%;
-		color: black;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 12px;
-		background-color: #B6D5B9;
-	}
+  &::after {
+    content: attr(data-products-in-favorites);
+    position: absolute;
+    bottom: -9px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background-color: #b6d5b9;
+  }
 }
 
 .favoritesIcon {
-    fill: #fff;
-    @media (min-width: breakpoints.$tablet-min-width) {
-      fill: #000;
-    }
-  
-    @media (min-width: breakpoints.$desktop-min-width) {
-      fill: #000;
-    }
+  fill: #fff;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    fill: #000;
   }
+
+  @media (min-width: breakpoints.$desktop-min-width) {
+    fill: #000;
+  }
+}
