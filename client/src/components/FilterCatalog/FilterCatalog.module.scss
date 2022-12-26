@@ -1,7 +1,7 @@
-@use '../../styles/abstracts/_variables';
-@use '../../styles/abstracts/breakpoints';
+@use "../../styles/abstracts/_variables";
+@use "../../styles/abstracts/breakpoints";
 
-.container{
+.container {
   width: 256px;
   margin-top: 25px;
 
@@ -13,7 +13,7 @@
     width: 225px;
   }
 
-  @media (min-width: breakpoints.$tablet-min-width) and (max-width: 920px){
+  @media (min-width: breakpoints.$tablet-min-width) and (max-width: 920px) {
     width: 256px;
     margin-right: 20px;
   }
@@ -21,17 +21,15 @@
   @media (min-width: 920px) {
     width: 256px;
     margin-right: 55px;
-    
   }
 }
 
-
-.containerFilterMenu{
+.containerFilterMenu {
   width: 258px;
   margin-bottom: 10px;
-  border: 1px solid #B6D5B9;
+  border: 1px solid #b6d5b9;
   border-radius: 5px;
-    
+
   @media (min-width: 768px) {
     width: 225px;
   }
@@ -48,10 +46,9 @@
   font-size: 16px;
   line-height: 130%;
   padding: 12px 23px;
-  color: #2C2C2C;
+  color: #2c2c2c;
   border-radius: 5px;
-  background: #B6D5B9;
-
+  background: #b6d5b9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,25 +77,24 @@
 .priceWrapper {
   width: 70px;
   padding: 5px 0 5px 15px;
-  border: 1px solid #B6D5B9;
+  border: 1px solid #b6d5b9;
   border-radius: 5px;
 }
 
 .lineFormPrice::after {
-  content: '';
+  content: "";
   display: block;
   width: 10px;
   height: 1px;
-  background: #2C2C2C;
+  background: #2c2c2c;
 }
 
 .priceBtnSubmit {
   padding: 5px 10px;
-  border: 1px solid #B6D5B9;
+  border: 1px solid #b6d5b9;
   border-radius: 5px;
-  color: #2C2C2C;
+  color: #2c2c2c;
   font-size: 14px;
-  background: #B6D5B9;
+  background: #b6d5b9;
   text-transform: uppercase;
 }
-

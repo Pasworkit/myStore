@@ -1,12 +1,13 @@
-@use '../../../styles/abstracts/_breakpoints';
+@use "../../../styles/abstracts/_breakpoints";
 
 .signInIcon {
-    fill: #fff;
-    @media (min-width: breakpoints.$tablet-min-width) {
-      fill: #000;
-    }
-  
-    @media (min-width: breakpoints.$desktop-min-width) {
-      fill: #000;
-    }
+  fill: #fff;
+
+  @media (min-width: breakpoints.$tablet-min-width) {
+    fill: #000;
   }
+
+  @media (min-width: breakpoints.$desktop-min-width) {
+    fill: #000;
+  }
+}

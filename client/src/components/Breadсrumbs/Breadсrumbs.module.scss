@@ -1,21 +1,24 @@
-@import '../../styles/abstracts/config';
+@import "../../styles/abstracts/config";
 
-.breadCrumbs{
-  font-family: "Montserrat", sans-serif;
+.breadCrumbs {
+  font-family: Montserrat, sans-serif;
   display: flex;
-  margin: 0 auto 0px;
+  margin: 0 auto;
   max-width: $container-max-width;
 }
-.midLink{
+
+.midLink {
   font-size: 16px;
   font-weight: 400;
-  color: #9AA89B;
+  color: #9aa89b;
 }
-.endLink{
+
+.endLink {
   font-size: 16px;
   font-weight: 500;
-  color: #2A592E;
+  color: #2a592e;
 }
-.divider{
+
+.divider {
   margin: 0 8px;
 }

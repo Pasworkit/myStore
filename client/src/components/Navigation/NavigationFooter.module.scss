@@ -5,12 +5,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-
-  @media (min-width: breakpoints.$tablet-min-width) {
-  }
-
-  @media (min-width: breakpoints.$desktop-min-width) {
-  }
 }
 
 .itemNavigationFooter {
@@ -19,8 +13,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-bottom: 16px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -28,6 +24,7 @@
 
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 16px;
+
     &:last-child {
       margin-bottom: 0;
     }

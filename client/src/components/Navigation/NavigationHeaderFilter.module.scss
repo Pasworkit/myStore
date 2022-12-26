@@ -1,4 +1,4 @@
-@use '../../styles/abstracts/_breakpoints';
+@use "../../styles/abstracts/_breakpoints";
 @use "../../styles/abstracts/_variables";
 
 .listNavigation {
@@ -24,6 +24,7 @@
 
   @media (min-width: breakpoints.$tablet-min-width) {
     margin-right: 20px;
+
     &:last-child {
       margin-right: 0;
     }
@@ -32,6 +33,7 @@
   @media (min-width: breakpoints.$desktop-min-width) {
     margin-bottom: 0;
     margin-right: 40px;
+
     &:last-child {
       margin-right: 0;
     }

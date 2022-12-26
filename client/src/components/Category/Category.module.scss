@@ -1,11 +1,13 @@
-@import '../../styles/abstracts/config';
+@import "../../styles/abstracts/config";
 
 .categoryPageContainer {
   @include mainContainer;
 }
+
 .categoryItemsWrapper {
   @include mainItemsWrapper;
 }
+
 .categoryTitle {
   margin-left: 15px;
   margin-bottom: 20px;
@@ -15,18 +17,22 @@
   font-weight: 400;
   line-height: 100%;
 }
+
 @media screen and (min-width: $tablet-min-width) {
   .categoryPageContainer {
     padding-inline: 30px;
   }
+
   .categoryItemsWrapper {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media screen and (min-width: $desktop-min-width) {
   .categoryPageContainer {
     padding-inline: 100px;
   }
+
   .categoryItemsWrapper {
     grid-template-columns: repeat(4, 1fr);
   }

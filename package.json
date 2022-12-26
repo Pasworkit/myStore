@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "prepare": "husky install",
     "lint": "eslint ./client/src",
-    "lint:fix": "eslint ./client/src --fix --color"
+    "lint:fix": "eslint ./client/src --fix --color",
+    "stylelint:fix": "stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",
@@ -43,13 +44,14 @@
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   },
-
   "lint-staged": {
-    "*.js": [
+    "*.{js}": [
       "npm run lint:fix"
+    ],
+    "*.{scss}": [
+      "npm run stylelint:fix"
     ]
   },
-
   "husky": {
     "hooks": {
       "pre-commit": ""

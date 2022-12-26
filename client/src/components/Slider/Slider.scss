@@ -1,6 +1,8 @@
+/* stylelint-disable */
 @import '../../styles/abstracts/config';
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
+
 
 .slider__wrapper-card-photo {
   max-width: 280px;
@@ -11,11 +13,13 @@
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
+
   &-item &-photo {
     width: 100%;
     height: 380px;
   }
 }
+
 .slider__container {
   max-width: ($container-max-width)-200px;
   margin: 0 auto;
@@ -28,7 +32,7 @@
   z-index: 193;
   color: #fff;
   @media (max-width: 360px) {
-	display: none;
+    display: none;
   }
 }
 
@@ -59,13 +63,13 @@ button.slick-arrow.slick-next::before {
   content: '';
   @include flexCentre;
   @media (max-width: 360px) {
-	display: none;
+    display: none;
   }
 }
 
 button.slick-arrow.slick-prev:before {
   @media (max-width: 360px) {
-	display: none;
+    display: none;
   }
 }
 
@@ -121,13 +125,13 @@ button.slick-arrow.slick-prev::before {
   z-index: -1;
   overflow: hidden;
   @media (max-width: 758px) {
-	display: grid;
-	align-content: center;
-	justify-items: center;
-	margin-right: 32px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    margin-right: 32px;
   }
   @media (max-width: 360px) {
-	margin-left: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -177,8 +181,7 @@ ul.slick-dots li.slick-active {
   background: #477547;
   transform: rotate(180deg);
   border-radius: 50%;
-  @media screen and (min-width: $tablet-min-width)
-  {
+  @media screen and (min-width: $tablet-min-width) {
     left: 30%;
   }
 }
@@ -192,45 +195,44 @@ ul.slick-dots li.slick-active {
   padding-top: 9px;
   background: #477547;
   border-radius: 50%;
-  @media screen and (min-width: $tablet-min-width)
-  {
+  @media screen and (min-width: $tablet-min-width) {
     right: 30%;
   }
 }
 
 .slick-arrow {
   @media (max-width: 1200px) {
-	right: 90px;
+    right: 90px;
   }
 }
 
 .slick-arrow.slick-prev {
   @media (max-width: 1200px) {
-	left: 100px;
+    left: 100px;
   }
 }
 
 .slick-arrow.slick-prev, .slick-arrow.slick-next {
   z-index: 12;
   @media (max-width: 985px) {
-	z-index: -1;
+    z-index: -1;
   }
 }
 
 .slider__wrapper-item .slider__wrapper-photo {
   @media (max-width: 976px) {
-	width: 980px;
-	height: 350px;
-	margin-right: auto;
-	margin-left: auto;
+    width: 980px;
+    height: 350px;
+    margin-right: auto;
+    margin-left: auto;
   }
   @media (max-width: 715px) {
-	width: 780px;
-	height: 280px;
+    width: 780px;
+    height: 280px;
   }
   @media (max-width: 556px) {
-	width: 600px;
-	height: 230px;
+    width: 600px;
+    height: 230px;
   }
 }
 
@@ -238,35 +240,37 @@ ul.slick-dots li.slick-active {
   height: 556px;
   margin-top: 35px;
   margin-left: 27px;
+
   &:hover .card__desc {
-	box-shadow: none;
+    box-shadow: none;
   }
+
   @media (max-width: 768px) and (min-width: $container-min-width) {
-	margin-left: -134px
+    margin-left: -134px
   }
   @media (max-width: 360px) {
-	height: 409px;
-	margin-right: auto;
-	margin-left: 230px;
-	overflow: hidden;
+    height: 409px;
+    margin-right: auto;
+    margin-left: 230px;
+    overflow: hidden;
   }
 }
 
 .slider__wrapper .card:hover {
   @media (max-width: 360px) {
-	border: 1px solid transparent;
+    border: 1px solid transparent;
   }
 }
 
 .slider__wrapper .card:hover .slider__wrapper .card__desc {
   @media (max-width: 556px) {
-	display: none;
+    display: none;
   }
 }
 
 div.slider__wrapper-card.slick-list {
   @media (max-width: 556px) {
-	//right: 10px;
+    //right: 10px;
   }
 }
 
@@ -289,8 +293,10 @@ div.slick-slide.slick-active.slick-cloned {
 
 .slider__wrapper .card {
   &:hover .card__desc {
-	@include tablet {
-	  display: block;
-	}
+    @include tablet {
+      display: block;
+    }
   }
 }
+
+/* stylelint-enable */

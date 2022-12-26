@@ -1,21 +1,25 @@
-.cardProductBox{
+.cardProductBox {
   position: relative;
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
   max-width: 280px;
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
 }
+
 .cardProductImgWrapper {
   padding: 0;
   background: none;
 }
+
 .cardProductInfoWrapper {
   padding: 0;
 }
-.cardInfoTitleText{
+
+.cardInfoTitleText {
   font-weight: 500;
 }
+
 .cardProductImg {
   width: 100%;
   max-width: 280px;
@@ -23,7 +27,8 @@
   margin: 0;
   border-radius: 5%;
 }
-.cardPriceWrapper{
+
+.cardPriceWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,39 +36,48 @@
   border-bottom: 1px solid #ededed;
   margin-bottom: 8px;
 }
-.cardPrice{
+
+.cardPrice {
   font-size: 22px;
   font-weight: 600;
 }
-.cardQuantityWrapper{
+
+.cardQuantityWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.cardQuantityBlock{
+
+.cardQuantityBlock {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
-.cardQuantitySet{
+
+.cardQuantitySet {
   border: none;
   display: flex;
   align-items: flex-start;
 }
-.cardQuantitySet span{
+
+.cardQuantitySet span {
   padding: 4px 12px;
   cursor: pointer;
 }
-.cardMinus, .cardPlus {
+
+.cardMinus,
+.cardPlus {
   border: none;
-  color: #456F49;
+  color: #456f49;
   transform: scale(1.2);
 }
-.cardNum{
-  border: 1px solid #9AA89B;
+
+.cardNum {
+  border: 1px solid #9aa89b;
   font-size: 18px;
   border-radius: 5px;
 }
+
 .star {
   border: none;
   outline: none;
@@ -71,6 +85,7 @@
   color: #1fa92d;
   transform: scale(1.1);
 }
+
 .favoritesIcon {
   position: absolute;
   right: 15px;
