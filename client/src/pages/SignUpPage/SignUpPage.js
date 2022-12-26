@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import { useCookies } from 'react-cookie';
 import {
   createCustomer, loginCustomer, createFavorites, apdatedCart,
-} from '../../API/ApiTest';
+} from '../../api/ApiTest';
 import styles from './SignUpPage.module.scss';
 import { regUser, setUser } from '../../store/slices/authSlice';
 
