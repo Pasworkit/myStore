@@ -8,7 +8,7 @@ import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
 function FilterEasyCare({ showcheckedEasyCare, setShowcheckedEasyCare, handleChangeEasyCare }) {
-  const checkeFilter = useSelector(store => store.filter);
+  const checkeFilter = useSelector(store => store.filterEasyCare);
 
   return (
 

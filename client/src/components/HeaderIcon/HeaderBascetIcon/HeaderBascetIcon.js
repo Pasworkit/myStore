@@ -9,6 +9,7 @@ function HeaderBascetIcon() {
       type="button"
       className={styles.cartButton}
       data-products-in-cart={amountProducts}
+      data-bascet-icon="bascet-icon"
     >
       <ShopingBascet data-bascet-icon="bascet-icon" className={styles.basketIcon} />
     </button>

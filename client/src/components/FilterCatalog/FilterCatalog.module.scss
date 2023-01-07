@@ -81,6 +81,13 @@
   border-radius: 5px;
 }
 
+.priceWrapperError {
+  width: 70px;
+  padding: 5px 0 5px 15px;
+  border: 1px solid #ff0101;
+  border-radius: 5px;
+}
+
 .lineFormPrice::after {
   content: "";
   display: block;

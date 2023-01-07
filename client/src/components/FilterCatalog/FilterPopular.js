@@ -8,7 +8,7 @@ import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
 function FilterPopular({ showcheckedPopular, setShowcheckedPopular, handleChangePopular }) {
-  const checkeFilter = useSelector(store => store.filter);
+  const checkeFilter = useSelector(store => store.filterPopular);
 
   return (
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useOnClickOutside = (ref, handler) => {
+const onClickOutsideBurgerMenu = (ref, handler) => {
   useEffect(() => {
     const listener = (event) => {
       if (event.target.dataset.openBurgerBtn === 'open-burger-btn' || event.target.dataset.openBurgerMenu === 'open-burger-menu' || event.target.dataset.phoneNumber === 'phone-number') {
@@ -26,4 +26,4 @@ const useOnClickOutside = (ref, handler) => {
   }, [ref, handler]);
 };
 
-export default useOnClickOutside;
+export default onClickOutsideBurgerMenu;

@@ -3,7 +3,8 @@ import { CSSTransition } from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import useOnClickOutside from '../../hooks/onClickOutside';
+
+import onClickOutsideBurgerMenu from './onClickOutsideBurgerMenu';
 
 import logoHeaderMb from '../../img/logo/logo-header-mb.png';
 import logoHeader from '../../img/logo/logo-header.png';
@@ -31,7 +32,7 @@ function Header() {
     setIsOpenMenu((currentIsOpen) => !currentIsOpen);
   };
 
-  useOnClickOutside(nodeRef, () => {
+  onClickOutsideBurgerMenu(nodeRef, () => {
     if (isOpenMenu) {
       handleIsOpenMenu();
     }
@@ -93,7 +94,7 @@ function Header() {
                 <HeaderBascetIcon />
                 <p data-basket-text="basket-text" className={styles.basketLinkText}>Cart</p>
               </NavLink>
-              <NavLink className={styles.FavoritesLink} to="/favorites">
+              <NavLink data-favorites-text="favorites-text" className={styles.FavoritesLink} to="/favorites">
                 <HeaderFavoritesIcon />
                 <p data-favorites-text="favorites-text" className={styles.basketLinkText}>Favorite</p>
               </NavLink>
@@ -107,7 +108,7 @@ function Header() {
               )}
 
               {token && (
-                <NavLink className={styles.FavoritesLink} to="/">
+                <NavLink data-sign-in="sign-in" className={styles.FavoritesLink} to="/">
                   <HeaderLogin />
                   <p data-sign-in="sign-in" className={styles.basketLinkText}>Log out</p>
                 </NavLink>
