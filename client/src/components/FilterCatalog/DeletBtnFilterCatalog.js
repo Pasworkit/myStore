@@ -1,10 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../Catalog.module.scss';
-import {
-  deleteCategorisFilter, deleteHeightRangeFilter, deleteIsEasyCareFilter, deleteIsPopularFilter, deletePetAndBabeSafeFilter, deletePriceFilter,
-} from '../../../store/slices/filterCatalogSlice';
-import { setCurrentPage } from '../../../store/slices/catalogSlice';
+import styles from '../../pages/CatalogPage/CatalogPage.module.scss';
+
+import { setCurrentPage } from '../../store/slices/catalogSlice';
+import { deleteCategorisFilter } from '../../store/slices/filterCatalogSlice/filterCategoriesSlice';
+import { deleteIsPopularFilter } from '../../store/slices/filterCatalogSlice/filterPopularSlice';
+import { deleteIsEasyCareFilter } from '../../store/slices/filterCatalogSlice/filterEasyCareSlice';
+import { deletePetAndBabeSafeFilter } from '../../store/slices/filterCatalogSlice/filterPetAndBabeSafeSlice';
+import { deleteHeightRangeFilter } from '../../store/slices/filterCatalogSlice/filterHeightRangeSlice';
+import { deletePriceValueFilter } from '../../store/slices/filterCatalogSlice/filterPriceSlice';
 
 function DeletBtnFilterCatalog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,8 +20,8 @@ function DeletBtnFilterCatalog() {
   const isPetAndBabySafe = searchParams.get('isPetAndBabySafe') || '';
   const heightParams = searchParams.get('height') || '';
   const price = searchParams.get('price') || '';
-  const minPrice = useSelector(store => store.filter.minPrice);
-  const maxPrice = useSelector(store => store.filter.maxPrice);
+  const minPrice = useSelector(store => store.filterPrice.minPrice);
+  const maxPrice = useSelector(store => store.filterPrice.maxPrice);
 
   return (
     <div className={styles.wrapperDelFilterBtn}>
@@ -281,7 +285,7 @@ function DeletBtnFilterCatalog() {
             type="button"
             className={styles.btnDelFilterName}
             onClick={() => {
-              dispatch(deletePriceFilter({ startPrice: [0, 500], startValue: null }));
+              dispatch(deletePriceValueFilter({ startPrice: [0, 500], startValue: null }));
               const priceDel = searchParams.delete('price');
               setSearchParams(priceDel);
               dispatch(setCurrentPage(1));

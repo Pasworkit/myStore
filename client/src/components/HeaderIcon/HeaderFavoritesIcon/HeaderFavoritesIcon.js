@@ -10,6 +10,7 @@ function HeaderFavoritesIcon() {
       type="button"
       className={styles.favoritesButton}
       data-products-in-favorites={productsInFavorites.length}
+      data-favorites-icon="favorites-icon"
     >
       <Favorites data-favorites-icon="favorites-icon" className={styles.favoritesIcon} />
     </button>

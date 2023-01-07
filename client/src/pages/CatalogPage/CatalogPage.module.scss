@@ -131,7 +131,14 @@
     }
   }
 
-  @media (min-width: breakpoints.$desktop-min-width) {
+  @media (min-width: 1025px) and (max-width: 1224px) {
+    margin-right: 0;
+    &:nth-child(1n) {
+      margin-right: 40px;
+    }
+  }
+
+  @media (min-width: 1225px) {
     margin-bottom: 40px;
 
     &:nth-last-child(3) {

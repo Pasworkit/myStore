@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   nextPageCatalog, prevPageCatalog, setCurrentPage,
 } from '../../store/slices/catalogSlice';
-import NextIconC from '../Catalog/CatalogPaginationIcon/NextIcon/NextIcon';
-import PreviousIconC from '../Catalog/CatalogPaginationIcon/PreviousIcon/PreviousIcon';
+import NextIconC from './NextIcon/NextIcon';
+import PreviousIconC from './PreviousIcon/PreviousIcon';
 
 import styles from './Pagination.module.scss';
 

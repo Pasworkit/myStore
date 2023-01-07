@@ -1,13 +1,16 @@
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import * as yup from 'yup';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik, useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
+import { useEffect } from 'react';
 import ShowCheckboxIcon from '../FilterIcon/ShowCheckboxIcon';
 import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
-import { changePricefilter } from '../../store/slices/filterCatalogSlice';
+import { changeInputPriceFilter, changeSliderPriceFilter } from '../../store/slices/filterCatalogSlice/filterPriceSlice';
+import { setCurrentPage } from '../../store/slices/catalogSlice';
 
 function valuetext(value) {
   return `${value}$`;
@@ -22,22 +25,45 @@ const theme = createTheme({
   },
 });
 
-function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPrice }) {
-  const price = useSelector(store => store.filter.price);
+function FilterPrice({ showcheckedPrice, setShowcheckedPrice }) {
+  const minPriceInput = useSelector(store => store.filterPrice.minPriceInput);
+  const maxPriceInput = useSelector(store => store.filterPrice.maxPriceInput);
+  const minPrice = useSelector(store => store.filterPrice.minPrice);
+  const maxPrice = useSelector(store => store.filterPrice.maxPrice);
+  const priceSlider = useSelector(store => store.filterPrice.priceSlider);
 
   const dispatch = useDispatch();
 
   const handleChangePrice = (event, newValue) => {
-    dispatch(changePricefilter(newValue));
+    dispatch(changeSliderPriceFilter(newValue));
   };
 
-  const initialValues = {
-    minPrice: price[0],
-    maxPrice: price[1],
-  };
+  const schemaValidation = yup.object().shape({
+
+    minPrice: yup.number().min(0).max(500).required(),
+    maxPrice: yup.number().min(0).max(500).required(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      minPrice: minPriceInput,
+      maxPrice: maxPriceInput,
+    },
+
+    onSubmit: (e) => {
+      dispatch(changeInputPriceFilter(e));
+      dispatch(setCurrentPage(1));
+    },
+
+    validationSchema: schemaValidation,
+  });
+
+  useEffect(() => {
+    // eslint-disable-next-line no-return-await
+    (async () => await formik.setValues({ minPrice: minPriceInput, maxPrice: maxPriceInput }))();
+  }, [minPrice, maxPrice, minPriceInput, maxPriceInput]);
 
   return (
-
     <div className={styles.containerFilterMenu}>
       <button type="button" onClick={() => setShowcheckedPrice((prevStatus) => !prevStatus)} className={styles.EasyCareBtn}>
         Price
@@ -47,25 +73,26 @@ function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPr
         <>
           <div>
             <Formik
-              initialValues={initialValues}
-              onSubmit={handelSubmitPriceForm}
+              initialValues={formik.initialValues}
+              validationSchema={schemaValidation}
+              onSubmit={formik.handleSubmit}
             >
               <Form className={styles.priceContainer}>
 
-                <Field
+                <input
                   type="text"
-                  value={price[0]}
-                  disabled
                   name="minPrice"
-                  className={styles.priceWrapper}
+                  onChange={formik.handleChange}
+                  value={formik.values.minPrice}
+                  className={formik.errors.minPrice ? styles.priceWrapperError : styles.priceWrapper}
                 />
                 <p className={styles.lineFormPrice} />
-                <Field
+                <input
                   type="text"
-                  value={price[1]}
-                  disabled
                   name="maxPrice"
-                  className={styles.priceWrapper}
+                  onChange={formik.handleChange}
+                  value={formik.values.maxPrice}
+                  className={formik.errors.maxPrice ? styles.priceWrapperError : styles.priceWrapper}
                 />
                 <button className={styles.priceBtnSubmit} type="submit">ok</button>
               </Form>
@@ -80,7 +107,7 @@ function FilterPrice({ handelSubmitPriceForm, showcheckedPrice, setShowcheckedPr
             <ThemeProvider theme={theme}>
               <Slider
                 getAriaLabel={() => 'Temperature range'}
-                value={price}
+                value={priceSlider}
                 onChange={handleChangePrice}
                 valueLabelDisplay="auto"
                 getAriaValueText={debounce(valuetext, 600)}

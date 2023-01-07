@@ -18,13 +18,21 @@ function Footer() {
         <div className={styles.logoFooterMobilePosition}>
           <div className={styles.logoFooterWrapperMobile}>
             <img src={logoFooterMb} alt="logo" />
-            <img className={styles.logoFooterImgMobileText} src={logoFooterMbText} alt="logo" />
+            <img
+              className={styles.logoFooterImgMobileText}
+              src={logoFooterMbText}
+              alt="logo"
+            />
           </div>
         </div>
         <div className={styles.logoFooterDescPosition}>
           <div className={styles.logoFooterWrapperDesc}>
             <img src={logoFooterDesc} alt="logo" />
-            <img className={styles.logoFooterImgDescText} src={logoFooterDescText} alt="logo" />
+            <img
+              className={styles.logoFooterImgDescText}
+              src={logoFooterDescText}
+              alt="logo"
+            />
           </div>
         </div>
 
@@ -40,12 +48,24 @@ function Footer() {
           </div>
 
           <div className={styles.footerSocialWrapperDesc}>
-            <h2 className={styles.footerSocialtextDesc}>We are in social networks</h2>
+            <h2 className={styles.footerSocialtextDesc}>
+              We are in social networks
+            </h2>
             <div className={styles.footerSocialWrapperLinksDesc}>
-              <a className={styles.footerSocialIconFacebookDesc} href="https://uk-ua.facebook.com" target="_blank" rel="noreferrer">
+              <a
+                className={styles.footerSocialIconFacebookDesc}
+                href="https://uk-ua.facebook.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FooterFacebookIcon />
               </a>
-              <a className={styles.footerSocialIconInstagramDesc} href="https://www.instagram.com" target="_blank" rel="noreferrer">
+              <a
+                className={styles.footerSocialIconInstagramDesc}
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FooterInstagramIcon />
               </a>
             </div>
@@ -54,7 +74,7 @@ function Footer() {
           <div className={styles.footerWrapperBlokeContacts}>
             <h2 className={styles.footerContacts}>Contacts</h2>
             <div className={styles.footerWrapperBlokeContactsPosition}>
-              <div className={styles.footerContactsPosition}>
+              <div>
                 <p className={styles.footerContactsAddress}>Address</p>
                 <p className={styles.footerContactsCity}>Dnipro</p>
                 <p className={styles.footerContactsStreet}>
@@ -67,11 +87,21 @@ function Footer() {
               <div className={styles.footerMailAndTelPositionDesc}>
                 <div>
                   <h2 className={styles.footerContactsEmailText}>E-mail</h2>
-                  <a className={styles.footerContactsEmailLink} href="mailto:HomeDecoPostTest@gmail.com">HomeDecoPostTest@gmail.com</a>
+                  <a
+                    className={styles.footerContactsEmailLink}
+                    href="mailto:HomeDecoPostTest@gmail.com"
+                  >
+                    HomeDecoPostTest@gmail.com
+                  </a>
                 </div>
                 <div>
                   <p className={styles.footerContactsEmailPhone}>Phone</p>
-                  <a className={styles.footerContactsEmailPhoneLink} href="tel:+ 375 (29) 922-29-99">+ 375 (29) 922-29-99</a>
+                  <a
+                    className={styles.footerContactsEmailPhoneLink}
+                    href="tel:+ 375 (29) 922-29-99"
+                  >
+                    + 375 (29) 922-29-99
+                  </a>
                 </div>
               </div>
             </div>
@@ -81,17 +111,30 @@ function Footer() {
       <div className={styles.footerSocialWrapper}>
         <h2 className={styles.footerSocialtext}>We are in social networks</h2>
         <div className={styles.footerSocialWrapperLinks}>
-          <a className={styles.footerSocialIconFacebook} href="https://uk-ua.facebook.com" target="_blank" rel="noreferrer">
+          <a
+            className={styles.footerSocialIconFacebook}
+            href="https://uk-ua.facebook.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FooterFacebookIcon />
           </a>
-          <a className={styles.footerSocialIconInstagram} href="https://www.instagram.com" target="_blank" rel="noreferrer">
+          <a
+            className={styles.footerSocialIconInstagram}
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FooterInstagramIcon />
           </a>
         </div>
       </div>
 
       <div className={styles.footerTextCopyWrapper}>
-        <p className={styles.footerTextCopy}>&copy; 2022. All rights reserved </p>
+        <p className={styles.footerTextCopy}>
+          &copy; 2022. All rights reserved
+          {' '}
+        </p>
       </div>
     </footer>
   );

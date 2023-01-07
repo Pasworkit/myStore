@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
+import axiosConfig from '../../api/axiosConfig';
 
 const catalogSlise = createSlice({
   name: 'catalog',
@@ -37,7 +37,7 @@ export const {
 
 const getAllProducts = (currentPage) => async (dispatch) => {
   try {
-    const { status, data } = await axios.get(`${process.env.REACT_APP_API_URL}/products/filter?perPage=9&startPage=${currentPage}`);
+    const { status, data } = await axiosConfig.get(`/products/filter?perPage=9&startPage=${currentPage}`);
 
     if (status === 200) {
       dispatch(allCatalogProducts({ data: data.products, productsQuantity: data.productsQuantity }));
@@ -49,7 +49,7 @@ const getAllProducts = (currentPage) => async (dispatch) => {
 
 const filterCatalogProducts = (paramsUrl, currentPageNumber) => async (dispatch) => {
   try {
-    const { status, data } = await axios.get(`${process.env.REACT_APP_API_URL}/products/filter?perPage=9&startPage=${currentPageNumber}${
+    const { status, data } = await axiosConfig.get(`/products/filter?perPage=9&startPage=${currentPageNumber}${
       paramsUrl.categories.length !== 0 ? `&categories=${paramsUrl.categories}` : ''
     }${paramsUrl.isPopular.length !== 0 ? `&isPopular=${paramsUrl.isPopular}` : ''}${
       paramsUrl.isEasyCare.length !== 0 ? `&isEasyCare=${paramsUrl.isEasyCare}` : ''}${

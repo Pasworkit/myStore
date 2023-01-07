@@ -7,7 +7,7 @@ import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
 function FilterHeight({ showcheckedHeight, setShowcheckedHeight, handleChangeHeight }) {
-  const checkeFilter = useSelector(store => store.filter);
+  const checkeFilter = useSelector(store => store.filterHeightRange);
 
   return (
     <div className={styles.containerFilterMenu}>

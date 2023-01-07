@@ -8,7 +8,7 @@ import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
 function FilterCategory({ showcheckedCategory, setShowcheckedCategory, handleChangeCategories }) {
-  const checkeFilter = useSelector(store => store.filter);
+  const checkeFilter = useSelector(store => store.filterCategories);
 
   return (
     <div className={styles.containerFilterMenu}>

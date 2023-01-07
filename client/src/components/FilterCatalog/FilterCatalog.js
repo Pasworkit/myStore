@@ -9,13 +9,16 @@ import FilterHeight from './FilterHeight';
 import FilterCategory from './FilterCategory';
 import FilterPopular from './FilterPopular';
 import FilterPrice from './FilterPrice';
-import {
-  changePricefilter,
-  checkedCategoriesFilter, checkedEasyCareFilter, checkedHeightRangeFilter, checkedPetAndBabeSafeFilter, checkedPopularFilter, createNewArrCategory, createNewArrHeightRange, createNewArrIsEasyCare, createNewArrIsPetAndBabySafe, createNewArrIsPopular, setPriceMinMaxfilter,
-} from '../../store/slices/filterCatalogSlice';
+
+import { checkedCategoriesFilter, createNewArrCategory } from '../../store/slices/filterCatalogSlice/filterCategoriesSlice';
 import {
   filterCatalogProducts, getAllProducts, setCurrentPage,
 } from '../../store/slices/catalogSlice';
+import { checkedPopularFilter, createNewArrIsPopular } from '../../store/slices/filterCatalogSlice/filterPopularSlice';
+import { checkedEasyCareFilter, createNewArrIsEasyCare } from '../../store/slices/filterCatalogSlice/filterEasyCareSlice';
+import { checkedPetAndBabeSafeFilter, createNewArrIsPetAndBabySafe } from '../../store/slices/filterCatalogSlice/filterPetAndBabeSafeSlice';
+import { checkedHeightRangeFilter, createNewArrHeightRange } from '../../store/slices/filterCatalogSlice/filterHeightRangeSlice';
+import { changeSliderPriceFilter, createNewPriceFilter } from '../../store/slices/filterCatalogSlice/filterPriceSlice';
 
 function FilterCatalog() {
   const [showcheckedCategory, setShowcheckedCategory] = useState(false);
@@ -30,15 +33,13 @@ function FilterCatalog() {
 
   const currentPageNumber = useSelector((store) => store.catalog.currentPageNumber);
 
-  const categories = useSelector(store => store.filter.categories);
-  const isPopular = useSelector(store => store.filter.isPopular);
-  const isEasyCare = useSelector(store => store.filter.isEasyCare);
-  const isPetAndBabySafe = useSelector(store => store.filter.isPetAndBabySafe);
-  const heightRange = useSelector(store => store.filter.heightRange);
-  const price = useSelector(store => store.filter.price);
-  const minPrice = useSelector(store => store.filter.minPrice);
-  const maxPrice = useSelector(store => store.filter.maxPrice);
-  const filterState = useSelector(store => store.filter);
+  const categories = useSelector(store => store.filterCategories.categories);
+  const isPopular = useSelector(store => store.filterPopular.isPopular);
+  const isEasyCare = useSelector(store => store.filterEasyCare.isEasyCare);
+  const isPetAndBabySafe = useSelector(store => store.filterPetAndBabeSafe.isPetAndBabySafe);
+  const heightRange = useSelector(store => store.filterHeightRange.heightRange);
+  const minPrice = useSelector(store => store.filterPrice.minPrice);
+  const maxPrice = useSelector(store => store.filterPrice.maxPrice);
 
   const handleChangeCategories = (event) => {
     const { name } = event.target;
@@ -107,15 +108,6 @@ function FilterCatalog() {
     }
   };
 
-  const handelSubmitPriceForm = (e) => {
-    // eslint-disable-next-line prefer-destructuring
-    e.minPrice = price[0];
-    // eslint-disable-next-line prefer-destructuring
-    e.maxPrice = price[1];
-    dispatch(setPriceMinMaxfilter([e.minPrice, e.maxPrice]));
-    dispatch(setCurrentPage(1));
-  };
-
   useEffect(() => {
     const categoriesParams = searchParams.get('categories') || '';
     const isPopularParams = searchParams.get('isPopular') || '';
@@ -152,8 +144,8 @@ function FilterCatalog() {
 
     if (priceParams !== '') {
       const newArrPrice = priceParams.split('-').map(el => Number(el));
-      dispatch(changePricefilter(newArrPrice));
-      dispatch(setPriceMinMaxfilter(newArrPrice));
+      dispatch(createNewPriceFilter(newArrPrice));
+      dispatch(changeSliderPriceFilter(newArrPrice));
     }
 
     if (pageParams !== '') {
@@ -203,8 +195,10 @@ function FilterCatalog() {
 
     if (categories.length !== 0 || isPopular.length !== 0 || isEasyCare.length !== 0 || isPetAndBabySafe.length !== 0 || heightRange.length !== 0 || minPrice !== null || maxPrice !== null) {
       setTimeout(() => {
-        dispatch(filterCatalogProducts(filterState, currentPageNumber));
-      }, 600);
+        dispatch(filterCatalogProducts({
+          categories, isPopular, isEasyCare, isPetAndBabySafe, heightRange, minPrice, maxPrice,
+        }, currentPageNumber));
+      }, 500);
     } else {
       dispatch(getAllProducts(currentPageNumber));
     }
@@ -217,7 +211,7 @@ function FilterCatalog() {
       <FilterEasyCare handleChangeEasyCare={handleChangeEasyCare} showcheckedEasyCare={showcheckedEasyCare} setShowcheckedEasyCare={setShowcheckedEasyCare} />
       <FilterPetAndBabySafe handleChangePetAndBabySafe={handleChangePetAndBabySafe} showcheckedPetAndBabySafe={showcheckedPetAndBabySafe} setShowcheckedPetAndBabySafe={setShowcheckedPetAndBabySafe} />
       <FilterHeight handleChangeHeight={handleChangeHeight} showcheckedHeight={showcheckedHeight} setShowcheckedHeight={setShowcheckedHeight} />
-      <FilterPrice handelSubmitPriceForm={handelSubmitPriceForm} showcheckedPrice={showcheckedPrice} setShowcheckedPrice={setShowcheckedPrice} />
+      <FilterPrice showcheckedPrice={showcheckedPrice} setShowcheckedPrice={setShowcheckedPrice} />
     </div>
   );
 }

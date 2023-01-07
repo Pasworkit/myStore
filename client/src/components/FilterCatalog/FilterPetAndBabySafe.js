@@ -7,7 +7,7 @@ import CloseCheckboxIcon from '../FilterIcon/CloseCheckboxIcon';
 import styles from './FilterCatalog.module.scss';
 
 function FilterPetAndBabySafe({ showcheckedPetAndBabySafe, setShowcheckedPetAndBabySafe, handleChangePetAndBabySafe }) {
-  const checkeFilter = useSelector(store => store.filter);
+  const checkeFilter = useSelector(store => store.filterPetAndBabeSafe);
 
   return (
     <div className={styles.containerFilterMenu}>
