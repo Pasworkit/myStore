@@ -13,8 +13,6 @@ export const loginCustomer = async (userData) => axiosConfig.post('/customers/lo
 
 export const getProductsFromBack = async () => axios.get(`${process.env.REACT_APP_API_URL}/products`);
 
-// export const getProductByItemNumber = async (itemNumber) => axios.get(`${process.env.REACT_APP_API_URL}/products/${itemNumber}`);
-
 export const createOrderWithoutAuthorization = async (newOrder) => axios.post(
   `${process.env.REACT_APP_API_URL}/orders`,
   newOrder,
