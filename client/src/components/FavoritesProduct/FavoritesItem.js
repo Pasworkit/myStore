@@ -16,6 +16,7 @@ function FavoritesItem({
     itemNo,
   },
 }) {
+  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
   const isInFavorites = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInFavorites);
   const token = useSelector((store) => store.auth.token);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
@@ -30,7 +31,7 @@ function FavoritesItem({
       dispatch(setModalIsOpen(true));
       dispatch(setModalData({
         header: 'Delete product from cart?',
-        text: `Product Name: ${name}`,
+        text: `Product Name: ${renderStringTitle(name)}`,
         actions: (
           <div>
             <Button color="success" onClick={handleModalCancel}>Сancel</Button>
@@ -54,7 +55,7 @@ function FavoritesItem({
       dispatch(setModalIsOpen(true));
       dispatch(setModalData({
         header: 'Delete product from favorites?',
-        text: `Product Name: ${name}`,
+        text: `Product Name: ${renderStringTitle(name)}`,
         actions: (
           <div>
             <Button
@@ -87,7 +88,7 @@ function FavoritesItem({
         <img className={styles.img} src={imageUrls} alt={name} />
       </Link>
 
-      <span className={styles.title}>{name}</span>
+      <span className={styles.title}>{renderStringTitle(name)}</span>
 
       <span className={styles.price}>{currentPrice}</span>
       <button type="button" className={styles.favoritesButton} onClick={addToCartHandler}>

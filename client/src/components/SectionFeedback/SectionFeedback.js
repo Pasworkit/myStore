@@ -100,6 +100,7 @@ function SectionFeedback() {
               />
 
               <CardContent>{content}</CardContent>
+              <div className={styles.margin} />
             </Card>
           ))}
         </Slider>

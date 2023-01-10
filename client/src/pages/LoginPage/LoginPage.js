@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { createTheme } from '@mui/material/styles';
-import { loginCustomer, createFavorites, apdatedCart } from '../../api/ApiTest';
+import { loginCustomer, createFavorites, apdatedCart } from '../../api/api';
 import styles from './LoginPage.module.scss';
 import { setUser } from '../../store/slices/authSlice';
 

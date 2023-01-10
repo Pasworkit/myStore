@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getComments } from '../../api/ApiTest';
+import { getComments } from '../../api/api';
 
 const commentsSlice = createSlice({
   name: 'comments',
