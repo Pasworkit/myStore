@@ -15,11 +15,11 @@ function ProductPage() {
   }, []);
 
   const products = useSelector((store) => store.productsAll.products);
-  const [theProduct] = products.filter((product) => product.itemNo === linkItemNo);
+  const [product] = products.filter((item) => item.itemNo === linkItemNo);
 
   return (
     <main>
-      {theProduct ? (<Product productToRender={theProduct} />) : (<div>I am spinner</div>) }
+      {product ? (<Product product={product} />) : (<div>I am spinner</div>) }
     </main>
   );
 }
