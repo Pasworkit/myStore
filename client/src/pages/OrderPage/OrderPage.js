@@ -125,7 +125,7 @@ function OrderPage() {
     onSubmit: async (values) => {
       const {
         data, status,
-      } = token ? await createOrder(token, createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
+      } = token ? await createOrder(createOrderFromValues(values)) : await createOrderWithoutAuthorization(createOrderFromValues(values));
       if (status === 200) {
         await deleteCartHandler();
         dispatch(setModalIsOpen(true));
