@@ -48,14 +48,15 @@ const getAllProducts = (currentPage) => async (dispatch) => {
 };
 
 const filterCatalogProducts = (paramsUrl, currentPageNumber) => async (dispatch) => {
+  const categories = paramsUrl.categories.length !== 0 ? `&categories=${paramsUrl.categories}` : '';
+  const isPopular = paramsUrl.isPopular.length !== 0 ? `&isPopular=${paramsUrl.isPopular}` : '';
+  const isEasyCare = paramsUrl.isEasyCare.length !== 0 ? `&isEasyCare=${paramsUrl.isEasyCare}` : '';
+  const isPetAndBabySafe = paramsUrl.isPetAndBabySafe.length !== 0 ? `&isPetAndBabySafe=${paramsUrl.isPetAndBabySafe}` : '';
+  const heightRange = paramsUrl.heightRange.length !== 0 ? `&heightRange=${paramsUrl.heightRange}` : '';
+  const price = paramsUrl.minPrice !== null && paramsUrl.maxPrice !== null ? `&minPrice=${paramsUrl.minPrice}&maxPrice=${paramsUrl.maxPrice}` : '';
+
   try {
-    const { status, data } = await axiosConfig.get(`/products/filter?perPage=9&startPage=${currentPageNumber}${
-      paramsUrl.categories.length !== 0 ? `&categories=${paramsUrl.categories}` : ''
-    }${paramsUrl.isPopular.length !== 0 ? `&isPopular=${paramsUrl.isPopular}` : ''}${
-      paramsUrl.isEasyCare.length !== 0 ? `&isEasyCare=${paramsUrl.isEasyCare}` : ''}${
-      paramsUrl.isPetAndBabySafe.length !== 0 ? `&isPetAndBabySafe=${paramsUrl.isPetAndBabySafe}` : ''}${
-      paramsUrl.heightRange.length !== 0 ? `&heightRange=${paramsUrl.heightRange}` : ''}${
-      paramsUrl.minPrice !== null && paramsUrl.maxPrice !== null ? `&minPrice=${paramsUrl.minPrice}&maxPrice=${paramsUrl.maxPrice}` : ''}
+    const { status, data } = await axiosConfig.get(`/products/filter?perPage=9&startPage=${currentPageNumber}${categories}${isPopular}${isEasyCare}${isPetAndBabySafe}${heightRange}${price}
     `);
     if (status === 200) {
       dispatch(allCatalogProducts({ data: data.products, productsQuantity: data.productsQuantity }));
