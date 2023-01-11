@@ -19,31 +19,30 @@ import {
 } from '../../store/slices/productsSlice/actionCreators';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
-function Product(props) {
+function Product({
+  product:
+  {
+    _id,
+    itemNo,
+    name,
+    currentPrice,
+    imageUrls,
+    description: {
+      text, light, watering, humidity,
+    },
+    categories,
+    botanicalName,
+    isPetAndBabySafe,
+    isEasyCare,
+    quantity,
+  },
+}) {
   const [show, setShow] = useState(false);
   const handleOpenAccordion = () => {
     setShow(!show); // Toggle accordion
   };
 
   const dispatch = useDispatch();
-
-  const { productToRender: theProduct } = props;
-  const {
-    _id,
-    itemNo,
-    name,
-    currentPrice,
-    imageUrls,
-    description,
-    categories,
-    botanicalName,
-    isPetAndBabySafe,
-    isEasyCare,
-    quantity,
-  } = theProduct;
-  const {
-    text, light, watering, humidity,
-  } = description;
 
   const products = useSelector((store) => store.productsAll.products);
   //  eslint-disable-next-line max-len
@@ -53,9 +52,9 @@ function Product(props) {
     document.querySelector("meta[name='description']").setAttribute('content', documentMetaDesc);
   }, [name, documentMetaDesc]);
 
-  const isInFavorites = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInFavorites);
-  const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
-  const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
+  const isInFavorites = useSelector((state) => state.productsAll.products.find((item) => item._id === _id).isInFavorites);
+  const isInCart = useSelector((store) => store.productsAll.products.find((item) => item._id === _id).isInCart);
+  const quantityCardCount = useSelector((store) => store.productsAll.products.find((item) => item._id === _id).quantityInCart);
 
   const token = useSelector((store) => store.auth.token);
 

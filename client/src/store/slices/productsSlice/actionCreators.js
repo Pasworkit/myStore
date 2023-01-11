@@ -1,6 +1,6 @@
 import {
   getProductsFromBack, addProductInCart, deleteProductInCart, apdatedCart, getCart, deleteCartFromBack, addProductInFavorites, deleteProductInFavorites,
-} from '../../../api/ApiTest';
+} from '../../../api/api';
 import {
   getProductsInState, toggleProductCart, incrementQuantityProduct, decrementQuantityProduct, deleteCartInState, toggleProductFavorites,
 } from './productsSlice';

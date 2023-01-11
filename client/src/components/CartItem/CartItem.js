@@ -19,6 +19,7 @@ function CartItem({
     quantity,
   },
 }) {
+  const renderStringTitle = (stringTitle) => [...stringTitle[0].toUpperCase(), stringTitle.slice(1)].join('').split('-').join(' ');
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);
   const isInCart = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).isInCart);
   const token = useSelector((store) => store.auth.token);
@@ -31,7 +32,7 @@ function CartItem({
     dispatch(setModalIsOpen(true));
     dispatch(setModalData({
       header: 'Delete product from cart?',
-      text: `Product Name: ${name}`,
+      text: `Product Name: ${renderStringTitle(name)}`,
       actions: (
         <div>
           <Button
@@ -61,7 +62,7 @@ function CartItem({
       dispatch(setModalIsOpen(true));
       dispatch(setModalData({
         header: 'You have selected the maximum quantity of the product that is in stock',
-        text: `Product Name: ${name}`,
+        text: `Product Name: ${renderStringTitle(name)}`,
         actions: (
           <div>
             <Button color="success" onClick={handleModalCancel}> OK </Button>
@@ -70,16 +71,17 @@ function CartItem({
       }));
     }
   };
+
   const decrementCardQuantity = () => dispatch(decrementQuantityProductInCart(_id, quantityCardCount, isInCart, token));
 
   return (
     <li className={styles.item}>
 
       <Link to={`/${itemNo}`}>
-        <img className={styles.img} src={imageUrls} alt={name} />
+        <img className={styles.img} src={imageUrls} alt={renderStringTitle(name)} />
       </Link>
 
-      <span className={styles.title}>{name}</span>
+      <span className={styles.title}>{renderStringTitle(name)}</span>
 
       <div className={styles.counterWrapper}>
         <button type="button" className={styles.buttonCartItem} onClick={decrementCardQuantity}>

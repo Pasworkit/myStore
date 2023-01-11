@@ -14,18 +14,16 @@ import {
 } from '../../store/slices/productsSlice/actionCreators';
 import { setModalData, setModalIsOpen } from '../../store/slices/modalSlise';
 
-function Card(props) {
-  const {
-    productCardData: {
-      _id,
-      itemNo,
-      currentPrice,
-      imageUrls,
-      quantity,
-      name,
-    },
-  } = props;
-
+function Card({
+  productCardData: {
+    _id,
+    itemNo,
+    currentPrice,
+    imageUrls,
+    quantity,
+    name,
+  },
+}) {
   const isInCart = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInCart);
   const isInFavorites = useSelector((state) => state.productsAll.products.find((product) => product._id === _id).isInFavorites);
   const quantityCardCount = useSelector((store) => store.productsAll.products.find((product) => product._id === _id).quantityInCart);

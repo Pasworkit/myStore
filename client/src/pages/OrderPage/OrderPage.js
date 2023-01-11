@@ -16,7 +16,7 @@ import * as Yup from 'yup';
 import { createTheme } from '@mui/material/styles';
 import styles from './OrderPage.module.scss';
 import styles2 from '../../components/Cart/Cart.module.scss';
-import { createOrder, createOrderWithoutAuthorization } from '../../api/ApiTest';
+import { createOrder, createOrderWithoutAuthorization } from '../../api/api';
 import { fetchCart } from '../../store/slices/orderSlice';
 import { deleteCart } from '../../store/slices/productsSlice/actionCreators';
 import { setModalIsOpen, setModalData } from '../../store/slices/modalSlise';

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSlides } from '../../api/ApiTest';
+import { getSlides } from '../../api/api';
 
 const slidesSlice = createSlice({
   name: 'slides',

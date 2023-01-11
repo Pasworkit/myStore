@@ -161,9 +161,11 @@ function Header() {
                   </LightTooltip>
                 )}
 
+                {!token && (
                 <LightTooltip title="Sign up">
                   <NavLink className={styles.basketDescLink} to="/sign-up"><HeaderRegister /></NavLink>
                 </LightTooltip>
+                )}
 
               </div>
             </div>
