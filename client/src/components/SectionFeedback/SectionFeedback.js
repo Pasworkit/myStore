@@ -80,7 +80,7 @@ function SectionFeedback() {
     };
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.title}>Reviews about Home Decor</h2>
       <div className={styles.center}>
         <Slider {...settings}>
@@ -105,7 +105,7 @@ function SectionFeedback() {
           ))}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 }
 

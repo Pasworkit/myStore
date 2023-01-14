@@ -81,7 +81,7 @@ function SectionBest() {
     };
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.title}>Most popular items of the month</h2>
       <div className={styles.center}>
         <Slider {...settings}>
@@ -99,7 +99,7 @@ function SectionBest() {
           })}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 }
 export default SectionBest;

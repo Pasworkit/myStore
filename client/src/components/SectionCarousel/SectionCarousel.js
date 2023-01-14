@@ -22,7 +22,7 @@ function SectionCarousel() {
   });
 
   return (
-    <div>
+    <section>
       <Carousel
         className={styles.thumbsCenter}
         autoPlay
@@ -46,7 +46,7 @@ function SectionCarousel() {
                     })
                 }
       </Carousel>
-    </div>
+    </section>
   );
 }
 

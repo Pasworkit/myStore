@@ -24,7 +24,7 @@ function SectionDelivery() {
     };
   }, []);
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
 
       <Box className={styles.wrapper_list}>
         <div className={styles.wrapper_list__content}>
@@ -78,7 +78,7 @@ function SectionDelivery() {
         />
       </Card>
 
-    </div>
+    </section>
   );
 }
 
